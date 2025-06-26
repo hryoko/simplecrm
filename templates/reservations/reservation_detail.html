@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}予約詳細{% endblock %}
+
+{% block content %}
+<h1>予約詳細</h1>
+<p>顧客: {{ object.customer.name }}</p>
+<p>予約日時: {{ object.reserved_at }}</p>
+<p>人数: {{ object.number_of_people }}</p>
+<p>メモ: {{ object.memo }}</p>
+<a href="{% url 'reservation_update' object.pk %}">編集</a>
+<a href="{% url 'reservation_delete' object.pk %}">削除</a>
+<a href="{% url 'reservation_list' %}">一覧に戻る</a>
+{% endblock %}

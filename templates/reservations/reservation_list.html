@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}予約一覧{% endblock %}
+
+{% block content %}
+<h1>予約一覧</h1>
+<a href="{% url 'reservation_create' %}">新規予約</a>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>顧客</th>
+    <th>予約日時</th>
+    <th>人数</th>
+    <th>操作</th>
+  </tr>
+  {% for reservation in reservations %}
+  <tr>
+    <td>{{ reservation.id }}</td>
+    <td>{{ reservation.customer.name }}</td>
+    <td>{{ reservation.reserved_at }}</td>
+    <td>{{ reservation.number_of_people }}</td>
+    <td>
+      <a href="{% url 'reservation_detail' reservation.pk %}">詳細</a>
+      <a href="{% url 'reservation_update' reservation.pk %}">編集</a>
+      <a href="{% url 'reservation_delete' reservation.pk %}">削除</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}登録完了{% endblock %}
+
+{% block content %}
+<h1>登録が完了しました！</h1>
+<a href="{% url 'customer_list' %}">顧客一覧に戻る</a>
+<a href="{% url 'customer_create' %}">さらに顧客を登録する</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+/* ===== ナビ ===== */
+nav {
+  background-color: #444;
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 8px 10px;
+
+    a {
+      color: #fff;
+      margin-right: 15px;
+      font-weight: bold;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  form {
+    display: inline;
+    button {
+      // all: unset;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  nav a {
+    display: block;
+    margin: 5px 0;
+  }
+}

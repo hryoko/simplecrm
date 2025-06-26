@@ -1,0 +1,38 @@
+:root {
+    --header-height: 56px;
+    --nav-sidebar-width: 200px;
+}
+
+header {
+    height: var(--header-height);
+    background: #2c3e50;
+    color: white;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    min-height: calc(100vh - var(--header-height));
+}
+
+aside {
+    width: var(--nav-sidebar-width);
+    background: #34495e;
+    color: white;
+    padding: 1rem;
+}
+
+main {
+    flex: 1;
+    padding: 1rem;
+    background: #fff;
+}
+
+// footer {
+    // height: 40px;
+    // background: #eee;
+    // text-align: center;
+    // line-height: 40px;
+// }

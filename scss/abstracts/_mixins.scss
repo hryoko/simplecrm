@@ -1,0 +1,8 @@
+// ミックスイン（mixin）
+@mixin respond($breakpoint) {
+  @if $breakpoint ==mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+}

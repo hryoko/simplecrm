@@ -1,0 +1,93 @@
+/* scssディレクトリ構造 参考URL
+****************************** */
+// https://tsudoi.org/guide/detail/9.html
+
+// @import 'abstracts/all'; // 再利用可能なスタイル要素や共通の設定
+// @import 'base/base';
+// @import 'components/components'; // ボタンやフォームなどのUIコンポーネントのスタイルを管理
+// @import 'layout/layout';
+// @import 'pages/pages';  // ページ専用のスタイルがある場合
+// @import 'themes/themes';  // テーマ専用のスタイルがある場合
+// @import 'vendors/vendors';  // 外部ライブラリのスタイルがある場合
+// @import 'settings/settings';  // 設定ファイルがある場合
+
+
+/* 
+abstracts: スタイルの共通要素や再利用可能な部分。
+base: 基本的なスタイルやリセット。
+components: 再利用可能なUIコンポーネント。
+layout: ページレイアウトのスタイル。
+pages: 特定ページ専用のスタイル。
+themes: テーマ関連のスタイル。
+vendors: 外部ライブラリやフレームワークのスタイル。
+settings: プロジェクトの設定に関連するスタイル（例: ダークモード、レイアウト設定など）。
+
+scss/
+├── main.scss                ← エントリーポイント（他をすべてimport）
+├── abstracts/               ← 共通の変数・mixin・関数
+│   ├── _variables.scss       // カラー・フォントサイズ・余白・ブレークポイント等
+│   ├── _mixins.scss          // メディアクエリ、clearfix、共通パターン
+│   └── _functions.scss       // カスタム関数（色調整等）
+├── base/                     ← 全体共通・初期化
+│   ├── _reset.scss           // リセットCSS
+│   ├── _typography.scss      // 見出し・段落・リンクなどのベース文字スタイル
+│   └── _base.scss            // body、htmlなどの基本スタイル
+├── layout/                   ← 構造に関するスタイル
+│   ├── _header.scss
+│   ├── _footer.scss
+│   ├── _nav.scss             // サイドバーやグローバルナビ
+│   └── _grid.scss            // グリッド・コンテナの補助（必要なら）
+├── components/               ← UI部品
+│   ├── _buttons.scss
+│   ├── _cards.scss
+│   ├── _modals.scss          // モーダル
+│   └── _forms.scss           // フォーム関連（例: `.logout-form`）
+├── pages/                    ← ページごと
+│   └── _home.scss            // ホームページ専用スタイル
+│   └── _dashboard.scss       // 例: ダッシュボードページ用（必要に応じて）
+├── themes/                   ← テーマやスキン
+│   └── _default.scss
+│   └── _theme.scss           // テーマに関連するスタイル
+├── vendors/
+│   └── _vendor.scss          // 外部ライブラリのスタイル
+├── settings/                 ← 環境・モード設定
+│   └── _settings.scss        // 例: ダークモード、レイアウトモード
+
+
+/* CSSスタイル順序  
+****************************** */
+// 1．位置とレイアウトに関するプロパティ
+// 2．ボックスモデルに関するプロパティ
+// 3．表示と背景に関するプロパティ
+// 4．テキストとフォントに関するプロパティ
+// 5．装飾と効果に関するプロパティ
+// 6．トランジションとアニメーションに関するプロパティ
+// 7．具体的には、以下の順序を使用することが多いです：
+
+// 1．position
+// 2．top, right, bottom, left
+// 3．display
+// 4．flex, grid 関連のプロパティ
+// 5．width, height
+// 6．margin, padding
+// 7．background, color
+// 8．font 関連のプロパティ
+// 9．text 関連のプロパティ
+// 10．border, outline
+// 11．box-shadow
+// 12．transform, transition
+
+
+main.scss   
+/* main.scssの書き方  
+****************************** */
+// @charset "UTF-8";
+
+// @import 'abstracts/variables'; // SCSS変数や共通設定
+// @import 'abstracts/mixins'; // 再利用可能なミックスイン
+// @import 'abstracts/functions'; // SCSS関数
+
+// @import 'base/reset'; // リセットCSS
+// @import 'base/typography'; // タイポグラフィ
+// @import 'base/base'; // 基本スタイル
+... ※以下省略

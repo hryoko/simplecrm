@@ -1,0 +1,12 @@
+// タイポグラフィ
+$arrow-right: "\00BB";
+$arrow-left: "\00AB";
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}詳細{% endblock %}
+
+{% block content %}
+<h1>{{ bottle.name }}</h1>
+<p>顧客: {{ bottle.customer.name }}</p>
+<p>メモ: {{ bottle.memo }}</p>
+<p>キープ日: {{ bottle.opened_at }}</p>
+<a href="{% url 'bottle_update' bottle.pk %}">編集</a>
+<form method="post" action="{% url 'bottle_delete' bottle.pk %}">
+  {% csrf_token %}
+  <button type="submit">削除</button>
+</form>
+<a href="{% url 'bottle_list' %}">戻る</a>
+{% endblock %}

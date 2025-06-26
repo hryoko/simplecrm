@@ -1,0 +1,23 @@
+// ブレイクポイント
+// $breakPointList: 767px, 768px;
+
+// // メディアクエリ
+// $mq: (
+//     'sp': 'screen and (max-width: #{nth($breakPointList, 1)})',
+//     'pc': 'print,screen and (min-width: #{nth($breakPointList, 2)})'
+//     ) !default;
+
+// //画像格納ディレクトリ
+// $imgDir: '/img/';
+
+
+
+// グローバルなレイアウト設定
+$container-max-width: 1200px;
+$page-margin: 20px;
+
+// レスポンシブデザインのブレークポイント
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

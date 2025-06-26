@@ -1,0 +1,27 @@
+# Python キャッシュなど
+__pycache__/
+*.py[cod]
+
+# 設定ファイル（機密対策）
+config/local_settings.py
+.env
+
+# 仮想環境
+.venv/
+
+# エディタ設定
+.vscode/
+# .editorconfig （共有するなら管理対象に）
+
+# DBファイル（SQLiteなど）
+*.sqlite3
+
+# 不要な一時ファイル（必要に応じて）
+# *.log
+# *.bak
+
+templates/_*
+_test_scss/
+
+# 自作の一時保存フォルダ
+_temp/
