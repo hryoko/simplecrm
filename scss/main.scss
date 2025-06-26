@@ -34,26 +34,6 @@
 // 設定
 @import 'settings/settings';
 
-@import 'test';
+// @import 'test';
 @import 'sagyo';
-
-/* 開発用にわかりやすく色付け */
-header {
-  background-color: #ffdede; /* 薄い赤 */
-  border: 2px solid #ff4d4d;
-}
-
-aside {
-  background-color: #deffde; /* 薄い緑 */
-  border: 2px solid #4dff4d;
-}
-
-main {
-  background-color: #dedeff; /* 薄い青 */
-  border: 2px solid #4d4dff;
-}
-
-footer {
-  background-color: #ffffde; /* 薄い黄 */
-  border: 2px solid #ffff4d;
-}
+@import 'dev';

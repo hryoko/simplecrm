@@ -1,38 +1,193 @@
+@charset "UTF-8";
+
+/* ------------------------------
+  CSS Variables（設計用トークン）
+------------------------------ */
 :root {
     --header-height: 56px;
     --nav-sidebar-width: 200px;
+    --sidebar-collapsed-width: 60px;
+
+    --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+        "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+        "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* ------------------------------
+  Reset & Base
+------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--font-family-primary);
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.5;
+    text-size-adjust: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: #0366d6;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+}
+
+/* ------------------------------
+  Layout Components
+------------------------------ */
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+/* ヘッダー */
 
 header {
     height: var(--header-height);
-    background: #2c3e50;
-    color: white;
-    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
     display: flex;
     align-items: center;
+    padding: 0 1rem;
+    z-index: 1000;
+
+    .menu-button {
+        font-size: 1.25rem;
+    }
+
+    .logo {
+        margin-left: 1rem;
+        font-weight: bold;
+    }
+
+    .search-box {
+        margin: 0 auto;
+
+        input {
+            padding: 0.25rem 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    }
+
+    .user-menu {
+        margin-left: auto;
+    }
 }
 
-.container {
-    display: flex;
-    min-height: calc(100vh - var(--header-height));
+/* 全体レイアウト（サイドバー＋メイン） */
+.layout {
+    // display: flex;
+    // margin-top: var(--header-height);
+    // min-height: calc(100vh - var(--header-height));
 }
 
-aside {
-    width: var(--nav-sidebar-width);
-    background: #34495e;
-    color: white;
-    padding: 1rem;
+/* サイドバー */
+.sidebar {
+    // width: var(--nav-sidebar-width);
+    // background: #f1f5f9;
+    // overflow: hidden;
+    // flex-shrink: 0;
+
+    // nav {
+    //     display: flex;
+    //     flex-direction: column;
+
+    //     a {
+    //         display: flex;
+    //         align-items: center;
+    //         padding: 1rem;
+    //         color: #333;
+    //         text-decoration: none;
+    //         white-space: nowrap;
+
+    //         i {
+    //             font-size: 1rem;
+    //             width: 24px;
+    //             flex-shrink: 0;
+    //         }
+
+    //         .label {
+    //             margin-left: 0.5rem;
+    //             overflow: hidden;
+    //         }
+    //     }
+    // }
+
+    // &.collapsed {
+    //     width: var(--sidebar-collapsed-width);
+
+    //     nav a .label {
+    //         visibility: hidden;
+    //     }
+    // }
 }
 
-main {
-    flex: 1;
-    padding: 1rem;
-    background: #fff;
-}
-
-// footer {
-    // height: 40px;
-    // background: #eee;
-    // text-align: center;
-    // line-height: 40px;
+/* メインコンテンツ */
+// .main-content {
+//     flex: 1;
+//     padding: 1.5rem;
+//     background: #fff;
 // }
+
+// .empty-message {
+//     padding: 2rem;
+//     text-align: center;
+//     color: #888;
+// }
+/* ------------------------------
+  Responsive: モバイル対応
+------------------------------ */
+// @media (max-width: 768px) {
+//     .sidebar {
+//         width: var(--sidebar-collapsed-width);
+//     }
+
+//     .sidebar nav a .label {
+//         opacity: 0;
+//         width: 0;
+//     }
+
+//     .main-header .search-box {
+//         display: none;
+//     }
+
+//     .main-content {
+//         padding: 1rem;
+//     }
+// }
+

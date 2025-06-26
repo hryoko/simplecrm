@@ -2,32 +2,64 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}サイトタイトル{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-  <header>
-    <h1>管理画面</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}My App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body class="dev-mode">
+    <!-- 上部ヘッダー -->
+    <header>
+      <button id="toggle-sidebar" class="menu-button">☰</button>
+      <div class="logo">MyApp-LOGO</div>
+      <div class="search-box">
+        <input type="text" placeholder="検索..." />
+      </div>
+      <div class="user-menu">👤</div>
+    </header>
 
-  <div class="container">
-    <aside>
-      <!-- メニュー -->
-      <ul>
-        <li><a href="#">ダッシュボード</a></li>
-        <li><a href="#">ユーザー管理</a></li>
-        <li><a href="#">設定</a></li>
-      </ul>
-    </aside>
+    <!-- 全体レイアウト -->
+    <div class="layout">
+      <aside class="sidebar">
+        <nav>
+          <a href="#" title="ホーム"><i>🏠</i><span class="label">ホーム</span></a>
+          <a href="#" title="顧客"><i>📋</i><span class="label">顧客</span></a>
+          <a href="#" title="設定"><i>⚙️</i><span class="label">設定</span></a>
+          <a href="#" title="ダッシュボード">
+            <i class="icon-home">🖥️</i>
+            <span class="label">ダッシュボード</span>
+          </a>
+        </nav>
+      </aside>
 
-    <main>
-      {% block content %}{% endblock %}
-    </main>
-  </div>
+      <main class="main-content">
+        {% block content %}
+        <div class="empty-message">データがありません。</div>
+        <!-- ここに各ページの内容が入ります -->
+        {% endblock %}
+      </main>
+    </div>
 
-  {% comment %} <footer>© 2025 管理画面</footer> {% endcomment %}
-</body>
+    {% block extra_js %}{% endblock %}
+
+    <!-- サイドバー開閉状態の保存 -->
+    <script>
+      const sidebar = document.querySelector(".sidebar");
+      const toggleBtn = document.getElementById("toggle-sidebar");
+
+      // 保存された状態を復元
+      if (localStorage.getItem("sidebar-collapsed") === "true") {
+        sidebar.classList.add("collapsed");
+      }
+
+      // 開閉時に状態を保存
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+        const isCollapsed = sidebar.classList.contains("collapsed");
+        localStorage.setItem("sidebar-collapsed", isCollapsed);
+      });
+    </script>
+  </body>
 </html>

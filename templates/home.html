@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}ホーム{{ block.super }}{% endblock %}
 
-{% block content %}
+{#% block content %#}
 <h1>ホーム</h1>
 <p>ようこそ、{{ request.user.username }} さん。</p>
 <p>このページから管理画面機能にアクセスできます。</p>
@@ -9,4 +9,4 @@
 <form method="post" action="{% url 'logout' %}">
   {% csrf_token %}
 </form>
-{% endblock %}
+{#% endblock %#}
