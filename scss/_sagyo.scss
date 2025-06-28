@@ -4,17 +4,18 @@
   CSS Variables（設計用トークン）
 ------------------------------ */
 :root {
-    --header-height: 56px;
-    --nav-sidebar-width: 200px;
-    --sidebar-collapsed-width: 60px;
+  --header-height: 56px;
+  --nav-sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
 
-    --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
-        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 
-    --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-        "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-        "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+    "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+    "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* ------------------------------
@@ -23,171 +24,223 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-    height: 100%;
-    font-family: var(--font-family-primary);
-    background-color: #fafafa;
-    color: #333;
-    line-height: 1.5;
-    text-size-adjust: 100%;
+  height: 100%;
+  font-family: var(--font-family-primary);
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.5;
+  text-size-adjust: 100%;
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    color: #0366d6;
-    text-decoration: none;
+  color: #0366d6;
+  text-decoration: none;
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 button {
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
 }
 
 /* ------------------------------
   Layout Components
 ------------------------------ */
-
 .sticky {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ヘッダー */
-
 header {
-    height: var(--header-height);
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    z-index: 1000;
+  height: var(--header-height);
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
 
-    .menu-button {
-        font-size: 1.25rem;
+  .menu-button {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    margin-left: 1rem;
+    font-weight: bold;
+  }
+
+  .search-box {
+    margin: 0 auto;
+
+    input {
+      padding: 0.25rem 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
+  }
 
-    .logo {
-        margin-left: 1rem;
-        font-weight: bold;
-    }
-
-    .search-box {
-        margin: 0 auto;
-
-        input {
-            padding: 0.25rem 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-    }
-
-    .user-menu {
-        margin-left: auto;
-    }
+  .user-menu {
+    margin-left: auto;
+  }
 }
 
 /* 全体レイアウト（サイドバー＋メイン） */
 .layout {
-    // display: flex;
-    // margin-top: var(--header-height);
-    // min-height: calc(100vh - var(--header-height));
+  flex: 1;
+  display: flex;
+  overflow: hidden;
 }
 
 /* サイドバー */
 .sidebar {
-    // width: var(--nav-sidebar-width);
-    // background: #f1f5f9;
-    // overflow: hidden;
-    // flex-shrink: 0;
+  flex-shrink: 0;
+  width: var(--nav-sidebar-width);
+  background: #f1f5f9;
+  overflow: hidden;
 
-    // nav {
-    //     display: flex;
-    //     flex-direction: column;
+  nav {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
 
-    //     a {
-    //         display: flex;
-    //         align-items: center;
-    //         padding: 1rem;
-    //         color: #333;
-    //         text-decoration: none;
-    //         white-space: nowrap;
+    .nav-button {
+      all: unset;
+      cursor: pointer;
+      color: inherit;
+      font: inherit;
+    }
 
-    //         i {
-    //             font-size: 1rem;
-    //             width: 24px;
-    //             flex-shrink: 0;
-    //         }
+    a,
+    .nav-button {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+      width: 100%;
+      height: 40px;
+      box-sizing: border-box;
+      
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        /* 任意のホバー効果 */
+        border-radius: 6px;
+      }
+      
+      i {
+        font-size: 1rem;
+        margin-right: 1.5rem;
+        // width: 24px;
+        flex-shrink: 0;
+      }
 
-    //         .label {
-    //             margin-left: 0.5rem;
-    //             overflow: hidden;
-    //         }
-    //     }
-    // }
+      .label {
+        // margin-left: 0.5rem;
+      }
+    }
+  }
 
-    // &.collapsed {
-    //     width: var(--sidebar-collapsed-width);
+  &.collapsed {
+    width: var(--sidebar-collapsed-width);
 
-    //     nav a .label {
-    //         visibility: hidden;
-    //     }
-    // }
+    .label {
+      display: none;
+    }
+  }
 }
 
-/* メインコンテンツ */
-// .main-content {
-//     flex: 1;
-//     padding: 1.5rem;
-//     background: #fff;
-// }
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+  background: #fff;
+  overflow-y: auto;
+}
 
-// .empty-message {
-//     padding: 2rem;
-//     text-align: center;
-//     color: #888;
-// }
+.empty-message {
+  padding: 2rem;
+  text-align: center;
+  color: #888;
+}
+
+/* テーブル共通 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+table thead {
+  background-color: #f5f5f5;
+}
+
 /* ------------------------------
   Responsive: モバイル対応
 ------------------------------ */
 // @media (max-width: 768px) {
-//     .sidebar {
-//         width: var(--sidebar-collapsed-width);
-//     }
+//   .sidebar {
+//     width: var(--sidebar-collapsed-width);
+//   }
 
-//     .sidebar nav a .label {
+//   .sidebar nav {
+
+//     a,
+//     .nav-button {
+
+//       .label {
 //         opacity: 0;
 //         width: 0;
-//     }
+//         visibility: hidden;
+//       }
+//     } 
+//   }
+  
 
-//     .main-header .search-box {
-//         display: none;
-//     }
+//   .main-header .search-box {
+//     display: none;
+//   }
 
-//     .main-content {
-//         padding: 1rem;
-//     }
+//   .main-content {
+//     padding: 1rem;
+//   }
 // }
-

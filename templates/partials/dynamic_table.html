@@ -1,0 +1,25 @@
+{% load dict_utils %}
+<table>
+  <thead>
+    <tr>
+      {% for header in headers %}
+        <th>{{ header.label }}</th>
+      {% endfor %}
+      <th>編集</th>  {# 操作列はヘッダーとは別に追加 #}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        {% for header in headers %}
+          <td>{{ row|dict_get:header.key }}</td>
+        {% endfor %}
+        <td>
+          <a href="{{ detail_url }}">詳細</a> |
+          <a href="{{ update_url }}">編集</a> |
+          <a href="{{ delete_url }}">削除</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

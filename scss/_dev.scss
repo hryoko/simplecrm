@@ -3,6 +3,7 @@
 ------------------------------ */
 $outline-color: rgba(255, 0, 0, 0.3);
 $header-bg: rgba(0, 100, 255, 0.1);
+$aside-bg: rgba(0, 255, 200, 0.5);
 $nav-bg: rgba(0, 255, 100, 0.1);
 $main-bg: rgba(255, 255, 0, 0.1);
 $footer-bg: rgba(128, 128, 128, 0.1);
@@ -16,6 +17,10 @@ $btn-border: rgba(255, 165, 0, 0.5);
 
   header {
     background-color: $header-bg;
+  }
+
+  aside {
+    background-color: $aside-bg;
   }
 
   nav {

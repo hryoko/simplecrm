@@ -11,78 +11,20 @@ html[data-theme=light],
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-
-body {
-  line-height: 1.5;
-  -moz-text-size-adjust: 100%;
-       text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-a {
-  color: #0366d6;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-/* 基本スタイル
-******************** */
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-family-primary);
-  background-color: #fafafa;
-  color: #333;
-}
-
 /* ------------------------------
   CSS Variables（設計用トークン）
 ------------------------------ */
 :root {
   --header-height: 56px;
-  --nav-sidebar-width: 200px;
-  --sidebar-collapsed-width: 60px;
+  --nav-sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
   --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
-      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+    "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* ------------------------------
@@ -137,12 +79,21 @@ button {
 .sticky {
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 .fixed {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ヘッダー */
@@ -153,7 +104,6 @@ header {
   display: flex;
   align-items: center;
   padding: 0 1rem;
-  z-index: 1000;
 }
 header .menu-button {
   font-size: 1.25rem;
@@ -175,8 +125,91 @@ header .user-menu {
 }
 
 /* 全体レイアウト（サイドバー＋メイン） */
+.layout {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
 /* サイドバー */
-/* メインコンテンツ */
+.sidebar {
+  flex-shrink: 0;
+  width: var(--nav-sidebar-width);
+  background: #f1f5f9;
+  overflow: hidden;
+}
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+.sidebar nav .nav-button {
+  all: unset;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+.sidebar nav a,
+.sidebar nav .nav-button {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+}
+.sidebar nav a:hover,
+.sidebar nav .nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  /* 任意のホバー効果 */
+  border-radius: 6px;
+}
+.sidebar nav a i,
+.sidebar nav .nav-button i {
+  font-size: 1rem;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+.sidebar.collapsed .label {
+  display: none;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.empty-message {
+  padding: 2rem;
+  text-align: center;
+  color: #888;
+}
+
+/* テーブル共通 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+table thead {
+  background-color: #f5f5f5;
+}
+
 /* ------------------------------
   Responsive: モバイル対応
 ------------------------------ */
@@ -188,6 +221,9 @@ header .user-menu {
 }
 .dev-mode header {
   background-color: rgba(0, 100, 255, 0.1);
+}
+.dev-mode aside {
+  background-color: rgba(0, 255, 200, 0.5);
 }
 .dev-mode nav {
   background-color: rgba(0, 255, 100, 0.1);
