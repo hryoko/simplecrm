@@ -24,42 +24,40 @@
     <div class="layout">
       <aside class="sidebar">
         <nav id="nav-sidebar">
-          <div class="nav-inner">
-            <a href="{% url 'home' %}" title="ホーム">
-              <i>🏠</i><span class="label">ホーム</span>
-            </a>
-            <a href="{% url 'customers:list' %}" title="顧客">
-              <i>📋</i><span class="label">顧客</span>
-            </a>
-            <a href="{% url 'bottle_list' %}">
-              <i>🍾</i><span class="label">ボトル</span>
-            </a>
-            <a href="{% url 'reservation_list' %}">
-              <i>📅</i><span class="label">予約</span>
-            </a>
-            <a href="#" title="ダッシュボード">
-              <i class="icon-home">🖥️</i><span class="label">ダッシュボード</span>
-            </a>
-            
-            <hr>
-            <a href="#" title="設定">
-              <i>⚙️</i><span class="label">設定</span>
-            </a>
+          <a href="{% url 'home' %}" title="ホーム">
+            <i>🏠</i><span class="label">ホーム</span>
+          </a>
 
-            <form action="{% url 'logout' %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="nav-button">
-                <i>🚪</i>
-                <span class="label">ログアウト</span>
-              </button>
-            </form>
+          <a href="{% url 'customers:list' %}" 
+            class="{% if request.resolver_match.url_name == 'customers:list' %}active{% endif %}">
+            <i>📋</i><span class="label">顧客</span>
+          </a>
 
-            <button id="toggle-dev-mode" class="nav-button" type="button">
-              <i>🛠️</i><span class="label">Devモード切替</span>
-            </button>
-          </div>
 
+          <a href="{% url 'bottle_list' %}"
+            class="{% if request.resolver_match.url_name == 'bottle_list' %}active{% endif %}">
+            <i>🍾</i><span class="label">ボトル</span>
+          </a>
+          <a href="{% url 'reservation_list' %}"
+            class="{% if request.resolver_match.url_name == 'reservation_list' %}active{% endif %}">
+            <i>📅</i><span class="label">予約</span>
+          </a>
+          <a href="#" title="ダッシュボード"
+            class="{% if request.resolver_match.url_name == '' %}active{% endif %}">
+            <i>🖥️</i><span class="label">ダッシュボード</span>
+          </a>
           
+          <hr>
+          <a href="#" title="設定">
+            <i>⚙️</i><span class="label">設定</span>
+          </a>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="nav-button">
+              <i>🚪</i><span class="label">ログアウト</span>
+            </button>
+          </form>
+          {% include "partials/dev_toggle.html" %}
         </nav>
       </aside>
 

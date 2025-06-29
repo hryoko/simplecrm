@@ -1,6 +1,6 @@
-from django.db import models
-from django.core.validators import RegexValidator
 from django.core import validators
+from django.core.validators import RegexValidator
+from django.db import models
 from django.utils import timezone
 
 # from django.db.models import Q
@@ -10,6 +10,7 @@ class Customer(models.Model):
     name = models.CharField('名前', max_length=100)
     name_kana = models.CharField('カナ', max_length=100, blank=True)
     age = models.IntegerField(
+        verbose_name='年齢',
         help_text=('登録できるのは20歳以上に限ります。'),
         validators=[validators.MinValueValidator(20)],
         blank=True,
@@ -19,20 +20,22 @@ class Customer(models.Model):
         message=('数字のみ10〜15桁で入力してください'),
     )
     phone = models.CharField(
-        '電話番号',
+        verbose_name='電話番号',
         max_length=15,
         unique=True,
         validators=[phone_regex],
         blank=True,
+        null=True,
     )
     email = models.EmailField(
-        'メールアドレス',
+        verbose_name='メールアドレス',
         max_length=63,
         unique=True,
         error_messages={
             'unique': ('そのメールアドレスはすでに登録されています。'),
         },
         blank=True,
+        null=True,
     )
     memo = models.TextField('メモ', blank=True)
     created_at = models.DateTimeField(default=timezone.now)

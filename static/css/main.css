@@ -2,6 +2,21 @@
 /* VARIABLE DEFINITIONS */
 html[data-theme=light],
 :root {
+  --primary: #79aec8;
+  --secondary: #417690;
+  --accent: #f5dd5d;
+  --primary-fg: #fff;
+  --body-fg: #333;
+  --body-bg: #fff;
+  --body-quiet-color: #666;
+  --body-loud-color: #000;
+  --header-color: #ffc;
+  --header-branding-color: var(--accent);
+  --header-bg: var(--secondary);
+  --header-link-color: var(--primary-fg);
+  --breadcrumbs-fg: #c4dce8;
+  --breadcrumbs-link-fg: var(--body-bg);
+  --breadcrumbs-bg: #264b5d;
   --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
@@ -15,6 +30,43 @@ html[data-theme=light],
   CSS Variables（設計用トークン）
 ------------------------------ */
 :root {
+  /* === カラーパレット === */
+  --primary: #4682b4;
+  --secondary: #eaf4ff;
+  --accent: #5dade2;
+  --primary-fg: #fff;
+  --error-fg: #ba2121;
+  /* === レイアウト背景/前景 === */
+  --body-fg: #333;
+  --body-bg: #fff;
+  --body-quiet-color: #666;
+  --body-loud-color: #000;
+  --sidebar: #f3f6fa;
+  --sidebar-text: #4a4a4a;
+  --sidebar-hover: rgba(70, 130, 180, 0.08);
+  /* === ヘッダー・フッター === */
+  --header-color: #ffc;
+  --header-branding-color: var(--accent);
+  --header-bg: var(--secondary);
+  --header-link-color: var(--primary-fg);
+  /* === パンくずリスト === */
+  --breadcrumbs-fg: #c4dce8;
+  --breadcrumbs-link-fg: var(--body-bg);
+  --breadcrumbs-bg: #264b5d;
+  /* === リンク === */
+  --link-fg: #417893;
+  --link-hover-color: #036;
+  --link-selected-fg: var(--secondary);
+  /* === 境界・装飾 === */
+  --hairline-color: #e8e8e8;
+  --border-color: #ccc;
+  /* === ボタン === */
+  --button-fg: #fff;
+  --button-bg: var(--secondary);
+  --button-hover-bg: #205067;
+  --default-button-bg: #205067;
+  --default-button-hover-bg: var(--secondary);
+  /* === サイズ系 === */
   --header-height: 56px;
   --nav-sidebar-width: 240px;
   --sidebar-collapsed-width: 64px;
@@ -42,8 +94,8 @@ html,
 body {
   height: 100%;
   font-family: var(--font-family-primary);
-  background-color: #fafafa;
-  color: #333;
+  background-color: var(--body-bg);
+  color: var(--body-fg);
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
      -moz-text-size-adjust: 100%;
@@ -57,6 +109,7 @@ ol {
 
 a {
   color: #0366d6;
+  color: var(--link-fg);
   text-decoration: none;
 }
 a:hover {
@@ -96,32 +149,41 @@ body {
   flex-direction: column;
 }
 
-/* ヘッダー */
+/* ------------------------------
+  Header
+------------------------------ */
 header {
-  height: var(--header-height);
-  background: #fff;
+  background: var(--header-bg);
   border-bottom: 1px solid #ddd;
+  height: var(--header-height);
   display: flex;
   align-items: center;
   padding: 0 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 header .menu-button {
   font-size: 1.25rem;
+  background: none;
+  color: var(--primary);
 }
 header .logo {
   margin-left: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: var(--primary);
 }
 header .search-box {
   margin: 0 auto;
 }
 header .search-box input {
-  padding: 0.25rem 0.5rem;
+  padding: 6px 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  min-width: 200px;
 }
 header .user-menu {
   margin-left: auto;
+  font-size: 1.2rem;
 }
 
 /* 全体レイアウト（サイドバー＋メイン） */
@@ -131,11 +193,15 @@ header .user-menu {
   overflow: hidden;
 }
 
+/* ------------------------------
+  Sidebar
+------------------------------ */
 /* サイドバー */
 .sidebar {
   flex-shrink: 0;
+  background: var(--sidebar);
+  color: var(--sidebar-text);
   width: var(--nav-sidebar-width);
-  background: #f1f5f9;
   overflow: hidden;
 }
 .sidebar nav {
@@ -154,7 +220,7 @@ header .user-menu {
   display: flex;
   align-items: center;
   padding: 0 12px;
-  color: #333;
+  color: var(--sidebar-text);
   text-decoration: none;
   white-space: nowrap;
   width: 100%;
@@ -163,14 +229,14 @@ header .user-menu {
 }
 .sidebar nav a:hover,
 .sidebar nav .nav-button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  /* 任意のホバー効果 */
+  background-color: var(--sidebar-hover);
   border-radius: 6px;
 }
 .sidebar nav a i,
 .sidebar nav .nav-button i {
   font-size: 1rem;
   margin-right: 1.5rem;
+  width: 24px;
   flex-shrink: 0;
 }
 .sidebar.collapsed {
@@ -180,11 +246,15 @@ header .user-menu {
   display: none;
 }
 
+/* ------------------------------
+  Main content
+------------------------------ */
 .main-content {
-  flex: 1;
-  padding: 1.5rem;
   background: #fff;
+  padding: 2rem;
+  flex: 1;
   overflow-y: auto;
+  min-height: calc(100vh - var(--header-height));
 }
 
 .empty-message {
@@ -193,21 +263,51 @@ header .user-menu {
   color: #888;
 }
 
-/* テーブル共通 */
+/* ------------------------------
+  Table
+------------------------------ */
 table {
   width: 100%;
   border-collapse: collapse;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-
+table thead {
+  background-color: var(--secondary);
+}
 table th,
 table td {
-  border: 1px solid #ccc;
-  padding: 0.5rem 1rem;
-  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+table tbody tr:hover {
+  background-color: #f3f6ff;
+}
+table tbody tr:nth-child(even) {
+  background-color: #fafafa;
 }
 
-table thead {
-  background-color: #f5f5f5;
+/* ------------------------------
+  Button
+------------------------------ */
+button,
+input[type=submit],
+input[type=button] {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+  background-color: var(--button-hover-bg);
 }
 
 /* ------------------------------
