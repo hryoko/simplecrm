@@ -7,7 +7,7 @@
 <p>予約日時: {{ object.reserved_at }}</p>
 <p>人数: {{ object.number_of_people }}</p>
 <p>メモ: {{ object.memo }}</p>
-<a href="{% url 'reservation_update' object.pk %}">編集</a>
-<a href="{% url 'reservation_delete' object.pk %}">削除</a>
-<a href="{% url 'reservation_list' %}">一覧に戻る</a>
+<a href="{% url 'reservations:update' object.pk %}">編集</a>
+<a href="{% url 'reservations:delete' object.pk %}">削除</a>
+<a href="{% url 'reservations:list' %}">一覧に戻る</a>
 {% endblock %}

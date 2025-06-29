@@ -15,9 +15,9 @@
 </dl>
 
 <div class="actions">
-  <a href="{% url 'customer_update' customer.pk %}">編集</a> |
-  <a href="{% url 'customer_delete' customer.pk %}">削除</a> |
-  <a href="{% url 'customer_list' %}">戻る</a>
+  <a href="{% url 'customers:update' customer.pk %}">編集</a> |
+  <a href="{% url 'customers:delete' customer.pk %}">削除</a> |
+  <a href="{% url 'customers:list' %}">戻る</a>
 </div>
 
 <hr>
@@ -32,9 +32,9 @@
 </table>
 
 <div class="actions">
-  <a href="{% url 'customer_update' customer.pk %}">編集</a> |
-  <a href="{% url 'customer_delete' customer.pk %}">削除</a> |
-  <a href="{% url 'customer_list' %}">戻る</a>
+  <a href="{% url 'customers:update' customer.pk %}">編集</a> |
+  <a href="{% url 'customers:delete' customer.pk %}">削除</a> |
+  <a href="{% url 'customers:list' %}">戻る</a>
 </div>
 
 <hr>
@@ -49,9 +49,9 @@
   <p><strong>登録日:</strong> {{ customer.created_at }}</p>
 
   <div class="actions">
-    <a href="{% url 'customer_update' customer.pk %}">編集</a> |
-    <a href="{% url 'customer_delete' customer.pk %}">削除</a> |
-    <a href="{% url 'customer_list' %}">戻る</a>
+    <a href="{% url 'customers:update' customer.pk %}">編集</a> |
+    <a href="{% url 'customers:delete' customer.pk %}">削除</a> |
+    <a href="{% url 'customers:list' %}">戻る</a>
   </div>
 </div>
 

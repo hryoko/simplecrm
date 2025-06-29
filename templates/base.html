@@ -17,6 +17,7 @@
       <div class="search-box">
         <input type="text" placeholder="検索..." />
       </div>
+      <p>ようこそ、{{ request.user.username }} さん。</p>
       <div class="user-menu">👤</div>
     </header>
 
@@ -24,24 +25,27 @@
     <div class="layout">
       <aside class="sidebar">
         <nav id="nav-sidebar">
-          <a href="{% url 'home' %}" title="ホーム">
+          <a href="{% url 'core:home' %}" title="ホーム"
+          class="{% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'home' %}active{% endif %}">
             <i>🏠</i><span class="label">ホーム</span>
           </a>
 
           <a href="{% url 'customers:list' %}" 
-            class="{% if request.resolver_match.url_name == 'customers:list' %}active{% endif %}">
+            class="{% if request.resolver_match.namespace == 'customers' and request.resolver_match.url_name == 'list' %}active{% endif %}">
             <i>📋</i><span class="label">顧客</span>
           </a>
 
 
-          <a href="{% url 'bottle_list' %}"
-            class="{% if request.resolver_match.url_name == 'bottle_list' %}active{% endif %}">
+          <a href="{% url 'bottles:list' %}"
+            class="{% if request.resolver_match.namespace == 'bottles' and request.resolver_match.url_name == 'list' %}active{% endif %}">
             <i>🍾</i><span class="label">ボトル</span>
           </a>
-          <a href="{% url 'reservation_list' %}"
-            class="{% if request.resolver_match.url_name == 'reservation_list' %}active{% endif %}">
+          
+          <a href="{% url 'reservations:list' %}"
+            class="{% if request.resolver_match.namespace == 'reservations' and request.resolver_match.url_name == 'list' %}active{% endif %}">
             <i>📅</i><span class="label">予約</span>
           </a>
+          
           <a href="#" title="ダッシュボード"
             class="{% if request.resolver_match.url_name == '' %}active{% endif %}">
             <i>🖥️</i><span class="label">ダッシュボード</span>
@@ -62,10 +66,11 @@
       </aside>
 
       <main class="main-content">
+        <h2>{{ page_title }}</h2>
         {% block content %}
         <div class="empty-message">データがありません。</div>
         <!-- ここに各ページの内容が入ります -->
-        {% include '_table.html' %} {% endblock %}
+        {% endblock %}
       </main>
     </div>
 

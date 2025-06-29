@@ -2,13 +2,16 @@
 {% block title %}ボトル一覧{{ block.super }}{% endblock %}
 
 {% block content %}
-<h1>ボトル一覧</h1>
-<a href="{% url 'bottle_create' %}">新規ボトル登録</a>
-<ul>
+<h1 class="main-header sticky1">ボトル一覧</h1>
+<a href="{% url 'bottles:create' %}">新規ボトル登録</a>
+
+{% include 'partials/dynamic_table.html' with headers=headers rows=rows %}
+
+{% comment %} <ul>
   {% for bottle in bottles %}
     <li>
-      <a href="{% url 'bottle_detail' bottle.pk %}">{{ bottle.name }}</a> - {{ bottle.customer.name }}
+      <a href="{% url 'bottles:detail' bottle.pk %}">{{ bottle.name }}</a> - {{ bottle.customer.name }}
     </li>
   {% endfor %}
-</ul>
+</ul> {% endcomment %}
 {% endblock %}

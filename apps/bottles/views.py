@@ -1,44 +1,77 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Bottle
+from django.urls import reverse, reverse_lazy
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
+
 from .forms import BottleForm
+from .models import Bottle
 
 
-def bottle_create(request):
-    if request.method == 'POST':
-        form = BottleForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('bottle_list')
-    else:
-        form = BottleForm()
-    return render(request, 'bottles/bottle_form.html', {'form': form})
+class BottleListView(ListView):
+    model = Bottle
+    template_name = 'bottles/bottle_list.html'
+    context_object_name = 'bottles'
+    queryset = Bottle.objects.select_related('customer').all()
+
+    def namespaced_url(self, namespace, viewname, *args):
+        return reverse(f'{namespace}:{viewname}', args=args)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        all_headers = [
+            {"key": field.name, "label": field.verbose_name.title()}
+            for field in Bottle._meta.fields
+        ]
+        exclude_keys = {'created_at', 'updated_at'}
+        headers = [h for h in all_headers if h['key'] not in exclude_keys]
+        wanted_fields = [h['key'] for h in headers]
+
+        # rows に URL を追加
+        rows = []
+        for c in context['bottles']:
+            # row = {key: getattr(c, key) for key in wanted_fields}
+            row = {}
+            for key in wanted_fields:
+                value = getattr(c, key)
+                if key == 'customer':
+                    value = str(value)
+                row[key] = value
+            row['detail_url'] = self.namespaced_url('bottles', 'detail', c.pk)
+            row['update_url'] = self.namespaced_url('bottles', 'update', c.pk)
+            row['delete_url'] = self.namespaced_url('bottles', 'delete', c.pk)
+            rows.append(row)
+
+        context['headers'] = headers
+        context['rows'] = rows
+        context['page_title'] = 'ボトル一覧'
+        return context
 
 
-def bottle_list(request):
-    bottles = Bottle.objects.select_related('customer').all()
-    return render(request, 'bottles/bottle_list.html', {'bottles': bottles})
+class BottleCreateView(CreateView):
+    model = Bottle
+    form_class = BottleForm
+    template_name = 'bottles/bottle_form.html'
+    success_url = reverse_lazy('list')
 
 
-def bottle_detail(request, pk):
-    bottle = get_object_or_404(Bottle, pk=pk)
-    return render(request, 'bottles/bottle_detail.html', {'bottle': bottle})
+class BottleDetailView(DetailView):
+    model = Bottle
+    template_name = 'bottles/bottle_detail.html'
 
 
-def bottle_update(request, pk):
-    bottle = get_object_or_404(Bottle, pk=pk)
-    if request.method == 'POST':
-        form = BottleForm(request.POST, instance=bottle)
-        if form.is_valid():
-            form.save()
-            return redirect('bottle_detail', pk=pk)
-    else:
-        form = BottleForm(instance=bottle)
-    return render(request, 'bottles/bottle_form.html', {'form': form})
+class BottleUpdateView(UpdateView):
+    model = Bottle
+    form_class = BottleForm
+    template_name = 'bottles/bottle_form.html'
+    success_url = reverse_lazy('list')
 
 
-def bottle_delete(request, pk):
-    bottle = get_object_or_404(Bottle, pk=pk)
-    if request.method == 'POST':
-        bottle.delete()
-        return redirect('bottle_list')
-    return render(request, 'bottles/bottle_confirm_delete.html', {'bottle': bottle})
+class BottleDeleteView(DeleteView):
+    model = Bottle
+    template_name = 'bottles/bottle_confirm_delete.html'
+    success_url = reverse_lazy('list')

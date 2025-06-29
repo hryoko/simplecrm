@@ -2,8 +2,14 @@
 {% block title %}予約一覧{% endblock %}
 
 {% block content %}
+<h1 class="main-header sticky1">予約一覧</h1>
+<a href="{% url 'reservations:create' %}">新規予約</a>
+
+{% include 'partials/dynamic_table.html' with headers=headers rows=rows %}
+
+
 <h1>予約一覧</h1>
-<a href="{% url 'reservation_create' %}">新規予約</a>
+<a href="{% url 'reservations:create' %}">新規予約</a>
 <table>
   <tr>
     <th>ID</th>
@@ -19,9 +25,9 @@
     <td>{{ reservation.reserved_at }}</td>
     <td>{{ reservation.number_of_people }}</td>
     <td>
-      <a href="{% url 'reservation_detail' reservation.pk %}">詳細</a>
-      <a href="{% url 'reservation_update' reservation.pk %}">編集</a>
-      <a href="{% url 'reservation_delete' reservation.pk %}">削除</a>
+      <a href="{% url 'reservations:detail' reservation.pk %}">詳細</a>
+      <a href="{% url 'reservations:update' reservation.pk %}">編集</a>
+      <a href="{% url 'reservations:delete' reservation.pk %}">削除</a>
     </td>
   </tr>
   {% endfor %}

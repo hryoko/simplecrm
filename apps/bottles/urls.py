@@ -1,10 +1,13 @@
 from django.urls import path
+
 from . import views
 
+app_name = 'bottles'
+
 urlpatterns = [
-    path('', views.bottle_list, name='bottle_list'),
-    path('create/', views.bottle_create, name='bottle_create'),
-    path('<int:pk>/', views.bottle_detail, name='bottle_detail'),
-    path('<int:pk>/edit/', views.bottle_update, name='bottle_update'),
-    path('<int:pk>/delete/', views.bottle_delete, name='bottle_delete'),
+    path('', views.BottleListView.as_view(), name='list'),
+    path('create/', views.BottleCreateView.as_view(), name='create'),
+    path('<int:pk>/', views.BottleDetailView.as_view(), name='detail'),
+    path('<int:pk>/edit/', views.BottleUpdateView.as_view(), name='update'),
+    path('<int:pk>/delete/', views.BottleDeleteView.as_view(), name='delete'),
 ]

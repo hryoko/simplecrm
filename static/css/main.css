@@ -43,7 +43,7 @@ html[data-theme=light],
   --body-loud-color: #000;
   --sidebar: #f3f6fa;
   --sidebar-text: #4a4a4a;
-  --sidebar-hover: rgba(70, 130, 180, 0.08);
+  --sidebar-hover: rgba(70, 130, 180, 0.2);
   /* === ヘッダー・フッター === */
   --header-color: #ffc;
   --header-branding-color: var(--accent);
@@ -239,6 +239,11 @@ header .user-menu {
   width: 24px;
   flex-shrink: 0;
 }
+.sidebar nav a.active,
+.sidebar nav .nav-button.active {
+  background-color: var(--sidebar-hover);
+  border-radius: 6px;
+}
 .sidebar.collapsed {
   width: var(--sidebar-collapsed-width);
 }
@@ -267,6 +272,7 @@ header .user-menu {
   Table
 ------------------------------ */
 table {
+  font-size: 0.9rem;
   width: 100%;
   border-collapse: collapse;
   background: #fff;

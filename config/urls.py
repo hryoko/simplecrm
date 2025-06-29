@@ -21,8 +21,6 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
-from . import views
-
 admin.site.site_title = 'Django 管理サイト-title'
 admin.site.site_header = 'サイト管理者-header'
 admin.site.index_title = 'サイト管理-index_title'
@@ -43,7 +41,8 @@ urlpatterns = [
         name='logout',
     ),
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', include('apps.core.urls', namespace='core')),
+    # path('', include('apps.core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # 認証URLを一式を登録
     path('customers/', include('apps.customers.urls')),
     path('bottles/', include('apps.bottles.urls')),

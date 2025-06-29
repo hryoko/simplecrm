@@ -42,7 +42,7 @@ class Customer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.name} ({self.phone})'
+        return self.name
 
     class Meta:
         # verbose_name = '顧客'
