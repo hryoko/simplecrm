@@ -1,0 +1,33 @@
+{% comment %} {% extends "components/_card_base.html" %} {% endcomment %}
+<div class="component-card">
+
+<div class="card-header">
+  {% if title %}
+  <h3>{{ title }}</h3>
+  {% endif %}
+</div>
+
+<div class="card-body">
+  <form method="post" {% if form_action %} action="{{ form_action }}"{% endif %}>
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+      <div class="card-row">
+        <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <div class="value">
+          {{ field }}
+          {% if field.errors %}
+            <div class="error">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+<div class="card-footer">
+    <button type="submit">{{ submit_label|default:"保存" }}</button>
+  </form>
+</div>
+
+
+         
+

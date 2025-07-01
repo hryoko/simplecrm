@@ -1,0 +1,42 @@
+{% comment %} {% extends "components/_card_base.html" %} {% endcomment %}
+<div class="component-card">
+
+<div class="card-header">
+  {% if title %}
+  <h3>title:{{ title }}</h3>
+  {% endif %}
+</div>
+
+{% comment %} {% block card_body %} {% endcomment %}
+<div class="card-body">
+  card-body
+  {% for item in details %}
+    <div class="card-row">
+      <span class="label">{{ item.label }}</span>
+      <span class="value">{{ item.value }}</span>
+    </div>
+  {% endfor %}
+{% comment %} {% endblock %} {% endcomment %}
+</div>
+
+{% comment %} {% block card_footer %} {% endcomment %}
+<div class="card-footer">
+  {% if created_at %}
+    <div class="footer-info">
+      <span class="label">登録日</span>
+      <span class="value">{{ created_at }}</span>
+    </div>
+  {% endif %}
+
+  <div class="actions">
+  {% if update_url %}<a href="{{ update_url }}">編集</a>{% endif %}
+  {% if delete_url %}<a href="{{ delete_url }}">削除</a>{% endif %}
+  {% if back_url %}<a href="{{ back_url }}">戻る</a>{% endif %}
+</div><!-- card-footer -->
+{% comment %} {% endblock %} {% endcomment %}
+</div> <!-- component-card -->
+
+
+
+
+

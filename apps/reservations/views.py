@@ -59,16 +59,49 @@ class ReservationCreateView(CreateView):
     success_url = reverse_lazy('reservation_list')
 
 
+class ReservationDetailView(DetailView):
+    model = Reservation
+    template_name = 'reservations/reservation_detail.html'
+
+    context_object_name = 'reservation'
+
+    def namespaced_url(self, namespace, viewname, *args):
+        return reverse(f'{namespace}:{viewname}', args=args)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        obj = self.object
+        exclude_keys = {'id', 'created_at', 'updated_at'}
+
+        # ラベルと値を動的に構成
+        context['details'] = [
+            {
+                "label": field.verbose_name.title(),
+                "value": getattr(obj, field.name),
+            }
+            for field in Reservation._meta.fields
+            if field.name not in exclude_keys
+        ]
+
+        # 別枠で登録日などを渡す
+        context['created_at'] = obj.created_at
+
+        # 操作用URL（テンプレート共通化用に）
+        context['update_url'] = self.namespaced_url('customers', 'update', obj.pk)
+        context['delete_url'] = self.namespaced_url('customers', 'delete', obj.pk)
+        context['back_url'] = self.namespaced_url('customers', 'list')
+
+        context['title'] = f'{obj.customer.name} の予約'
+        context['page_title'] = '予約詳細'
+        return context
+
+
 class ReservationUpdateView(UpdateView):
     model = Reservation
     form_class = ReservationForm
     template_name = 'reservations/reservation_form.html'
     success_url = reverse_lazy('reservation_list')
-
-
-class ReservationDetailView(DetailView):
-    model = Reservation
-    template_name = 'reservations/reservation_detail.html'
 
 
 class ReservationDeleteView(DeleteView):

@@ -1,58 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}詳細{% endblock %}
 
 {% block content %}
-<h1>{{ customer.name }} の詳細</h1>
+{% comment %} {% include 'components/_detail_card.html' with
+    title=customer.name
+    details=details
+    created_at=created_at
+    update_url=update_url
+    delete_url=delete_url
+    back_url=back_url %} {% endcomment %}
 
-<div>1. シンプル縦並びレイアウト</div>
-<dl>
-  <dt>カナ</dt><dd>{{ customer.name_kana }}</dd>
-  <dt>年齢</dt><dd>{{ customer.age }}</dd>
-  <dt>電話番号</dt><dd>{{ customer.phone }}</dd>
-  <dt>メール</dt><dd>{{ customer.email }}</dd>
-  <dt>メモ</dt><dd>{{ customer.memo }}</dd>
-  <dt>登録日</dt><dd>{{ customer.created_at }}</dd>
-</dl>
-
-<div class="actions">
-  <a href="{% url 'customers:update' customer.pk %}">編集</a> |
-  <a href="{% url 'customers:delete' customer.pk %}">削除</a> |
-  <a href="{% url 'customers:list' %}">戻る</a>
-</div>
-
-<hr>
-<div>2. 2カラムレイアウト（ラベルと値を横並び）</div>
-<table class="detail-table">
-  <tr><th>カナ</th><td>{{ customer.name_kana }}</td></tr>
-  <tr><th>年齢</th><td>{{ customer.age }}</td></tr>
-  <tr><th>電話番号</th><td>{{ customer.phone }}</td></tr>
-  <tr><th>メール</th><td>{{ customer.email }}</td></tr>
-  <tr><th>メモ</th><td>{{ customer.memo }}</td></tr>
-  <tr><th>登録日</th><td>{{ customer.created_at }}</td></tr>
-</table>
-
-<div class="actions">
-  <a href="{% url 'customers:update' customer.pk %}">編集</a> |
-  <a href="{% url 'customers:delete' customer.pk %}">削除</a> |
-  <a href="{% url 'customers:list' %}">戻る</a>
-</div>
-
-<hr>
-<div>3. カード風デザイン（余白とボーダーで見やすく）</div>
-<div class="customer-card">
-  <h1>{{ customer.name }} の詳細</h1>
-  <p><strong>カナ:</strong> {{ customer.name_kana }}</p>
-  <p><strong>年齢:</strong> {{ customer.age }}</p>
-  <p><strong>電話番号:</strong> {{ customer.phone }}</p>
-  <p><strong>メール:</strong> {{ customer.email }}</p>
-  <p><strong>メモ:</strong> {{ customer.memo }}</p>
-  <p><strong>登録日:</strong> {{ customer.created_at }}</p>
-
-  <div class="actions">
-    <a href="{% url 'customers:update' customer.pk %}">編集</a> |
-    <a href="{% url 'customers:delete' customer.pk %}">削除</a> |
-    <a href="{% url 'customers:list' %}">戻る</a>
-  </div>
-</div>
+{% include 'components/_detail_card.html' %}
 
 {% endblock %}

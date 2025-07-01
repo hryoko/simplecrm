@@ -1,0 +1,41 @@
+<div class="component-card">
+  <div class="card-header">
+    {% block card_header %}
+      {% if title %}
+      <h3>title:{{ title }}</h3>
+      {% endif %}
+    {% endblock %}
+  </div>
+
+  <div class="card-body">
+    {% block card_body %}
+    {# 表示かフォームか、自由にここで差し替え #}
+    {%endblock %}
+  </div>
+
+  <div class="card-footer">
+    {% block card_footer %}
+    {# フッター操作ボタンなど #}
+    {% endblock %}
+  </div>
+</div>
+
+{% comment %} {% block form_area %}
+  <form method="post" {% if form_action %} action="{{ form_action }}"{% endif %}>
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+      <div class="card-row">
+        <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        <div class="value">
+          {{ field }}
+          {% if field.errors %}
+            <div class="error">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="card-footer">
+      <button type="submit">{{ submit_label|default:"保存" }}</button>
+    </div>
+  </form>
+{% endblock %} {% endcomment %}
