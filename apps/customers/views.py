@@ -33,7 +33,7 @@ class CustomerListView(ListView):
             {"key": field.name, "label": field.verbose_name.title()}
             for field in Customer._meta.fields
         ]
-        exclude_keys = {'created_at', 'updated_at'}
+        exclude_keys = ['memo', 'created_at', 'updated_at']
         headers = [h for h in all_headers if h['key'] not in exclude_keys]
         wanted_fields = [h['key'] for h in headers]
 
@@ -67,7 +67,8 @@ class CustomerDetailView(DetailView):
         context = super().get_context_data(**kwargs)
 
         obj = self.object
-        exclude_keys = {'id', 'created_at', 'updated_at'}
+        exclude_keys = ['id', 'created_at', 'updated_at']
+        exclude_keys = ['name']
 
         # ラベルと値を動的に構成
         context['details'] = [
@@ -87,7 +88,7 @@ class CustomerDetailView(DetailView):
         context['delete_url'] = self.namespaced_url('customers', 'delete', obj.pk)
         context['back_url'] = self.namespaced_url('customers', 'list')
 
-        context['title'] = obj.name
+        context['title'] = f'{obj.name} 様'
         context['page_title'] = '顧客詳細'
         return context
 
@@ -96,13 +97,13 @@ class CustomerUpdateView(UpdateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
-    success_url = reverse_lazy('list')
+    success_url = reverse_lazy('customers:list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = self.object
-        context['title'] = f'title: {obj.name}'
-        context['page_title'] = 'page_title顧客編集'
+        context['title'] = f'{obj.name} 様'
+        context['page_title'] = '顧客編集'
         return context
 
 

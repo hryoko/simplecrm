@@ -1,13 +1,15 @@
 <div class="component-card">
   <div class="card-header">
     {% block card_header %}
-      {% if title %}
-      <h3>title:{{ title }}</h3>
-      {% endif %}
+    {# タイトルなど #}
     {% endblock %}
   </div>
-
+  
   <div class="card-body">
+    {% if title %}
+    <h3>{{ title }}</h3>
+    {% endif %}
+
     {% block card_body %}
     {# 表示かフォームか、自由にここで差し替え #}
     {%endblock %}
@@ -20,7 +22,7 @@
   </div>
 </div>
 
-{% comment %} {% block form_area %}
+<!-- {% block form_area %}
   <form method="post" {% if form_action %} action="{{ form_action }}"{% endif %}>
     {% csrf_token %}
     {% for field in form.visible_fields %}
@@ -38,4 +40,4 @@
       <button type="submit">{{ submit_label|default:"保存" }}</button>
     </div>
   </form>
-{% endblock %} {% endcomment %}
+{% endblock %} -->

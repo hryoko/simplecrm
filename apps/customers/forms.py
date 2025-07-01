@@ -1,6 +1,7 @@
 from django import forms
-from .models import Customer
 from django.core.validators import RegexValidator
+
+from .models import Customer
 
 
 class CustomerForm(forms.ModelForm):
@@ -29,6 +30,9 @@ class CustomerForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if email and Customer.objects.filter(email=email).exists():
-            raise forms.ValidationError("このメールアドレスはすでに登録されています。")
+        qs = Customer.objects.filter(email=email)
+        if self.instance.pk:
+            qs = qs.exclude(pk=self.instance.pk)
+        if qs.exists():
+            raise forms.ValidationError('このメールアドレスは既に登録されています。')
         return email

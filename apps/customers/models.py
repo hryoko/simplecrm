@@ -38,8 +38,8 @@ class Customer(models.Model):
         null=True,
     )
     memo = models.TextField('メモ', blank=True)
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField('登録日', default=timezone.now)
+    updated_at = models.DateTimeField('更新日', auto_now=True)
 
     def __str__(self):
         return self.name

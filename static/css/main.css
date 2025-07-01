@@ -320,7 +320,7 @@ input[type=button]:hover {
   Card
 ------------------------------ */
 .component-card {
-  max-width: 600px;
+  width: 600px;
   margin: 2em 0;
   padding: 1.5em 2em;
   background: #fff;
@@ -328,83 +328,40 @@ input[type=button]:hover {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-.component-card .card-header {
-  background-color: lightgreen;
-}
-.component-card .card-header h3 {
-  margin-bottom: 1.5em;
-  font-size: 1.3em;
+.component-card .card-body h3 {
+  margin-bottom: 1em;
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5em;
 }
-.component-card .card-body {
-  background-color: lightgoldenrodyellow;
-}
-.component-card .card-body .card-row {
+.component-card .card-body .card-row,
+.component-card .card-body .footer-info {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1.2em;
+  justify-content: flex-start;
+  padding: 0.5em 0;
+  border-bottom: 1px solid #eee;
 }
-.component-card .card-body .card-row .label {
-  background-color: lightcoral;
+.component-card .card-body .card-row .label,
+.component-card .card-body .footer-info .label {
   min-width: 100px;
   font-weight: bold;
-  color: #555;
-  margin-top: 0.3em;
 }
-.component-card .card-body .card-row .value {
-  background-color: lightblue;
+.component-card .card-body .card-row .value,
+.component-card .card-body .footer-info .value {
   flex: 1;
-  color: #222;
-  text-align: left;
 }
-.component-card .card-footer {
-  background-color: lightpink;
+.component-card .card-body .footer-info {
+  font-size: 0.9em;
+}
+.component-card .card-body .card-footer {
   margin-top: 1.5em;
   padding-top: 1em;
   border-top: 1px solid #eee;
 }
-.component-card .card-footer .footer-info {
-  background-color: lightsalmon;
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 0.8em;
-  display: flex;
-  justify-content: flex-start;
-}
-.component-card .card-footer .footer-info .label {
-  font-weight: bold;
-  color: #555;
-  min-width: 100px;
-}
-.component-card .card-footer .footer-info .value {
-  flex: 1;
-  text-align: left;
-}
-.component-card .card-footer .actions {
-  background-color: #eee;
-  margin-top: 1.5em;
-  text-align: left;
-}
-.component-card .card-footer .actions a {
-  margin-right: 0.5em;
-  text-decoration: none;
-  color: #007bff;
-  position: relative;
-}
-.component-card .card-footer .actions a:hover {
+.component-card .card-body .actions a:hover {
   text-decoration: underline;
 }
-.component-card .card-footer .actions a:not(:last-child)::after {
-  content: "|";
-  font-size: 1rem;
-  position: absolute;
-  right: -0.5em;
-  /* 縦棒の位置調整 */
-  color: #999;
-}
-.component-card .card-footer .actions a:last-child {
-  margin-right: 0;
+.component-card .card-body .actions a:last-child {
   /* 最後のリンクの右マージンをなくす */
 }
 .component-card.component-form input,
@@ -460,7 +417,7 @@ input[type=button]:hover {
   background-color: rgba(0, 255, 100, 0.1);
 }
 .dev-mode main {
-  background-color: rgba(255, 255, 0, 0.1);
+  background-color: rgba(255, 255, 0, 0.3);
 }
 .dev-mode footer {
   background-color: rgba(128, 128, 128, 0.1);
@@ -470,4 +427,25 @@ input[type=button]:hover {
 .dev-mode input[type=submit] {
   background-color: rgba(255, 165, 0, 0.15);
   border: 1px solid rgba(255, 165, 0, 0.5);
+}
+.dev-mode .component-card {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.dev-mode .component-card .card-header {
+  background-color: lightgreen;
+}
+.dev-mode .component-card .card-body {
+  background-color: lightseagreen;
+}
+.dev-mode .component-card .card-body .card-row .label {
+  background-color: lightcoral;
+}
+.dev-mode .component-card .card-body .card-row .value {
+  background-color: lightblue;
+}
+.dev-mode .component-card .card-footer {
+  background-color: lightpink;
+}
+.dev-mode .component-card .card-footer .footer-info {
+  background-color: lightsalmon;
 }/*# sourceMappingURL=main.css.map */
