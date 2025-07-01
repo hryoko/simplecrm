@@ -44,9 +44,7 @@ $btn-border: rgba(255, 165, 0, 0.5);
   
   .component-card {
     background-color: rgba(0, 0, 0, 0.3);
-    .card-header {
-      background-color: lightgreen;
-    }
+
     .card-body {
       background-color: lightseagreen;
   
@@ -58,13 +56,10 @@ $btn-border: rgba(255, 165, 0, 0.5);
           background-color: lightblue;
         }
       }
-    }
-    .card-footer {
-      background-color: lightpink;
-      .footer-info {
-        background-color: lightsalmon;
+
+      .actions {
+        background-color: lightpink;
       }
     }
   }
 }
-

@@ -69,6 +69,7 @@ class CustomerDetailView(DetailView):
         obj = self.object
         exclude_keys = ['id', 'created_at', 'updated_at']
         exclude_keys = ['name']
+        exclude_keys = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
 
         # ラベルと値を動的に構成
         context['details'] = [

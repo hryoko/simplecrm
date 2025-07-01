@@ -130,6 +130,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+h1 { font-size: 2.25em; }  /* 約36px */
+h2 { font-size: 1.875em; } /* 約30px */
+h3 { font-size: 1.5em; }   /* 約24px */
+h4 { font-size: 1.25em; }  /* 約20px */
+h5 { font-size: 1.125em; } /* 約18px */
+h6 { font-size: 1em; }     /* 約16px */
 /* ------------------------------
   Header
 ------------------------------ */
@@ -148,11 +155,18 @@ header {
     color: var(--primary);
   }
 
-  .logo {
+  .site-logo {
     margin-left: 1rem;
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--primary);
+    
+    a {
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: var(--accent);
+    }
   }
 
   .search-box {
@@ -208,7 +222,7 @@ header {
     .nav-button {
       display: flex;
       align-items: center;
-      padding: 0 12px;
+      padding: 0 8px;
       color: var(--sidebar-text);
       text-decoration: none;
       white-space: nowrap;
@@ -294,60 +308,18 @@ table {
 }
 
 /* ------------------------------
-  Button
------------------------------- */
-button,
-input[type="submit"],
-input[type="button"] {
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    // background-color: darken(var(--accent), 10%);
-    background-color: var(--button-hover-bg);
-  }
-}
-
-// button[type="submit"] {
-//   margin-top: 1em;
-//   padding: 0.6em 1.2em;
-//   background-color: #007bff;
-//   color: white;
-//   border: none;
-//   border-radius: 4px;
-//   font-size: 1em;
-//   cursor: pointer;
-
-//   &:hover {
-//     background-color: #0056b3;
-//   }
-
-//   &:disabled {
-//     background-color: #ccc;
-//     cursor: not-allowed;
-//   }
-// }
-
-/* ------------------------------
   Card
 ------------------------------ */
 .component-card {
-  width: 600px;
-  margin: 2em 0;
-  padding: 1.5em 2em;
+  width: 400px;
+  margin-top: 1em;
+  padding: 1em;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   
   .card-body {
-    // padding: 1.5em 0;
     
     h3 {
       margin-bottom: 1em;
@@ -355,12 +327,11 @@ input[type="button"] {
       padding-bottom: 0.5em;
     }
 
-    .card-row,
-    .footer-info {
+    .card-row {
       display: flex;
-      align-items: flex-start;
-      // margin-bottom: 1em;
+      align-items: flex-start; // 明示的に記入
       justify-content: flex-start; // 明示的に記入
+      gap: 0.5em;
       padding: 0.5em 0;
       border-bottom: 1px solid #eee;
 
@@ -373,79 +344,19 @@ input[type="button"] {
         flex: 1;
       }
     }
-    
-    .footer-info {
-      font-size: 0.9em;
-      // color: #666;
-      // margin-bottom: 0.8em;
-      // display: flex;
-      // justify-content: flex-start; // 左詰め
-  }
-
-  .card-footer {
-    margin-top: 1.5em;
-    padding-top: 1em;
-    border-top: 1px solid #eee;
-
-
-      .label {
-        // font-weight: bold;
-        // color: #555;
-        // min-width: 100px;
-      }
-
-      .value {
-        // flex: 1;
-        // text-align: left;
-      }
-    }
 
     .actions {
       // background-color: #eee;
-      // margin-top: 1.5em;
-      // text-align: left; // ボタンも左寄せにするならここ
-
-      a {
-        // margin-right: 0.5em;
-        // text-decoration: none;
-        // color: #007bff;
-        // position: relative;
-
-        &:hover {
-          text-decoration: underline;
-        }
-
-        &:not(:last-child)::after {
-          // content: "|";
-          // font-size: 1rem;
-          // position: absolute;
-          // right: -0.5em;
-          // /* 縦棒の位置調整 */
-          // color: #999;
-        }
-
-        // &:not(:last-child)::after {
-        //   content: '|';
-        //   font-size: 1rem;
-        //   position: absolute;
-        //   top: 50%; // 縦方向の中央位置
-        //   right: -0.5em; // 横方向の調整
-        //   transform: translateY(-50%); // 完全に中央揃え
-        //   color: #999;
-        // }
-
-        &:last-child {
-          // margin-right: 0;
-          /* 最後のリンクの右マージンをなくす */
-        }
-      }
+      margin-top: 1em;
+      text-align: right;
     }
   }
 
-  &.component-form {
+  form {
     input,
     select,
     textarea {
+      background-color: rgba(250, 190, 90, 0.9);
       width: 100%;
       padding: 0.5em;
       border: 1px solid #ccc;
@@ -484,25 +395,6 @@ input[type="button"] {
       // font-weight: bold;
       // margin-bottom: 0.3em;
     }
-
-    // button[type="submit"] {
-    //   margin-top: 1em;
-    //   padding: 0.6em 1.2em;
-    //   background-color: #007bff;
-    //   color: white;
-    //   border: none;
-    //   border-radius: 4px;
-    //   font-size: 1em;
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     background-color: #0056b3;
-    //   }
-
-    //   &:disabled {
-    //     background-color: #ccc;
-    //     cursor: not-allowed;
-    //   }
   }
 }
 
@@ -539,4 +431,43 @@ input[type="button"] {
 //     margin: 1em;
 //     padding: 1em;
 //   }
+// }
+
+
+/* ------------------------------
+  Button
+------------------------------ */
+// %button-base {
+//   display: inline-block;
+//   background-color: var(--accent);
+//   color: #fff;
+//   padding: 0.3em 1em;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   font-weight: bold;
+//   font-size: 0.9em;
+//   text-decoration: none;
+//   // transition: background-color 0.2s ease;
+// }
+
+// button,
+// input[type="submit"],
+// input[type="button"],
+// .btn {
+//   @extend %button-base;
+
+//   &:hover {
+//     background-color: var(--button-hover-bg);
+//   }
+
+//   &:disabled {
+//     opacity: 0.6;
+//     // background-color: #ccc;
+//     cursor: not-allowed;
+//   }
+// }
+
+// a {
+//   background-color: red;
 // }

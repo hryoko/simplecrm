@@ -12,8 +12,17 @@
   <body class="">
     <!-- 上部ヘッダー -->
     <header class="sticky">
-      <button id="toggle-sidebar" class="menu-button">☰</button>
-      <div class="logo">MyApp-LOGO</div>
+      <button id="toggle-sidebar" class="menu-button">☰</button>      
+      {% if request.path == "/" %}
+        <h1 class="site-logo">
+          <a href="/">MyApp-LOGO</a>
+        </h1>
+      {% else %}
+        <div class="site-logo">
+          <a href="/">MyApp-LOGO</a>
+        </div>
+      {% endif %}
+      
       <div class="search-box">
         <input type="text" placeholder="検索..." />
       </div>
@@ -66,7 +75,15 @@
       </aside>
 
       <main class="main-content">
-        <h2>{{ page_title }}</h2>
+        {% if request.path == "/" %}
+          <h2 class="main-header sticky1">
+            {{ page_title }}
+          </h2>
+        {% else %}
+          <h1 class="main-header sticky1">
+            {{ page_title }}
+          </h1>
+        {% endif %}
         {% block content %}
         <div class="empty-message">データがありません。</div>
         <!-- ここに各ページの内容が入ります -->

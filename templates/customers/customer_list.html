@@ -3,7 +3,6 @@
 {% block title %}顧客リスト | {{ block.super }}{% endblock %}
 
 {% block content %}
-<h1 class="main-header sticky1">顧客リスト</h1>
 <a href="{% url 'customers:create' %}">新規顧客登録</a>
 <form method="get">
   名前: <input type="text" name="name" value="{{ request.GET.name }}">

@@ -149,6 +149,24 @@ body {
   flex-direction: column;
 }
 
+h1 {
+  font-size: 2.25em;
+} /* 約36px */
+h2 {
+  font-size: 1.875em;
+} /* 約30px */
+h3 {
+  font-size: 1.5em;
+} /* 約24px */
+h4 {
+  font-size: 1.25em;
+} /* 約20px */
+h5 {
+  font-size: 1.125em;
+} /* 約18px */
+h6 {
+  font-size: 1em;
+} /* 約16px */
 /* ------------------------------
   Header
 ------------------------------ */
@@ -166,11 +184,17 @@ header .menu-button {
   background: none;
   color: var(--primary);
 }
-header .logo {
+header .site-logo {
   margin-left: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--primary);
+}
+header .site-logo a {
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--accent);
 }
 header .search-box {
   margin: 0 auto;
@@ -219,7 +243,7 @@ header .user-menu {
 .sidebar nav .nav-button {
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 8px;
   color: var(--sidebar-text);
   text-decoration: none;
   white-space: nowrap;
@@ -296,33 +320,12 @@ table tbody tr:nth-child(even) {
 }
 
 /* ------------------------------
-  Button
------------------------------- */
-button,
-input[type=submit],
-input[type=button] {
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
-button:hover,
-input[type=submit]:hover,
-input[type=button]:hover {
-  background-color: var(--button-hover-bg);
-}
-
-/* ------------------------------
   Card
 ------------------------------ */
 .component-card {
-  width: 600px;
-  margin: 2em 0;
-  padding: 1.5em 2em;
+  width: 400px;
+  margin-top: 1em;
+  padding: 1em;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -333,73 +336,65 @@ input[type=button]:hover {
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5em;
 }
-.component-card .card-body .card-row,
-.component-card .card-body .footer-info {
+.component-card .card-body .card-row {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  gap: 0.5em;
   padding: 0.5em 0;
   border-bottom: 1px solid #eee;
 }
-.component-card .card-body .card-row .label,
-.component-card .card-body .footer-info .label {
+.component-card .card-body .card-row .label {
   min-width: 100px;
   font-weight: bold;
 }
-.component-card .card-body .card-row .value,
-.component-card .card-body .footer-info .value {
+.component-card .card-body .card-row .value {
   flex: 1;
 }
-.component-card .card-body .footer-info {
-  font-size: 0.9em;
+.component-card .card-body .actions {
+  margin-top: 1em;
+  text-align: right;
 }
-.component-card .card-body .card-footer {
-  margin-top: 1.5em;
-  padding-top: 1em;
-  border-top: 1px solid #eee;
-}
-.component-card .card-body .actions a:hover {
-  text-decoration: underline;
-}
-.component-card .card-body .actions a:last-child {
-  /* 最後のリンクの右マージンをなくす */
-}
-.component-card.component-form input,
-.component-card.component-form select,
-.component-card.component-form textarea {
+.component-card form input,
+.component-card form select,
+.component-card form textarea {
+  background-color: rgba(250, 190, 90, 0.9);
   width: 100%;
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1em;
 }
-.component-card.component-form input:focus,
-.component-card.component-form textarea:focus,
-.component-card.component-form select:focus {
+.component-card form input:focus,
+.component-card form textarea:focus,
+.component-card form select:focus {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }
-.component-card.component-form input:disabled,
-.component-card.component-form textarea:disabled,
-.component-card.component-form select:disabled {
+.component-card form input:disabled,
+.component-card form textarea:disabled,
+.component-card form select:disabled {
   background-color: #f5f5f5;
   color: #999;
   cursor: not-allowed;
 }
-.component-card.component-form ::-moz-placeholder {
+.component-card form ::-moz-placeholder {
   color: #aaa;
 }
-.component-card.component-form ::placeholder {
+.component-card form ::placeholder {
   color: #aaa;
 }
-.component-card.component-form .error {
+.component-card form .error {
   color: red;
   font-size: 0.9em;
   margin-top: 0.3em;
 }
 /* ------------------------------
   Responsive: モバイル対応
+------------------------------ */
+/* ------------------------------
+  Button
 ------------------------------ */
 /* ------------------------------
   開発中のセクション色分け（見やすさ用）
@@ -431,9 +426,6 @@ input[type=button]:hover {
 .dev-mode .component-card {
   background-color: rgba(0, 0, 0, 0.3);
 }
-.dev-mode .component-card .card-header {
-  background-color: lightgreen;
-}
 .dev-mode .component-card .card-body {
   background-color: lightseagreen;
 }
@@ -443,9 +435,6 @@ input[type=button]:hover {
 .dev-mode .component-card .card-body .card-row .value {
   background-color: lightblue;
 }
-.dev-mode .component-card .card-footer {
+.dev-mode .component-card .card-body .actions {
   background-color: lightpink;
-}
-.dev-mode .component-card .card-footer .footer-info {
-  background-color: lightsalmon;
 }/*# sourceMappingURL=main.css.map */
