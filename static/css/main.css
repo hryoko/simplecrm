@@ -27,6 +27,101 @@ html[data-theme=light],
 }
 
 /* ------------------------------
+  Button
+------------------------------ */
+:root {
+  /* === カラーパレット === */
+  --primary: #4682b4;
+  --secondary: #eaf4ff;
+  --accent: #5dade2;
+  --primary-fg: #fff;
+  /* === ボタン === */
+  --button-fg: #fff;
+  --button-bg: var(--secondary);
+  --button-accent-bg: #007bff;
+  --button-danger-bg: #dc3545;
+  --button-danger-dark-bg: #c82333;
+  --button-hover-bg: #0056b3;
+  --default-button-bg: #205067;
+  --default-button-hover-bg: var(--secondary);
+  --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue",
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+      monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+input[type=submit],
+input[type=button] {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  line-height: inherit;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.btn-danger, a.btn,
+button.btn,
+input[type=submit].btn,
+input[type=button].btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: bold;
+  font-size: 0.95em;
+  text-decoration: none;
+  background-color: var(--button-accent-bg);
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+a.btn:hover,
+button.btn:hover,
+input[type=submit].btn:hover,
+input[type=button].btn:hover {
+  background-color: var(--button-hover-bg);
+  text-decoration: none;
+}
+a.btn:disabled, a.btn[aria-disabled=true],
+button.btn:disabled,
+button.btn[aria-disabled=true],
+input[type=submit].btn:disabled,
+input[type=submit].btn[aria-disabled=true],
+input[type=button].btn:disabled,
+input[type=button].btn[aria-disabled=true] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background-color: var(--button-danger-bg, #dc3545);
+}
+.btn-danger:hover {
+  background-color: var(--button-danger-dark-bg, #c82333);
+  text-decoration: none;
+}
+
+/* ------------------------------
   CSS Variables（設計用トークン）
 ------------------------------ */
 :root {
@@ -61,22 +156,17 @@ html[data-theme=light],
   --hairline-color: #e8e8e8;
   --border-color: #ccc;
   /* === ボタン === */
-  --button-fg: #fff;
-  --button-bg: var(--secondary);
-  --button-hover-bg: #205067;
-  --default-button-bg: #205067;
-  --default-button-hover-bg: var(--secondary);
   /* === サイズ系 === */
   --header-height: 56px;
   --nav-sidebar-width: 240px;
   --sidebar-collapsed-width: 64px;
   --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
   --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-    "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-    "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* ------------------------------
@@ -112,24 +202,6 @@ a {
 }
 a:hover {
   text-decoration: underline;
-}
-
-input,
-textarea,
-select,
-button {
-  font-size: inherit;
-}
-
-button {
-  background: transparent;
-  border: none;
-  line-height: inherit;
-  padding: 0;
-  cursor: pointer;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
 }
 
 /* ------------------------------
@@ -370,9 +442,8 @@ table tbody tr:nth-child(even) {
   margin-top: 1em;
   text-align: right;
 }
-.component-card .card-body .actions .delete {
+.component-card .card-body .actions .deletelink {
   margin-left: auto;
-  background-color: #e53935;
 }
 .component-card form input,
 .component-card form select,
@@ -415,42 +486,6 @@ table tbody tr:nth-child(even) {
 /* ------------------------------
   Responsive: モバイル対応
 ------------------------------ */
-/* ------------------------------
-  Button
------------------------------- */
-button,
-input[type=submit],
-input[type=button],
-.btn {
-  display: inline-block;
-  background-color: var(--accent);
-  color: #fff;
-  padding: 0.3em 1em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-button:hover,
-input[type=submit]:hover,
-input[type=button]:hover,
-.btn:hover {
-  background-color: var(--button-hover-bg);
-  text-decoration: none;
-}
-button:disabled, button[aria-disabled=true],
-input[type=submit]:disabled,
-input[type=submit][aria-disabled=true],
-input[type=button]:disabled,
-input[type=button][aria-disabled=true],
-.btn:disabled,
-.btn[aria-disabled=true] {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 /* ------------------------------
   開発中のセクション色分け（見やすさ用）
 ------------------------------ */

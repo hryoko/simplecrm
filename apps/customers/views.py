@@ -115,4 +115,23 @@ class CustomerUpdateView(UpdateView):
 class CustomerDeleteView(DeleteView):
     model = Customer
     template_name = 'customers/customer_confirm_delete.html'
-    success_url = reverse_lazy('list')
+    success_url = reverse_lazy('customers:list')
+
+    def namespaced_url(self, namespace, viewname, *args):
+        return reverse(f'{namespace}:{viewname}', args=args)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        obj = self.object
+        context.update(
+            {
+                'detail_url': self.namespaced_url('customers', 'detail', obj.pk),
+                'title': f'{obj.name} の削除',
+                'page_title': '顧客削除',
+                # 'back_url': self.namespaced_url('customers', 'list'),
+            }
+        )
+        # context['detail_url'] = self.namespaced_url('customers', 'detail', obj.pk)
+        # context['title'] = f'{obj.name} の削除'
+        # context['page_title'] = '顧客削除'
+        return context

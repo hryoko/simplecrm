@@ -1,0 +1,15 @@
+{% extends "components/_card_base.html" %}
+
+{% block card_body %}
+<div class="card-row">
+  <p>本当に <strong>{{ customer.name }}</strong> を削除しますか？</p>
+</div>
+
+<form method="post">
+  <div class="actions">
+    {% csrf_token %}
+    <button class="btn deletebtn" type="submit">はい、削除します</button>
+    {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
+  </div>
+</form>
+{% endblock %}

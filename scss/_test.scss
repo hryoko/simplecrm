@@ -1,0 +1,463 @@
+@charset "UTF-8";
+
+/* ------------------------------
+  CSS Variables（設計用トークン）
+------------------------------ */
+:root {
+    /* === カラーパレット === */
+    --primary: #4682b4; // メインブルー（落ち着いた青）
+    --secondary: #eaf4ff; // 明るい背景ブルー
+    --accent: #5dade2; // アクセント青
+    --primary-fg: #fff; // 明るい色の前景（文字）
+
+    --error-fg: #ba2121; // エラー表示用
+
+    /* === レイアウト背景/前景 === */
+    --body-fg: #333; // メイン文字色
+    --body-bg: #fff;
+    --body-quiet-color: #666; // 補助テキスト色
+    --body-loud-color: #000; // 強調テキスト色
+
+    --sidebar: #f3f6fa; // サイドバー背景
+    --sidebar-text: #4a4a4a; // サイドバー内文字色
+    --sidebar-hover: rgba(70, 130, 180, 0.2); // ホバー時の背景
+
+    /* === ヘッダー・フッター === */
+    --header-color: #ffc; // ヘッダー文字色（クリーム）
+    --header-branding-color: var(--accent);
+    --header-bg: var(--secondary);
+    --header-link-color: var(--primary-fg);
+
+    /* === パンくずリスト === */
+    --breadcrumbs-fg: #c4dce8;
+    --breadcrumbs-link-fg: var(--body-bg);
+    --breadcrumbs-bg: #264b5d;
+
+    /* === リンク === */
+    --link-fg: #0366d6;
+    --link-hover-color: #036;
+    --link-selected-fg: var(--secondary);
+
+    /* === 境界・装飾 === */
+    --hairline-color: #e8e8e8;
+    --border-color: #ccc;
+
+    /* === ボタン === */
+    // --button-fg: #fff;
+    // --button-bg: var(--secondary);
+    // --button-hover-bg: #205067;
+    // --default-button-bg: #205067;
+    // --default-button-hover-bg: var(--secondary);
+
+    /* === サイズ系 === */
+    --header-height: 56px;
+    --nav-sidebar-width: 240px;
+    --sidebar-collapsed-width: 64px;
+
+    --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+        "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+        "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* ------------------------------
+  Reset & Base
+------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--font-family-primary);
+    background-color: var(--body-bg);
+    color: var(--body-fg);
+    line-height: 1.5;
+    // text-size-adjust: 100%;
+    font-size: 100%;
+    /* ユーザーのブラウザ設定を尊重 */
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: var(--link-fg);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+/* ------------------------------
+  Layout Components
+------------------------------ */
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.25em;
+}
+
+h5 {
+    font-size: 1.125em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+
+
+/* ------------------------------
+  Header
+------------------------------ */
+header {
+    background: var(--header-bg);
+    border-bottom: 1px solid #ddd;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    .menu-button {
+        font-size: 1.25rem;
+        background: none;
+        color: var(--primary);
+    }
+
+    .site-logo {
+        margin-left: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary);
+
+        a {
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent);
+        }
+    }
+
+    .search-box {
+        margin: 0 auto;
+
+        input {
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            min-width: 200px;
+        }
+    }
+
+    .user-menu {
+        margin-left: auto;
+        font-size: 1.2rem;
+    }
+}
+
+/* 全体レイアウト（サイドバー＋メイン） */
+.layout {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+/* ------------------------------
+  Sidebar
+------------------------------ */
+/* サイドバー */
+.sidebar {
+    flex-shrink: 0;
+    background: var(--sidebar);
+    color: var(--sidebar-text);
+    width: var(--nav-sidebar-width);
+    overflow: hidden;
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+
+        .nav-button {
+            all: unset;
+            cursor: pointer;
+            color: inherit;
+            font: inherit;
+            // background: none;
+            // border: none;
+        }
+
+        a,
+        .nav-button {
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            white-space: nowrap;
+            width: 100%;
+            height: 40px;
+            box-sizing: border-box;
+
+            &:hover {
+                background-color: var(--sidebar-hover);
+                // /* 任意のホバー効果 */
+                border-radius: 6px;
+            }
+
+            i {
+                font-size: 1rem;
+                margin-right: 1.5rem;
+                width: 24px;
+                flex-shrink: 0;
+            }
+
+            &.active {
+                background-color: var(--sidebar-hover);
+                border-radius: 6px;
+            }
+        }
+    }
+
+    &.collapsed {
+        width: var(--sidebar-collapsed-width);
+
+        .label {
+            display: none;
+        }
+    }
+}
+
+/* ------------------------------
+  Main content
+------------------------------ */
+.main-content {
+    background: #fff;
+    padding: 2rem;
+    flex: 1;
+    overflow-y: auto;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.empty-message {
+    padding: 2rem;
+    text-align: center;
+    color: #888;
+}
+
+/* ------------------------------
+  Table
+------------------------------ */
+table {
+    font-size: 0.9rem;
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    thead {
+        background-color: var(--secondary);
+    }
+
+    th,
+    td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    tbody tr:hover {
+        background-color: #f3f6ff;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+}
+
+
+/* ------------------------------
+  Card
+------------------------------ */
+.component-card {
+    width: 500px;
+    margin-top: 1em;
+    padding: 1em;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .card-body {
+
+        h3 {
+            margin-bottom: 1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5em;
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; // 明示的に記入
+            gap: 0.5em;
+            padding: 0.5em 0;
+            border-bottom: 1px solid #eee;
+
+            .label {
+                min-width: 100px;
+                font-weight: bold;
+            }
+
+            .value {
+                flex: 1;
+
+                &.detail-value {
+                    padding: 0.5em;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            // background-color: #eee;
+            gap: 0.5em;
+            margin-top: 1em;
+            text-align: right;
+
+            .deletelink {
+                margin-left: auto;
+            }
+        }
+    }
+
+    form {
+
+        input,
+        select,
+        textarea {
+            background-color: rgba(250, 190, 90, 0.9);
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            // font-size: 1em;
+            appearance: none;
+            /* OSネイティブな見た目を消す（特にSafari） */
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        input:disabled,
+        textarea:disabled,
+        select:disabled {
+            background-color: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        ::placeholder {
+            color: #aaa;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 0.3em;
+        }
+
+        label {
+            // display: block;
+            // font-weight: bold;
+            // margin-bottom: 0.3em;
+        }
+    }
+}
+
+/* ------------------------------
+  Responsive: モバイル対応
+------------------------------ */
+// @media (max-width: 768px) {
+//   .sidebar {
+//     width: var(--sidebar-collapsed-width);
+//   }
+
+//   .sidebar nav {
+//     a,
+//     .nav-button {
+//       .label {
+//         opacity: 0;
+//         width: 0;
+//         visibility: hidden;
+//       }
+//     }
+//   }
+
+//   .main-header .search-box {
+//     display: none;
+//   }
+
+//   .main-content {
+//     padding: 1rem;
+//   }
+// }
+
+// @media (max-width: 640px) {
+//   .form-block {
+//     margin: 1em;
+//     padding: 1em;
+//   }
+// }
+
+

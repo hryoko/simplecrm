@@ -16,7 +16,7 @@
     </div>
   {% endfor %}
   <div class="actions">
-    {% if back_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
+    {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
     <button class="btn" type="submit">{{ submit_label|default:"保存" }}</button>
   </div>
 </form>
