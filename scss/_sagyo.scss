@@ -34,7 +34,7 @@
   --breadcrumbs-bg: #264b5d;
 
   /* === リンク === */
-  --link-fg: #417893;
+  --link-fg: #0366d6;
   --link-hover-color: #036;
   --link-selected-fg: var(--secondary);
 
@@ -82,7 +82,9 @@ body {
   background-color: var(--body-bg);
   color: var(--body-fg);
   line-height: 1.5;
-  text-size-adjust: 100%;
+  // text-size-adjust: 100%;
+  font-size: 100%;
+    /* ユーザーのブラウザ設定を尊重 */
 }
 
 ul,
@@ -91,7 +93,6 @@ ol {
 }
 
 a {
-  color: #0366d6;
   color: var(--link-fg);
   text-decoration: none;
 
@@ -100,9 +101,17 @@ a {
   }
 }
 
+input,
+textarea,
+select,
+button {
+  font-size: inherit;
+}
+
 button {
   background: transparent;
   border: none;
+  line-height: inherit;
   padding: 0;
   cursor: pointer;
   appearance: none;
@@ -123,20 +132,19 @@ button {
   left: 0;
 }
 
-html,
 body {
-  height: 100%;
-  margin: 0;
   display: flex;
   flex-direction: column;
+  font-size: 1rem;
 }
 
-h1 { font-size: 2.25em; }  /* 約36px */
-h2 { font-size: 1.875em; } /* 約30px */
-h3 { font-size: 1.5em; }   /* 約24px */
-h4 { font-size: 1.25em; }  /* 約20px */
-h5 { font-size: 1.125em; } /* 約18px */
-h6 { font-size: 1em; }     /* 約16px */
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1.125em; }
+h6 { font-size: 1em; }
 /* ------------------------------
   Header
 ------------------------------ */
@@ -307,11 +315,12 @@ table {
   }
 }
 
+
 /* ------------------------------
   Card
 ------------------------------ */
 .component-card {
-  width: 400px;
+  width: 500px;
   margin-top: 1em;
   padding: 1em;
   background: #fff;
@@ -329,7 +338,7 @@ table {
 
     .card-row {
       display: flex;
-      align-items: flex-start; // 明示的に記入
+      align-items: center;
       justify-content: flex-start; // 明示的に記入
       gap: 0.5em;
       padding: 0.5em 0;
@@ -342,13 +351,30 @@ table {
 
       .value {
         flex: 1;
+        
+        &.detail-value {
+          padding: 0.5em;
+        }
       }
+
+      // &.detail-item {
+      //   padding: 1em;
+      //   /* フォーム部品のpaddingと同じ値 */
+      //   box-sizing: border-box;
+      // }
     }
 
     .actions {
+      display: flex;
       // background-color: #eee;
+      gap: 0.5em;
       margin-top: 1em;
       text-align: right;
+
+      .delete {
+        margin-left: auto;
+        background-color: #e53935;
+      }
     }
   }
 
@@ -361,7 +387,9 @@ table {
       padding: 0.5em;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 1em;
+      // font-size: 1em;
+      appearance: none;
+        /* OSネイティブな見た目を消す（特にSafari） */
     }
 
     input:focus,
@@ -437,37 +465,34 @@ table {
 /* ------------------------------
   Button
 ------------------------------ */
-// %button-base {
-//   display: inline-block;
-//   background-color: var(--accent);
-//   color: #fff;
-//   padding: 0.3em 1em;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-//   font-weight: bold;
-//   font-size: 0.9em;
-//   text-decoration: none;
-//   // transition: background-color 0.2s ease;
-// }
+%button-base {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  padding: 0.3em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  // font-size: 0.9em;
+  text-decoration: none;
+  // transition: background-color 0.2s ease;
+}
 
-// button,
-// input[type="submit"],
-// input[type="button"],
-// .btn {
-//   @extend %button-base;
+button,
+input[type="submit"],
+input[type="button"],
+.btn {
+  @extend %button-base;
 
-//   &:hover {
-//     background-color: var(--button-hover-bg);
-//   }
+  &:hover {
+    background-color: var(--button-hover-bg);
+    text-decoration: none;
+  }
 
-//   &:disabled {
-//     opacity: 0.6;
-//     // background-color: #ccc;
-//     cursor: not-allowed;
-//   }
-// }
-
-// a {
-//   background-color: red;
-// }
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

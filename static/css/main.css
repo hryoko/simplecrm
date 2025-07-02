@@ -54,7 +54,7 @@ html[data-theme=light],
   --breadcrumbs-link-fg: var(--body-bg);
   --breadcrumbs-bg: #264b5d;
   /* === リンク === */
-  --link-fg: #417893;
+  --link-fg: #0366d6;
   --link-hover-color: #036;
   --link-selected-fg: var(--secondary);
   /* === 境界・装飾 === */
@@ -97,9 +97,8 @@ body {
   background-color: var(--body-bg);
   color: var(--body-fg);
   line-height: 1.5;
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
+  font-size: 100%;
+  /* ユーザーのブラウザ設定を尊重 */
 }
 
 ul,
@@ -108,7 +107,6 @@ ol {
 }
 
 a {
-  color: #0366d6;
   color: var(--link-fg);
   text-decoration: none;
 }
@@ -116,9 +114,17 @@ a:hover {
   text-decoration: underline;
 }
 
+input,
+textarea,
+select,
+button {
+  font-size: inherit;
+}
+
 button {
   background: transparent;
   border: none;
+  line-height: inherit;
   padding: 0;
   cursor: pointer;
   -webkit-appearance: none;
@@ -141,32 +147,36 @@ button {
   left: 0;
 }
 
-html,
 body {
-  height: 100%;
-  margin: 0;
   display: flex;
   flex-direction: column;
+  font-size: 1rem;
 }
 
 h1 {
-  font-size: 2.25em;
-} /* 約36px */
+  font-size: 2em;
+}
+
 h2 {
-  font-size: 1.875em;
-} /* 約30px */
+  font-size: 1.75em;
+}
+
 h3 {
   font-size: 1.5em;
-} /* 約24px */
+}
+
 h4 {
   font-size: 1.25em;
-} /* 約20px */
+}
+
 h5 {
   font-size: 1.125em;
-} /* 約18px */
+}
+
 h6 {
   font-size: 1em;
-} /* 約16px */
+}
+
 /* ------------------------------
   Header
 ------------------------------ */
@@ -323,7 +333,7 @@ table tbody tr:nth-child(even) {
   Card
 ------------------------------ */
 .component-card {
-  width: 400px;
+  width: 500px;
   margin-top: 1em;
   padding: 1em;
   background: #fff;
@@ -338,7 +348,7 @@ table tbody tr:nth-child(even) {
 }
 .component-card .card-body .card-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   gap: 0.5em;
   padding: 0.5em 0;
@@ -351,9 +361,18 @@ table tbody tr:nth-child(even) {
 .component-card .card-body .card-row .value {
   flex: 1;
 }
+.component-card .card-body .card-row .value.detail-value {
+  padding: 0.5em;
+}
 .component-card .card-body .actions {
+  display: flex;
+  gap: 0.5em;
   margin-top: 1em;
   text-align: right;
+}
+.component-card .card-body .actions .delete {
+  margin-left: auto;
+  background-color: #e53935;
 }
 .component-card form input,
 .component-card form select,
@@ -363,7 +382,10 @@ table tbody tr:nth-child(even) {
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  /* OSネイティブな見た目を消す（特にSafari） */
 }
 .component-card form input:focus,
 .component-card form textarea:focus,
@@ -396,6 +418,39 @@ table tbody tr:nth-child(even) {
 /* ------------------------------
   Button
 ------------------------------ */
+button,
+input[type=submit],
+input[type=button],
+.btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  padding: 0.3em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.btn:hover {
+  background-color: var(--button-hover-bg);
+  text-decoration: none;
+}
+button:disabled, button[aria-disabled=true],
+input[type=submit]:disabled,
+input[type=submit][aria-disabled=true],
+input[type=button]:disabled,
+input[type=button][aria-disabled=true],
+.btn:disabled,
+.btn[aria-disabled=true] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* ------------------------------
   開発中のセクション色分け（見やすさ用）
 ------------------------------ */

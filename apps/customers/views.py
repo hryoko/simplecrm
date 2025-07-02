@@ -68,8 +68,8 @@ class CustomerDetailView(DetailView):
 
         obj = self.object
         exclude_keys = ['id', 'created_at', 'updated_at']
-        exclude_keys = ['name']
-        exclude_keys = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
+        # exclude_keys = ['id', 'name']
+        # exclude_keys = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
 
         # ラベルと値を動的に構成
         context['details'] = [
@@ -100,10 +100,14 @@ class CustomerUpdateView(UpdateView):
     template_name = 'customers/customer_form.html'
     success_url = reverse_lazy('customers:list')
 
+    def namespaced_url(self, namespace, viewname, *args):
+        return reverse(f'{namespace}:{viewname}', args=args)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = self.object
-        context['title'] = f'{obj.name} 様'
+        context['detail_url'] = self.namespaced_url('customers', 'detail', obj.pk)
+        context['title'] = f'{obj.name} の編集'
         context['page_title'] = '顧客編集'
         return context
 
