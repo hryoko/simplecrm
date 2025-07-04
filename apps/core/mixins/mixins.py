@@ -1,7 +1,7 @@
 from django.http import Http404
-from django.urls import reverse
+from django.urls import NoReverseMatch, reverse
 
-from .url import AutoContextMixin
+# from .url import AutoContextMixin
 
 
 class AutoContextMixin:
@@ -25,20 +25,21 @@ class AutoContextMixin:
         return reverse(viewname, args=args)
 
 
-class BaseContextMixin(AutoContextMixin):
+class PageTitleMixin:
     # 表示やリンク用の基本設定
     page_title = ''
 
-    # ---- オブジェクト関連 ----
-    def get_object_safe(self):
-        """objectが存在する場合は返す（なければNone）"""
-        try:
-            return self.get_object()
-        except (AttributeError, Http404):
-            return None
-
     def get_page_title(self):
-        return self.page_title or ''
+        return self.page_title or self._get_default_page_title()
+
+    def _get_default_page_title(self):
+        """
+        ページタイトルが未指定のときのデフォルト。
+        各Viewでオーバーライド可。
+        """
+        if hasattr(self, 'model'):
+            return f"{self.model._meta.verbose_name}"
+        return 'ページ'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,10 +47,14 @@ class BaseContextMixin(AutoContextMixin):
         return context
 
 
-class BaseListViewMixin:
+class ListViewMixin(PageTitleMixin, AutoContextMixin):
     exclude_fields = ['created_at', 'updated_at']
     wanted_field_keys = None  # 順序付きで指定したい場合
-    context_object_name = None  # 明示されていればそれを使う
+    back_view = None  # listページでは不要なことが多いが必要なら指定
+    page_title = '一覧'
+
+    def get_page_title(self):
+        return f"{self.model._meta.verbose_name}{self.page_title}"
 
     def get_table_headers(self):
         """
@@ -71,8 +76,8 @@ class BaseListViewMixin:
             field = self.model._meta.get_field(name)
             headers.append(
                 {
-                    "key": name,
-                    "label": field.verbose_name.title(),
+                    'key': name,
+                    'label': field.verbose_name.title(),
                 }
             )
 
@@ -116,7 +121,7 @@ class BaseListViewMixin:
             if hasattr(val, '_meta'):  # 外部キーや related object
                 return str(val)
             return val
-        except Exception:
+        except (NoReverseMatch, AttributeError):
             return ''  # 存在しないキーなどを安全に無視
 
     def get_context_data(self, **kwargs):
@@ -124,23 +129,13 @@ class BaseListViewMixin:
         obj_name = self.context_object_name or 'object_list'
         queryset = context.get(obj_name, [])
         headers = self.get_table_headers()
+        rows = self.get_table_rows(queryset, headers)
         context['headers'] = headers
-        context['rows'] = self.get_table_rows(queryset, headers)
+        context['rows'] = rows
         return context
 
 
-class ListContextMixin(BaseContextMixin):
-    back_view = None  # listページでは不要なことが多いが必要なら指定
-    page_title = '一覧'
-
-
-class ListViewMixin(ListContextMixin, BaseListViewMixin):
-    """一覧ビュー用のUI + データ構造をまとめた統合Mixin"""
-
-    pass
-
-
-class ObjectContextMixin(BaseContextMixin):
+class ObjectContextMixin(PageTitleMixin, AutoContextMixin):
     # 表示やリンク用の基本設定
     object_title_field = None  # 例: 'name'（任意のフィールド名）
     back_view = 'list'
@@ -155,9 +150,12 @@ class ObjectContextMixin(BaseContextMixin):
     delete_label = '削除'
 
     # ---- オブジェクト関連 ----
-    # def get_object_safe(self):
-    #     """objectが存在する場合は返す（なければNone）"""
-    #     return getattr(self, 'object', None)
+    def get_object_safe(self):
+        """objectが存在する場合は返す（なければNone）"""
+        try:
+            return self.get_object()
+        except (AttributeError, Http404):
+            return None
 
     def get_context_title(self):
         """ページ内タイトル（例: '田中一郎 の編集'）"""
@@ -170,24 +168,60 @@ class ObjectContextMixin(BaseContextMixin):
             else:
                 value = str(obj)  # fallback to __str__()
             if value:
-                return f"{value} の{self.page_title}"
-
-        return self.page_title or ''
+                return f"{value} の{getattr(self, 'page_title', '')}"
+        return getattr(self, 'page_title', '')
 
     # ---- 各種URL取得 ----
+    # def get_back_url(self):
+    #     if self.back_view:
+    #         return self.namespaced_url(self.back_view)
+    #     return None  # または reverse('top') などのデフォルト
+
     def get_back_url(self):
-        if self.back_view:
-            return self.namespaced_url(self.back_view)
-        return None  # または reverse('top') などのデフォルト
+        """
+        back_view があれば namespaced_url でURLを返す。
+        失敗したり obj が無ければ fallback_redirect にリダイレクトURLを返す。
+        """
+        try:
+            if self.back_view:
+                return self.namespaced_url(self.back_view)
+        except NoReverseMatch:
+            pass
+
+        # fallback_redirect は名前（名前付きURL）かURL文字列のどちらでも対応
+        if self.fallback_redirect:
+            # URL文字列か名前か判別して返す簡易処理
+            if self.fallback_redirect.startswith(('http://', 'https://', '/')):
+                return self.fallback_redirect
+            else:
+                try:
+                    return reverse(self.fallback_redirect)
+                except NoReverseMatch:
+                    pass
+        return '/'
+
+    def get_object_url(self, viewname):
+        obj = self.get_object_safe()
+        if obj and getattr(obj, 'pk', None):
+            return self.namespaced_url(viewname, obj.pk)
+        return None
 
     def get_detail_url(self):
-        return self.namespaced_url(self.detail_view, self.get_object_safe().pk)
+        return self.get_object_url(self.detail_view)
 
     def get_update_url(self):
-        return self.namespaced_url(self.update_view, self.get_object_safe().pk)
+        return self.get_object_url(self.update_view)
 
     def get_delete_url(self):
-        return self.namespaced_url(self.delete_view, self.get_object_safe().pk)
+        return self.get_object_url(self.delete_view)
+
+    def get_created_at(self):
+        obj = self.get_object_safe()
+        return getattr(obj, 'created_at', None) if obj else None
+
+    def get_updated_at(self):
+        obj = self.get_object_safe()
+        return getattr(obj, 'created_at', None) if obj else None
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -212,57 +246,59 @@ class ObjectContextMixin(BaseContextMixin):
 
 class DetailContextMixin(ObjectContextMixin):
     page_title = '詳細'
-    object_title_field = 'name'
+
+    def get_page_title(self):
+        return f"{self.model._meta.verbose_name}{self.page_title}"
 
 
 class FormContextMixin(ObjectContextMixin):
     form_action_view = None
     submit_label = '保存label'
 
-    # def get_form_action(self):
-    #     if self.form_action_view:
-    #         return self.namespaced_url(self.form_action_view, self.get_object_safe().pk)
-    #     return self.request.path  # フォールバックとして自分自身にPOST
+    def get_page_title(self):
+        obj = self.get_object_safe()
+        if obj and obj.pk:
+            return f"{self.model._meta.verbose_name}の編集"
+        return f"{self.model._meta.verbose_name}の新規作成"
+
+    def get_form_action(self):
+        if self.form_action_view:
+            return self.namespaced_url(self.form_action_view, self.get_object_safe().pk)
+        return self.request.path  # フォールバックとして自分自身にPOST
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['form_action'] = self.get_form_action()
+        context['form_action'] = self.get_form_action()
         context['submit_label'] = self.submit_label
         return context
 
+    # class CreateContextMixin(FormContextMixin):
+    #     """
+    #     CreateView 専用のコンテキストMixin。
+    #     object がまだ存在しない前提で、安全に back_url などを提供。
+    #     """
 
-class CreateContextMixin(BaseContextMixin):
-    page_title = '新規'
+    #     back_view = 'list'
+    #     back_label = '戻る'
+    #     page_title = '新規'  # 自動で「新規作成」に変換される想定
 
+    #     def get_back_url(self):
+    #         if self.back_view:
+    #             return self.namespaced_url(self.back_view)
+    #         return self.request.META.get('HTTP_REFERER', '/')
 
-class CreateContextMixin(BaseContextMixin):
-    """
-    CreateView 専用のコンテキストMixin。
-    object がまだ存在しない前提で、安全に back_url などを提供。
-    """
+    #     def get_context_data(self, **kwargs):
+    #         context = super().get_context_data(**kwargs)
+    #         context.update(
+    #             {
+    #                 'back_url': self.get_back_url(),
+    #                 'back_label': self.back_label,
+    #                 'title': self.get_page_title(),  # ページ内タイトル
+    #             }
+    #         )
+    #         return context
 
-    back_view = 'list'
-    back_label = '戻る'
-    page_title = '新規'  # 自動で「新規作成」に変換される想定
-
-    def get_back_url(self):
-        if self.back_view:
-            return self.namespaced_url(self.back_view)
-        return self.request.META.get('HTTP_REFERER', '/')
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(
-            {
-                'back_url': self.get_back_url(),
-                'back_label': self.back_label,
-                'title': self.get_page_title(),  # ページ内タイトル
-            }
-        )
-        return context
-
-
-class UpdateContextMixin(FormContextMixin):
+    # class UpdateContextMixin(FormContextMixin):
     back_view = 'detail'
     page_title = '更新'
 
@@ -270,3 +306,6 @@ class UpdateContextMixin(FormContextMixin):
 class DeleteContextMixin(ObjectContextMixin):
     # back_view = 'detail'
     page_title = '削除'
+
+    def get_page_title(self):
+        return f"{self.model._meta.verbose_name}{self.page_title}"

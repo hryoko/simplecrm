@@ -45,8 +45,8 @@ class Customer(models.Model):
         return self.name
 
     class Meta:
-        # verbose_name = '顧客'
-        # verbose_name_plural = '顧客一覧'
+        verbose_name = 'verbose_name顧客'
+        verbose_name_plural = 'verbose_name_plural顧客一覧'
         # ordering = ['name_kana']
         pass
 

@@ -7,18 +7,13 @@ from django.views.generic import (
     UpdateView,
 )
 
-from ..core.mixins.mixins import (
-    CreateContextMixin,
-    DeleteContextMixin,
-    DetailContextMixin,
-    FormContextMixin,
-    ListViewMixin,
-)
+from ..core.mixins.mixins import DeleteContextMixin  # CreateContextMixin,
+from ..core.mixins.mixins import DetailContextMixin, FormContextMixin, ListViewMixin
 from .forms import CustomerForm
 from .models import Customer
 
 
-class CustomerCreateView(CreateContextMixin, CreateView):
+class CustomerCreateView(FormContextMixin, CreateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
