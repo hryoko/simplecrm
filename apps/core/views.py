@@ -13,3 +13,4 @@ class HomeView(TemplateView):
 
 # def dashboard(request):
 #     return render(request, 'core/dashboard.html')
+

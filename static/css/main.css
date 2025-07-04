@@ -76,7 +76,10 @@ input[type=button] {
           appearance: none;
 }
 
-.btn-danger, a.btn,
+a.btn-danger,
+button.btn-danger,
+input[type=submit].btn-danger,
+input[type=button].btn-danger, a.btn,
 button.btn,
 input[type=submit].btn,
 input[type=button].btn {
@@ -112,11 +115,17 @@ input[type=button].btn[aria-disabled=true] {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-.btn-danger {
+a.btn-danger,
+button.btn-danger,
+input[type=submit].btn-danger,
+input[type=button].btn-danger {
   background-color: var(--button-danger-bg, #dc3545);
+  color: #fff;
 }
-.btn-danger:hover {
+a.btn-danger:hover,
+button.btn-danger:hover,
+input[type=submit].btn-danger:hover,
+input[type=button].btn-danger:hover {
   background-color: var(--button-danger-dark-bg, #c82333);
   text-decoration: none;
 }
@@ -448,7 +457,7 @@ table tbody tr:nth-child(even) {
 .component-card form input,
 .component-card form select,
 .component-card form textarea {
-  background-color: rgba(250, 190, 90, 0.9);
+  background-color: #fff;
   width: 100%;
   padding: 0.5em;
   border: 1px solid #ccc;

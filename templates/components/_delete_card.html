@@ -8,7 +8,7 @@
 <form method="post">
   <div class="actions">
     {% csrf_token %}
-    <button class="btn deletebtn" type="submit">はい、削除します</button>
+    <button class="btn-dange" type="submit">はい、削除します</button>
     {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
   </div>
 </form>

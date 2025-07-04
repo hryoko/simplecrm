@@ -72,52 +72,58 @@ input[type="button"] {
     box-sizing: border-box;
 }
 
-// ----------------------
-// 2. Standard Buttons → 基本スタイル
-// ----------------------
-a.btn,
-button.btn,
-input[type="submit"].btn,
-input[type="button"].btn {
-    @extend %button-base;
 
+a,
+button,
+input[type="submit"],
+input[type="button"] {
+    
+    // ----------------------
+    // 2. Standard Buttons → 基本スタイル
+    // ----------------------
+    &.btn {
+    @extend %button-base;
+    
     &:hover {
         background-color: var(--button-hover-bg);
         text-decoration: none;
     }
-
+    
     &:disabled,
     &[aria-disabled="true"] {
         opacity: 0.6;
         cursor: not-allowed;
     }
-  }
-  // ----------------------
-  // 3. Danger Button → 危険操作（削除など）
-  // ----------------------
-  .btn-danger {
-      @extend %button-base;
-      background-color: var(--button-danger-bg, #dc3545);
-  
-      &:hover {
-          background-color: var(--button-danger-dark-bg, #c82333);
-          text-decoration: none;
-      }
-  }
-  
-  // ----------------------
-  // 4. Outline Button → サブ操作（戻る、キャンセルなど）
-  // ----------------------
-  // .btn-outline {
-  //     @extend %button-base;
-  //     background-color: transparent;
-  //     color: var(--button-accent-bg);
-  //     border: 2px solid var(--button-accent-bg);
-  
-  //     &:hover {
-  //         background-color: var(--button-accent-bg);
-  //         text-decoration: none;
-  //         color: #fff;
-  //     }
-  // }
+    }
+    // ----------------------
+    // 3. Danger Button → 危険操作（削除など）
+    // ----------------------
+    &.btn-danger {
+        @extend %button-base;
+        background-color: var(--button-danger-bg, #dc3545);
+        color: #fff; // ← 明示的に
+    
+        &:hover {
+            background-color: var(--button-danger-dark-bg, #c82333);
+            text-decoration: none;
+        }
+    }
+    
+    // ----------------------
+    // 4. Outline Button → サブ操作（戻る、キャンセルなど）
+    // ----------------------
+    // &.btn-outline {
+    //     @extend %button-base;
+    //     background-color: transparent;
+    //     color: var(--button-accent-bg);
+    //     border: 2px solid var(--button-accent-bg);
+    
+    //     &:hover {
+    //         background-color: var(--button-accent-bg);
+    //         text-decoration: none;
+    //         color: #fff;
+    //     }
+    // }
+}
+
 
