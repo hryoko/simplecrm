@@ -17,9 +17,9 @@
 {% endif %} -->
 
 <div class="actions">
-  {% if back_url %}<a class="btn" href="{{ back_url }}">{{ back_label }}</a>{% endif %}
-  {% if update_url %}<a class="btn" href="{{ update_url }}">{{ update_label }}</a>{% endif %}
-  {% if delete_url %}<a class="btn-danger deletelink" href="{{ delete_url }}">{{ delete_label }}</a>{% endif %}
+  {% if back_url %}<a class="btn" href="{{ back_url }}">{{ back_labe|default:"戻る" }}</a>{% endif %}
+  {% if update_url %}<a class="btn" href="{{ update_url }}">{{ update_label|default:"編集" }}</a>{% endif %}
+  {% if delete_url %}<a class="btn-danger deletelink" href="{{ delete_url }}">{{ delete_label|default:"削除" }}</a>{% endif %}
 </div>
 
 {% endblock %}

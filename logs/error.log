@@ -10112,3 +10112,446 @@ Traceback (most recent call last):
        ^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'CustomerUpdateView' object has no attribute 'fallback_redirect'
 ERROR 2025-07-05 07:55:08,439 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 111809
+ERROR 2025-07-05 07:55:30,894 log Internal Server Error: /customers/create/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 178, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 270, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 232, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 192, in get_back_url
+    if self.fallback_redirect:
+       ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CustomerCreateView' object has no attribute 'fallback_redirect'
+ERROR 2025-07-05 07:55:30,914 basehttp "GET /customers/create/ HTTP/1.1" 500 111570
+ERROR 2025-07-05 16:28:32,581 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 284, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 252, in get_context_data
+    'back_label': self.back_label,
+                  ^^^^^^^^^^^^^^^
+AttributeError: 'CustomerUpdateView' object has no attribute 'back_label'
+ERROR 2025-07-05 16:28:32,656 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 108059
+ERROR 2025-07-05 16:28:36,954 log Internal Server Error: /customers/1/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\customers\views.py", line 40, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 252, in get_context_data
+    'back_label': self.back_label,
+                  ^^^^^^^^^^^^^^^
+AttributeError: 'CustomerDetailView' object has no attribute 'back_label'
+ERROR 2025-07-05 16:28:37,016 basehttp "GET /customers/1/ HTTP/1.1" 500 103602
+ERROR 2025-07-05 16:40:48,461 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 281, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 247, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 201, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'CustomerUpdateView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-05 16:40:48,482 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 111586
+ERROR 2025-07-05 16:40:53,095 log Internal Server Error: /customers/1/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\customers\views.py", line 40, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 247, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 201, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'CustomerDetailView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-05 16:40:53,152 basehttp "GET /customers/1/ HTTP/1.1" 500 107129
+ERROR 2025-07-06 18:46:47,600 log Internal Server Error: /customers/create/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 178, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 296, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 276, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CustomerCreateView' object has no attribute 'namespaced_url'
+ERROR 2025-07-06 18:46:47,633 basehttp "GET /customers/create/ HTTP/1.1" 500 107250
+ERROR 2025-07-06 19:32:31,407 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 327, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 19:32:31,450 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129119
+ERROR 2025-07-06 19:34:50,585 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 350, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 19:34:50,614 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129105
+ERROR 2025-07-06 19:43:21,566 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 350, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 19:43:21,589 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129242
+ERROR 2025-07-06 20:10:42,227 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 350, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 20:10:42,258 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129105
+ERROR 2025-07-06 20:10:51,298 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 350, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 20:10:51,325 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129107
+ERROR 2025-07-06 20:11:19,723 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 350, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 20:11:19,754 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129107
+ERROR 2025-07-06 20:12:47,686 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 350, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 318, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 20:12:47,732 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129106
+ERROR 2025-07-06 20:13:18,570 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 348, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 328, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 20:13:18,595 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129174
+ERROR 2025-07-06 20:20:48,119 log Internal Server Error: /customers/1/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 345, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 227, in get_context_data
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 324, in get_back_url
+    return self.namespaced_url(self.back_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\mixins.py", line 24, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' with no arguments not found. 1 pattern(s) tried: ['customers/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-07-06 20:20:48,144 basehttp "GET /customers/1/edit/ HTTP/1.1" 500 129138

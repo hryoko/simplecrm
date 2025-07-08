@@ -53,8 +53,8 @@ class ListViewMixin(PageTitleMixin, AutoContextMixin):
     back_view = None  # listページでは不要なことが多いが必要なら指定
     page_title = '一覧'
 
-    def get_page_title(self):
-        return f"{self.model._meta.verbose_name}{self.page_title}"
+    # def get_page_title(self):
+    #     return f"{self.model._meta.verbose_name}{self.page_title}"
 
     def get_table_headers(self):
         """
@@ -142,12 +142,7 @@ class ObjectContextMixin(PageTitleMixin, AutoContextMixin):
     detail_view = 'detail'
     update_view = 'update'
     delete_view = 'delete'
-
-    # ボタンなどの表示文言
-    back_label = '戻る'
-    detail_label = '詳細'
-    update_label = '編集'
-    delete_label = '削除'
+    fallback_redirect = 'home'  # デフォルトのリダイレクト先
 
     # ---- オブジェクト関連 ----
     def get_object_safe(self):
@@ -177,6 +172,10 @@ class ObjectContextMixin(PageTitleMixin, AutoContextMixin):
     #         return self.namespaced_url(self.back_view)
     #     return None  # または reverse('top') などのデフォルト
 
+    # def get_back_url(self):
+    #     if self.back_view:
+    #         return self.namespaced_url(self.back_view)
+    #     return self.request.META.get('HTTP_REFERER', '/')
     def get_back_url(self):
         """
         back_view があれば namespaced_url でURLを返す。
@@ -235,10 +234,6 @@ class ObjectContextMixin(PageTitleMixin, AutoContextMixin):
                 'delete_url': self.get_delete_url(),
                 'created_at': getattr(obj, 'created_at', None),
                 'updated_at': getattr(obj, 'updated_at', None),
-                'back_label': self.back_label,
-                'detail_label': self.detail_label,
-                'update_label': self.update_label,
-                'delete_label': self.delete_label,
             }
         )
         return context
@@ -253,7 +248,7 @@ class DetailContextMixin(ObjectContextMixin):
 
 class FormContextMixin(ObjectContextMixin):
     form_action_view = None
-    submit_label = '保存label'
+    submit_label = '保存FormContextMixin'
 
     def get_page_title(self):
         obj = self.get_object_safe()
@@ -272,35 +267,23 @@ class FormContextMixin(ObjectContextMixin):
         context['submit_label'] = self.submit_label
         return context
 
-    # class CreateContextMixin(FormContextMixin):
-    #     """
-    #     CreateView 専用のコンテキストMixin。
-    #     object がまだ存在しない前提で、安全に back_url などを提供。
-    #     """
 
-    #     back_view = 'list'
-    #     back_label = '戻る'
-    #     page_title = '新規'  # 自動で「新規作成」に変換される想定
+class CreateContextMixin(FormContextMixin):
+    back_view = 'list'
+    # page_title = '新規page_title'  # 自動で「新規作成」に変換される想定
+    submit_label = '保存CreateContextMixin'
 
-    #     def get_back_url(self):
-    #         if self.back_view:
-    #             return self.namespaced_url(self.back_view)
-    #         return self.request.META.get('HTTP_REFERER', '/')
+    def get_page_title(self):
+        obj = self.get_object_safe()
+        if obj and obj.pk:
+            return f"{self.model._meta.verbose_name}の編集"
+        return f"{self.model._meta.verbose_name}の新規作成"
 
-    #     def get_context_data(self, **kwargs):
-    #         context = super().get_context_data(**kwargs)
-    #         context.update(
-    #             {
-    #                 'back_url': self.get_back_url(),
-    #                 'back_label': self.back_label,
-    #                 'title': self.get_page_title(),  # ページ内タイトル
-    #             }
-    #         )
-    #         return context
 
-    # class UpdateContextMixin(FormContextMixin):
-    back_view = 'detail'
-    page_title = '更新'
+class UpdateContextMixin(FormContextMixin):
+    back_view = 'list'
+    page_title = '更新page_title'
+    submit_label = '保存UpdateContextMixin'
 
 
 class DeleteContextMixin(ObjectContextMixin):

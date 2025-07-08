@@ -7,13 +7,19 @@ from django.views.generic import (
     UpdateView,
 )
 
-from ..core.mixins.mixins import DeleteContextMixin  # CreateContextMixin,
-from ..core.mixins.mixins import DetailContextMixin, FormContextMixin, ListViewMixin
+from ..core.mixins.mixins import (
+    CreateContextMixin,
+    DeleteContextMixin,
+    DetailContextMixin,
+    FormContextMixin,
+    ListViewMixin,
+    UpdateContextMixin,
+)
 from .forms import CustomerForm
 from .models import Customer
 
 
-class CustomerCreateView(FormContextMixin, CreateView):
+class CustomerCreateView(CreateContextMixin, CreateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
@@ -27,7 +33,7 @@ class CustomerListView(ListViewMixin, ListView):
     context_object_name = 'customers'
     namespace = 'customers'
     # exclude_fields = ['memo', 'created_at', 'updated_at']
-    wanted_field_keys = ['name', 'name_kana', 'age', 'phone', 'email']
+    wanted_field_keys = ['id', 'name', 'name_kana', 'age', 'phone', 'email']
 
 
 class CustomerDetailView(DetailContextMixin, DetailView):
@@ -57,7 +63,7 @@ class CustomerDetailView(DetailContextMixin, DetailView):
         return context
 
 
-class CustomerUpdateView(FormContextMixin, UpdateView):
+class CustomerUpdateView(UpdateContextMixin, UpdateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
