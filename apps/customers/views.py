@@ -19,14 +19,6 @@ from .forms import CustomerForm
 from .models import Customer
 
 
-class CustomerCreateView(CreateContextMixin, CreateView):
-    model = Customer
-    form_class = CustomerForm
-    template_name = 'customers/customer_form.html'
-    success_url = reverse_lazy('list')
-    object_title_field = 'name'
-
-
 class CustomerListView(ListViewMixin, ListView):
     model = Customer
     template_name = 'customers/customer_list.html'
@@ -34,6 +26,14 @@ class CustomerListView(ListViewMixin, ListView):
     namespace = 'customers'
     # exclude_fields = ['memo', 'created_at', 'updated_at']
     wanted_field_keys = ['id', 'name', 'name_kana', 'age', 'phone', 'email']
+
+
+class CustomerCreateView(CreateContextMixin, CreateView):
+    model = Customer
+    form_class = CustomerForm
+    template_name = 'customers/customer_form.html'
+    success_url = reverse_lazy('list')
+    object_title_field = 'name'
 
 
 class CustomerDetailView(DetailContextMixin, DetailView):

@@ -5,7 +5,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}My App{% endblock %}</title>
+    <title>{% block title %}{{ page_title|default:"" }}{% if page_title %} | {% endif %}simpleCRM{% endblock %}</title>
+
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     {% block extra_css %}{% endblock %}
   </head>
@@ -15,11 +16,11 @@
       <button id="toggle-sidebar" class="menu-button">☰</button>      
       {% if request.path == "/" %}
         <h1 class="site-logo">
-          <a href="/">MyApp-LOGO</a>
+          <a href="/">simpleCRM</a>
         </h1>
       {% else %}
         <div class="site-logo">
-          <a href="/">MyApp-LOGO</a>
+          <a href="/">simpleCRM</a>
         </div>
       {% endif %}
       

@@ -1,0 +1,25 @@
+{# templates/components/_actions.html #}
+<div class="actions">
+  {# 戻るボタン（優先順位：back_url > detail_url） #}
+  {% if back_url %}
+    <a class="btn" href="{{ back_url }}">戻る</a>
+  {% elif detail_url %}
+    <a class="btn" href="{{ detail_url }}">戻る</a>
+  {% endif %}
+
+  {# 編集ボタン（オプション） #}
+  {% if update_url %}
+    <a class="btn" href="{{ update_url }}">編集</a>
+  {% endif %}
+
+
+  {# 送信ボタン（フォーム用） #}
+  {% if show_submit_button %}
+  <button class="btn" type="submit">{{ submit_label|default:"保存" }}</button>
+  {% endif %}
+
+  {# 削除ボタン（オプション） #}
+  {% if delete_url %}
+    <a class="btn-danger deletelink" href="{{ delete_url }}">削除</a>
+  {% endif %}
+</div>

@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-{% load dict_utils %}
-{% block title %}顧客リスト | {{ block.super }}{% endblock %}
 
 {% block content %}
+
 <a href="{% url 'customers:create' %}">新規顧客登録</a>
 <form method="get">
   名前: <input type="text" name="name" value="{{ request.GET.name }}">
