@@ -60,7 +60,7 @@ class ObjectMetaContextMixin(SafeObjectMixin):
         return context
 
 
-class BaseContextMixin(AutoPageTitleMixin, ObjectMetaContextMixin):
+class BaseContextMixin(ObjectMetaContextMixin, ObjectContextMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = self.inject_page_title(context)
