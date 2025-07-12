@@ -1,9 +1,16 @@
 # --- 一覧表示関連 ---
-from .base import BaseContextMixin
+from .base import AutoPageTitleMixin
 from .urls import AutoNamespaceMixin
 
 
-class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
+class ListViewMixin(AutoPageTitleMixin, AutoNamespaceMixin):
+    """
+    一覧表示用のコンテキストを構築する汎用 Mixin。
+    - ヘッダー定義の自動生成
+    - 行データの整形（外部キーや関連オブジェクトにも対応）
+    - detail/update/delete の各URLを自動生成
+    """
+
     exclude_fields = ['created_at', 'updated_at']
     wanted_field_keys = None  # 順序付きで指定したい場合
 
@@ -53,7 +60,7 @@ class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
                 row['detail_url'] = self.namespaced_url('detail', obj.pk)
                 row['update_url'] = self.namespaced_url('update', obj.pk)
                 row['delete_url'] = self.namespaced_url('delete', obj.pk)
-            except NoReverseMatch:
+            except AttributeError:
                 pass  # 該当URLが未定義でもスルー
 
             rows.append(row)
@@ -72,10 +79,13 @@ class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
             if hasattr(val, '_meta'):  # 外部キーや related object
                 return str(val)
             return val
-        except (NoReverseMatch, AttributeError):
+        except AttributeError:
             return ''  # 存在しないキーなどを安全に無視
 
     def get_context_data(self, **kwargs):
+        """
+        context に headers と rows を追加。
+        """
         context = super().get_context_data(**kwargs)
         queryset = self.get_queryset()
         headers = self.get_table_headers()

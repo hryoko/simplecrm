@@ -20,14 +20,6 @@ class SafeObjectMixin:
             return None
 
 
-class ObjectMetaContextMixin(SafeObjectMixin):
-    def inject_object_meta(self, context):
-        obj = self.get_object_safe()
-        context['created_at'] = getattr(obj, 'created_at', None)
-        context['updated_at'] = getattr(obj, 'updated_at', None)
-        return context
-
-
 class PageTitleMixin:
     page_title = None
 
@@ -67,14 +59,3 @@ class AutoPageTitleMixin(PageTitleMixin):
                 return '削除'
             case _:
                 return ''
-
-
-class BaseContextMixin(AutoPageTitleMixin, ObjectMetaContextMixin):
-    """
-    ページタイトルと作成・更新日時（オブジェクトのメタ情報）を context に追加する共通Mixin。
-    """
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context = self.inject_page_title(context)
-        return context
