@@ -7,13 +7,15 @@ from django.views.generic import (
     UpdateView,
 )
 
-from ..core.mixins.mixins import (
-    CreateContextMixin,
-    DeleteContextMixin,
-    DetailContextMixin,
+from apps.core.mixins import (
+    BaseContextMixin,
+    CreateViewMixin,
+    DeleteViewMixin,
+    DetailViewMixin,
     ListViewMixin,
-    UpdateContextMixin,
+    UpdateViewMixin,
 )
+
 from .forms import CustomerForm
 from .models import Customer
 
@@ -27,7 +29,7 @@ class CustomerListView(ListViewMixin, ListView):
     wanted_field_keys = ['id', 'name', 'name_kana', 'age', 'phone', 'email']
 
 
-class CustomerCreateView(CreateContextMixin, CreateView):
+class CustomerCreateView(CreateViewMixin, CreateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
@@ -35,7 +37,7 @@ class CustomerCreateView(CreateContextMixin, CreateView):
     object_title_field = 'name'
 
 
-class CustomerDetailView(DetailContextMixin, DetailView):
+class CustomerDetailView(DetailViewMixin, DetailView):
     model = Customer
     template_name = 'customers/customer_detail.html'
     context_object_name = 'customer'
@@ -62,7 +64,7 @@ class CustomerDetailView(DetailContextMixin, DetailView):
         return context
 
 
-class CustomerUpdateView(UpdateContextMixin, UpdateView):
+class CustomerUpdateView(UpdateViewMixin, UpdateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
@@ -72,7 +74,7 @@ class CustomerUpdateView(UpdateContextMixin, UpdateView):
         return reverse('customers:detail', kwargs={'pk': self.object.pk})
 
 
-class CustomerDeleteView(DeleteContextMixin, DeleteView):
+class CustomerDeleteView(DeleteViewMixin, DeleteView):
     model = Customer
     template_name = 'customers/customer_confirm_delete.html'
     success_url = reverse_lazy('customers:list')
