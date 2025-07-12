@@ -8,11 +8,14 @@ from django.views.generic import (
     UpdateView,
 )
 
-# from .url import AutoContextMixin
+# from .url import AutoNamespaceMixin
 
 
-class AutoContextMixin:
-    model = None  # Django CBV の model と連携
+# --- 基本ユーティリティ ---
+
+
+class AutoNamespaceMixin:
+    # model = None  # Django CBV の model と連携
     namespace = None  # 例: 'customers'
 
     # ---- URL名生成 ----
@@ -23,7 +26,6 @@ class AutoContextMixin:
         elif self.model:
             return self.model._meta.app_label  # モデルからアプリ名を推測
         return None
-        # return self.namespace or self.model._meta.app_label
 
     def namespaced_url(self, viewname, *args):
         ns = self.get_namespace()
@@ -38,10 +40,19 @@ class PageTitleMixin:
     def get_page_title(self):
         return self.page_title or 'ページ'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def inject_page_title(self, context):
         context['page_title'] = self.get_page_title()
         return context
+
+
+class SafeObjectMixin:
+    # ---- オブジェクト関連 ----
+    def get_object_safe(self):
+        """objectが存在する場合は返す（なければNone）"""
+        try:
+            return self.get_object()
+        except Http404:
+            return None
 
 
 class AutoPageTitleMixin(PageTitleMixin):
@@ -74,7 +85,22 @@ class AutoPageTitleMixin(PageTitleMixin):
                 return ''
 
 
-class ListViewMixin(AutoPageTitleMixin, AutoContextMixin):
+class ObjectMetaContextMixin(SafeObjectMixin):
+    def inject_object_meta(self, context):
+        obj = self.get_object_safe()
+        context['created_at'] = getattr(obj, 'created_at', None)
+        context['updated_at'] = getattr(obj, 'updated_at', None)
+        return context
+
+
+class BaseContextMixin(AutoPageTitleMixin, ObjectMetaContextMixin):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = self.inject_page_title(context)
+        return context
+
+
+class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
     exclude_fields = ['created_at', 'updated_at']
     wanted_field_keys = None  # 順序付きで指定したい場合
 
@@ -99,7 +125,7 @@ class ListViewMixin(AutoPageTitleMixin, AutoContextMixin):
             headers.append(
                 {
                     'key': name,
-                    'label': field.verbose_name.title(),
+                    'label': str(field.verbose_name),
                 }
             )
 
@@ -123,7 +149,7 @@ class ListViewMixin(AutoPageTitleMixin, AutoContextMixin):
                 row['detail_url'] = self.namespaced_url('detail', obj.pk)
                 row['update_url'] = self.namespaced_url('update', obj.pk)
                 row['delete_url'] = self.namespaced_url('delete', obj.pk)
-            except:
+            except NoReverseMatch:
                 pass  # 該当URLが未定義でもスルー
 
             rows.append(row)
@@ -147,8 +173,7 @@ class ListViewMixin(AutoPageTitleMixin, AutoContextMixin):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        obj_name = self.context_object_name or 'object_list'
-        queryset = context.get(obj_name, [])
+        queryset = self.get_queryset()
         headers = self.get_table_headers()
         rows = self.get_table_rows(queryset, headers)
         context['headers'] = headers
@@ -157,10 +182,15 @@ class ListViewMixin(AutoPageTitleMixin, AutoContextMixin):
 
 
 class NavigationUrlMixin:
-    pass
+    """ナビゲーションURL関連の拡張用 Mixin"""
+
+    ...
 
 
-class ObjectUrlMixin:
+# --- オブジェクト系共通 ---
+
+
+class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
     """
     オブジェクトに紐づく各種URLを提供するMixin。
     """
@@ -171,20 +201,15 @@ class ObjectUrlMixin:
     delete_view = 'delete'
     fallback_redirect = 'home'  # デフォルトのリダイレクト先
 
-    # ---- オブジェクト関連 ----
-    def get_object_safe(self):
-        """objectが存在する場合は返す（なければNone）"""
-        try:
-            return self.get_object()
-        except (AttributeError, Http404):
-            return None
-
     # ---- 各種URL取得 ----
     def get_object_url(self, viewname):
         obj = self.get_object_safe()
         if obj and getattr(obj, 'pk', None):
             return self.namespaced_url(viewname, obj.pk)
         return None
+
+    def get_list_url(self):
+        return self.namespaced_url(self.list_view)
 
     def get_detail_url(self):
         return self.get_object_url(self.detail_view)
@@ -239,16 +264,8 @@ class ObjectUrlMixin:
         return context
 
 
-class ObjectContextMixin(ObjectUrlMixin, AutoPageTitleMixin, AutoContextMixin):
+class ObjectContextMixin(ObjectUrlMixin, AutoPageTitleMixin):
     object_title_field = None  # 例: 'name'（任意のフィールド名）
-
-    # ---- オブジェクト関連 ----
-    def get_object_safe(self):
-        """objectが存在する場合は返す（なければNone）"""
-        try:
-            return self.get_object()
-        except (AttributeError, Http404):
-            return None
 
     def get_context_title(self):
         """ページ内タイトル（例: '田中一郎 の編集'）"""
@@ -277,49 +294,74 @@ class ObjectContextMixin(ObjectUrlMixin, AutoPageTitleMixin, AutoContextMixin):
         return context
 
 
-class DetailContextMixin(ObjectContextMixin):
-    # page_title = '詳細'
-    pass
+class DetailContextMixin(ObjectContextMixin): ...
 
 
-class FormContextMixin(ObjectContextMixin):
-    form_action_view = None
-    submit_label = '保存Mixin'
+class SubmitLabelMixin:
+    submit_label = None
 
-    def get_form_action(self):
-        if self.form_action_view:
-            return self.namespaced_url(self.form_action_view, self.get_object_safe().pk)
-        return self.request.path  # フォールバックとして自分自身にPOST
+    def get_submit_label(self):
+        return self.submit_label
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form_action'] = self.get_form_action()
-        context['submit_label'] = self.submit_label
+    def inject_submit_label(self, context):
+        context['submit_label'] = self.get_submit_label()
         return context
 
 
-class CreateContextMixin(FormContextMixin):
-    back_view = 'list'
-    # page_title = '新規page_title'
+class FormActionMixin(SubmitLabelMixin, ObjectContextMixin):
+    form_action_view = None
+
+    def get_form_action_args(self):
+        obj = self.get_object_safe()
+        return (getattr(obj, 'pk', None),) if obj else ()
+
+    def get_form_action(self):
+        if self.form_action_view:
+            return self.namespaced_url(
+                self.form_action_view, *self.get_form_action_args()
+            )
+        return self.request.path  # 自分自身にPOST（Createなど）
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = self.inject_submit_label(context)
+        context['form_action'] = self.get_form_action()
+        return context
+
+
+class CreateContextMixin(FormActionMixin):
     submit_label = '新規保存'
 
-    # def get_page_title(self):
-    #     obj = self.get_object_safe()
-    #     if obj and obj.pk:
-    #         return f"{self.model._meta.verbose_name}の編集"
-    #     return f"{self.model._meta.verbose_name}の新規作成"
 
-
-class UpdateContextMixin(FormContextMixin):
-    back_view = 'detail'
-    page_title = '更新page_title'
+class UpdateContextMixin(FormActionMixin):
     submit_label = '更新保存'
 
 
-class DeleteContextMixin(ObjectContextMixin):
-    # back_view = 'detail'
-    # page_title = '削除'
+class DeleteContextMixin(SubmitLabelMixin, ObjectContextMixin):
+    submit_label = 'はい、削除します'
 
-    # def get_page_title(self):
-    #     return f"{self.model._meta.verbose_name}{self.page_title}"
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_submit_label(context)
+
+
+"""
+                PageTitleMixin
+                     ↑
+           ┌────────┴────────┐
+           │                 │
+AutoNamespaceMixin     AutoPageTitleMixin
+           ↑                 ↑
+           └──────┬──────────┘
+                  ↓
+       ObjectUrlMixin
+                  ↓
+       ObjectContextMixin
+       ↓        ↓        ↓
+DetailCtx  FormViewCtx  DeleteCtx
+              ↑
+   ┌──────────┴──────────┐
+CreateCtx            UpdateCtx
+
+ListViewMixin → AutoPageTitleMixin + AutoNamespaceMixin
+"""

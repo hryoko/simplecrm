@@ -16,12 +16,11 @@
     </div>
   {% endfor %}
   
-  {% include "components/_actions.html" with show_submit_button=True %}
-  <!-- <div class="actions">
+  <div class="actions">
     {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
     <button class="btn" type="submit">{{ submit_label|default:"保存" }}</button>
-  </div> -->
-
+  </div>
+  <!-- {% include "components/_actions.html" with show_submit_button=True %} -->
 </form>
 
 {% endblock %}

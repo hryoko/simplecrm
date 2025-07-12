@@ -11,7 +11,6 @@ from ..core.mixins.mixins import (
     CreateContextMixin,
     DeleteContextMixin,
     DetailContextMixin,
-    FormContextMixin,
     ListViewMixin,
     UpdateContextMixin,
 )
@@ -67,8 +66,10 @@ class CustomerUpdateView(UpdateContextMixin, UpdateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
-    success_url = reverse_lazy('customers:list')
     object_title_field = 'name'
+
+    def get_success_url(self):
+        return reverse('customers:detail', kwargs={'pk': self.object.pk})
 
 
 class CustomerDeleteView(DeleteContextMixin, DeleteView):

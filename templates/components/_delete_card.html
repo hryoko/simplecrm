@@ -9,10 +9,10 @@
 <form method="post">
   <div class="actions">
     {% csrf_token %}
-    {% include "components/_actions.html" with show_submit_button=True submit_label="はい、削除します" %}
-    <!-- <button class="btn-dange" type="submit">はい、削除します</button>
-    {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %} -->
+    <button class="btn-danger" type="submit">{{ submit_label }}</button>
+    {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
   </div>
+    <!-- {% include "components/_actions.html" with show_submit_button=True submit_label="はい、削除します" %} -->
 </form>
 
 {% endblock %}
