@@ -1,5 +1,6 @@
 # --- フォーム系（CRUD）ビュー関連 ---
-from .object import BaseContextMixin
+from .base import BaseContextMixin
+from .object import DetailFieldsMixin, ObjectContextMixin
 
 
 class SubmitLabelMixin:
@@ -13,7 +14,7 @@ class SubmitLabelMixin:
         return context
 
 
-class FormActionMixin(SubmitLabelMixin, BaseContextMixin):
+class FormActionMixin(SubmitLabelMixin, ObjectContextMixin):
     """
     フォームの送信先URL（form_action）とボタンラベル（submit_label）を context に注入する Mixin。
     Create/Update 共通。
@@ -39,7 +40,7 @@ class FormActionMixin(SubmitLabelMixin, BaseContextMixin):
         return context
 
 
-class DetailViewMixin(BaseContextMixin): ...
+class DetailViewMixin(DetailFieldsMixin): ...
 
 
 class CreateViewMixin(FormActionMixin):
@@ -50,7 +51,7 @@ class UpdateViewMixin(FormActionMixin):
     submit_label = '更新保存'
 
 
-class DeleteViewMixin(SubmitLabelMixin, BaseContextMixin):
+class DeleteViewMixin(SubmitLabelMixin, ObjectContextMixin):
     submit_label = 'はい、削除します'
     form_action_view = None  # 明示的に None（→ request.path）
 

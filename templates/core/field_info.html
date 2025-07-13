@@ -1,0 +1,42 @@
+<h3>フィールド一覧</h3>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>フィールド名</th>
+      <th>表示名 (verbose_name)</th>
+      <th>説明 (help_text)</th>
+      <th>関連モデル</th>
+      <th>関係タイプ</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for field in fields_info %}
+      <tr>
+        <td>{{ field.name }}</td>
+        <td>{{ field.verbose_name }}</td>
+        <td>{{ field.help_text }}</td>
+        <td>
+          {% if field.related_model_name %}
+            {{ field.related_model_app_label }}.{{ field.related_model_name }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if field.many_to_many %}
+            ManyToMany
+          {% elif field.many_to_one %}
+            ForeignKey (ManyToOne)
+          {% elif field.one_to_many %}
+            OneToMany (reverse ForeignKey)
+          {% elif field.one_to_one %}
+            OneToOne
+          {% else %}
+            通常フィールド
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+

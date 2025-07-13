@@ -27,6 +27,7 @@ class CustomerListView(ListViewMixin, ListView):
     namespace = 'customers'
     # exclude_fields = ['memo', 'created_at', 'updated_at']
     wanted_field_keys = ['id', 'name', 'name_kana', 'age', 'phone', 'email']
+    wanted_field_keys = ['id', 'name', 'age', 'phone']
 
 
 class CustomerCreateView(CreateViewMixin, CreateView):
@@ -42,26 +43,7 @@ class CustomerDetailView(DetailViewMixin, DetailView):
     template_name = 'customers/customer_detail.html'
     context_object_name = 'customer'
     namespace = 'customers'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        obj = self.object
-        exclude_keys = ['id', 'created_at', 'updated_at']
-        # exclude_keys = ['id', 'name']
-        # exclude_keys = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
-
-        # ラベルと値を動的に構成
-        context['details'] = [
-            {
-                "label": field.verbose_name.title(),
-                "value": getattr(obj, field.name),
-            }
-            for field in Customer._meta.fields
-            if field.name not in exclude_keys
-        ]
-
-        return context
+    # detail_exclude_fields = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
 
 
 class CustomerUpdateView(UpdateViewMixin, UpdateView):

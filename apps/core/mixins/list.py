@@ -1,9 +1,9 @@
 # --- 一覧表示関連 ---
-from .base import AutoPageTitleMixin
+from .base import BaseContextMixin
 from .urls import AutoNamespaceMixin
 
 
-class ListViewMixin(AutoPageTitleMixin, AutoNamespaceMixin):
+class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
     """
     一覧表示用のコンテキストを構築する汎用 Mixin。
     - ヘッダー定義の自動生成
@@ -92,4 +92,5 @@ class ListViewMixin(AutoPageTitleMixin, AutoNamespaceMixin):
         rows = self.get_table_rows(queryset, headers)
         context['headers'] = headers
         context['rows'] = rows
+
         return context

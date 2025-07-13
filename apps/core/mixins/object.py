@@ -1,13 +1,25 @@
 # --- 単一オブジェクト関連の Mixin（メタ情報・タイトル表示など） ---
-from .base import AutoPageTitleMixin, SafeObjectMixin
-from .urls import ObjectUrlMixin
+from django.http import Http404
+from django.urls import NoReverseMatch, reverse
+
+from .base import BaseContextMixin
+from .urls import AutoNamespaceMixin
 
 
-class ObjectContextMixin(ObjectUrlMixin, AutoPageTitleMixin):
+class SafeObjectMixin:
+    # object取得を安全に行う
+    def get_object_safe(self):
+        """get_object() を安全に実行し、
+        存在しない場合は None を返す"""
+        try:
+            return self.get_object()
+        except Http404:
+            return None
+
+
+class ObjectTitleContextMixin:
     """
-    単一オブジェクトの詳細表示や編集に関連するコンテキストデータを提供する Mixin。
-    - タイトルの動的生成（例: 「〇〇 の編集」）
-    - 作成・更新日時の表示
+    オブジェクトからタイトル（例:「〇〇 の 編集」）を生成して context['title'] に注入する Mixin。
     """
 
     object_title_field = None  # 例: 'name'（任意のフィールド名）
@@ -18,30 +30,20 @@ class ObjectContextMixin(ObjectUrlMixin, AutoPageTitleMixin):
         例: '田中一郎 の編集'
         """
         obj = self.get_object_safe()
-        field = getattr(self, 'object_title_field', None)
+        field = self.object_title_field
 
         if obj:
             if field and hasattr(obj, field):
                 value = getattr(obj, field)
             else:
-                value = str(obj)  # fallback to __str__()
+                value = str(obj)
             if value:
-                return f"{value} の{getattr(self, 'page_title', '')}"
-        return getattr(self, 'page_title', '')
+                return f"{value} の {self.get_page_title()}"
+        return self.get_page_title()
 
     def get_context_data(self, **kwargs):
-        """
-        context にタイトル・作成日・更新日を追加。
-        """
         context = super().get_context_data(**kwargs)
-        obj = self.get_object_safe()
-        context.update(
-            {
-                'title': self.get_context_title(),
-                'created_at': getattr(obj, 'created_at', None),
-                'updated_at': getattr(obj, 'updated_at', None),
-            }
-        )
+        context['title'] = self.get_context_title()
         return context
 
 
@@ -55,13 +57,146 @@ class ObjectMetaContextMixin(SafeObjectMixin):
         context に 'created_at', 'updated_at' を追加。
         """
         obj = self.get_object_safe()
+        # 以下は削除検討中。テンプレートで問題なければ削除予定
         context['created_at'] = getattr(obj, 'created_at', None)
         context['updated_at'] = getattr(obj, 'updated_at', None)
         return context
 
 
-class BaseContextMixin(ObjectMetaContextMixin, ObjectContextMixin):
+class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
+    """
+    オブジェクトに紐づく各種URLを提供するMixin。
+    """
+
+    back_view = 'list'
+    detail_view = 'detail'
+    update_view = 'update'
+    delete_view = 'delete'
+    fallback_redirect = 'home'  # デフォルトのリダイレクト先
+
+    # ---- 各種URL取得 ----
+    def get_object_url(self, viewname):
+        obj = self.get_object_safe()
+        if obj and getattr(obj, 'pk', None):
+            return self.namespaced_url(viewname, obj.pk)
+        return None
+
+    def get_list_url(self):
+        return self.namespaced_url(self.list_view)
+
+    def get_detail_url(self):
+        return self.get_object_url(self.detail_view)
+
+    def get_update_url(self):
+        return self.get_object_url(self.update_view)
+
+    def get_delete_url(self):
+        return self.get_object_url(self.delete_view)
+
+    def get_created_at(self):
+        obj = self.get_object_safe()
+        return getattr(obj, 'created_at', None) if obj else None
+
+    def get_updated_at(self):
+        obj = self.get_object_safe()
+        return getattr(obj, 'updated_at', None) if obj else None
+
+    def get_back_url(self):
+        """
+        back_view があれば namespaced_url でURLを返す。
+        失敗したり obj が無ければ fallback_redirect にリダイレクトURLを返す。
+        """
+        try:
+            if self.back_view:
+                return self.namespaced_url(self.back_view)
+        except NoReverseMatch:
+            pass
+
+        # fallback_redirect は名前（名前付きURL）かURL文字列のどちらでも対応
+        if self.fallback_redirect:
+            # URL文字列か名前か判別して返す簡易処理
+            if self.fallback_redirect.startswith(('http://', 'https://', '/')):
+                return self.fallback_redirect
+            else:
+                try:
+                    return reverse(self.fallback_redirect)
+                except NoReverseMatch:
+                    pass
+        return '/'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context = self.inject_page_title(context)
+        context.update(
+            {
+                'back_url': self.get_back_url(),
+                'detail_url': self.get_detail_url(),
+                'update_url': self.get_update_url(),
+                'delete_url': self.get_delete_url(),
+            }
+        )
+        return context
+
+
+class ObjectContextMixin(ObjectUrlMixin, BaseContextMixin):
+    """
+    タイトル + 作成・更新日時を context にまとめて注入したいとき用の合成Mixin。
+    """
+
+    pass
+
+
+class DetailFieldsMixin(ObjectContextMixin):
+    """
+    オブジェクトのフィールドを「ラベル + 値」の形で context['details'] に構築する Mixin。
+
+    - 通常の詳細ビューにおいて、テンプレート側でループして表示するために便利。
+    - `detail_exclude_fields` によって除外したいフィールドを指定可能。
+    - `detail_field_order` によって表示順を明示的にコントロール可能。
+    """
+
+    # 除外するフィールド名（デフォルトでよくある3つ）
+    detail_exclude_fields = ['id', 'created_at', 'updated_at']
+    # 表示順を固定したい場合はリストで指定（Noneなら全フィールドから自動生成）
+    detail_field_order = None
+
+    def get_detail_fields(self):
+        """
+        表示対象のフィールド名リストを取得し、ラベルと値のペアに変換。
+        context['details'] に格納される各要素は:
+            {
+                "label": "名前",
+                "value": "田中一郎"
+            }
+        のような形式。
+        """
+        obj = self.get_object()
+        model = obj.__class__
+
+        # 表示順が明示されていればそれを使う、なければ exclude_fields に従う
+        if self.detail_field_order is not None:
+            field_names = self.detail_field_order
+        else:
+            field_names = [
+                f.name
+                for f in model._meta.fields
+                if f.name not in self.detail_exclude_fields
+            ]
+
+        # フィールド名 → 表示ラベルと値のペアに変換
+        return [
+            {
+                "label": model._meta.get_field(name).verbose_name.title(),
+                "value": getattr(obj, name),
+            }
+            for name in field_names
+        ]
+
+    def get_context_data(self, **kwargs):
+        """
+        context に 'details' キーを追加。
+        テンプレートでは {{ details }} をループして表示に利用可能。
+        """
+        context = super().get_context_data(**kwargs)
+        context['details'] = self.get_detail_fields()
+
         return context

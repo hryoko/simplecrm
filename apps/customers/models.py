@@ -45,10 +45,9 @@ class Customer(models.Model):
         return self.name
 
     class Meta:
-        # verbose_name = '顧客(verbose_name)'
-        # verbose_name_plural = '顧客一覧(verbose_name_plural)'
-        # ordering = ['name_kana']
-        pass
+        verbose_name = '顧客'
+        verbose_name_plural = '顧客一覧'
+        ordering = ['created_at']
 
 
 # class PersonQuerySet(models.QuerySet):

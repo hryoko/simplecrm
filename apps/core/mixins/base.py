@@ -1,5 +1,4 @@
 # --- 基礎的・全体に関わるMixin ---
-from django.http import Http404
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -7,17 +6,6 @@ from django.views.generic import (
     ListView,
     UpdateView,
 )
-
-
-class SafeObjectMixin:
-    # object取得を安全に行う
-    def get_object_safe(self):
-        """get_object() を安全に実行し、
-        存在しない場合は None を返す"""
-        try:
-            return self.get_object()
-        except Http404:
-            return None
 
 
 class PageTitleMixin:
@@ -32,7 +20,6 @@ class PageTitleMixin:
 
 
 class AutoPageTitleMixin(PageTitleMixin):
-    page_title = None
     action_label = None
 
     def get_page_title(self):
@@ -59,3 +46,15 @@ class AutoPageTitleMixin(PageTitleMixin):
                 return '削除'
             case _:
                 return ''
+
+
+class BaseContextMixin(AutoPageTitleMixin):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = self.inject_page_title(context)
+
+        # from pprint import pprint
+
+        # pprint(context)  # ← これでコンソールに中身出る
+
+        return context
