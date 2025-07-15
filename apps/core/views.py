@@ -5,7 +5,6 @@ from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 
 from ..customers.models import Customer
-from .mixins.mixins import DebugContextView
 
 # @login_required
 # class HomeView(TemplateView):

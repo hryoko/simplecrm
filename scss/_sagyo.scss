@@ -1,129 +1,31 @@
-/* ------------------------------
-  Button
------------------------------- */
-
-:root {
-    /* === カラーパレット === */
-    --primary: #4682b4; // メインブルー（落ち着いた青）
-    --secondary: #eaf4ff; // 明るい背景ブルー
-    --accent: #5dade2; // アクセント青
-    --primary-fg: #fff; // 明るい色の前景（文字）
-
-    /* === ボタン === */
-    --button-fg: #fff;
-    --button-bg: var(--secondary);
-    --button-accent-bg: #007bff;
-    --button-danger-bg: #dc3545;
-    --button-danger-dark-bg: #c82333;
-    --button-hover-bg: #0056b3;
-    --default-button-bg: #205067;
-    --default-button-hover-bg: var(--secondary);
-
-
-    --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue",
-        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol", "Noto Color Emoji";
-
-    --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-        "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-        "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
-        monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+.body{
+    width: 400px;
+    // border: 1px solid #777;
 }
-// ----------------------
-// Reset
-// ----------------------
-button,
-input,
-textarea,
-select {
-    font: inherit;
-    color: inherit;
+/* 詳細行のレイアウト調整 */
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-button,
-input[type="submit"],
-input[type="button"] {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    line-height: inherit;
-    appearance: none;
-}
-
-// ----------------------
-// 1. Button Base
-// ----------------------
-%button-base {
-    display: inline-block;
-    font: inherit;
+/* ラベルと値 */
+.label {
     font-weight: bold;
-    font-size: 0.95em;
-    text-decoration: none;
-    background-color: var(--button-accent-bg);
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    box-sizing: border-box;
+    color: #555;
+    min-width: 120px;
 }
 
-
-a,
-button,
-input[type="submit"],
-input[type="button"] {
-    
-    // ----------------------
-    // 2. Standard Buttons → 基本スタイル
-    // ----------------------
-    &.btn {
-    @extend %button-base;
-    
-    &:hover {
-        background-color: var(--button-hover-bg);
-        text-decoration: none;
-    }
-    
-    &:disabled,
-    &[aria-disabled="true"] {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-    }
-    // ----------------------
-    // 3. Danger Button → 危険操作（削除など）
-    // ----------------------
-    &.btn-danger {
-        @extend %button-base;
-        background-color: var(--button-danger-bg, #dc3545);
-        color: #fff; // ← 明示的に
-    
-        &:hover {
-            background-color: var(--button-danger-dark-bg, #c82333);
-            text-decoration: none;
-        }
-    }
-    
-    // ----------------------
-    // 4. Outline Button → サブ操作（戻る、キャンセルなど）
-    // ----------------------
-    // &.btn-outline {
-    //     @extend %button-base;
-    //     background-color: transparent;
-    //     color: var(--button-accent-bg);
-    //     border: 2px solid var(--button-accent-bg);
-    
-    //     &:hover {
-    //         background-color: var(--button-accent-bg);
-    //         text-decoration: none;
-    //         color: #fff;
-    //     }
-    // }
+/* 値の右寄せ調整 */
+.value {
+    color: #222;
+    text-align: left;
+    flex: 1;
 }
 
-
+/* アクションボタン */
+.actions {
+    margin-top: 24px;
+    text-align: right;
+}

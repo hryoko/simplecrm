@@ -37,6 +37,8 @@ class Customer(models.Model):
         blank=True,
         null=True,
     )
+    # status = models.CharField( max_length=100)
+    # is_active = models.CharField( max_length=100)
     memo = models.TextField('メモ', blank=True)
     created_at = models.DateTimeField('登録日', default=timezone.now)
     updated_at = models.DateTimeField('更新日', auto_now=True)

@@ -48,13 +48,19 @@ class AutoPageTitleMixin(PageTitleMixin):
                 return ''
 
 
-class BaseContextMixin(AutoPageTitleMixin):
+class PageTitleFromObjectMixin(PageTitleMixin):
+    title_attr = 'name'  # モデルのどの属性をタイトルに使うか
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context = self.inject_page_title(context)
-
-        # from pprint import pprint
-
-        # pprint(context)  # ← これでコンソールに中身出る
-
+        obj = getattr(self, 'object', None)
+        if obj and hasattr(obj, self.title_attr):
+            context['page_title'] = getattr(obj, self.title_attr)
         return context
+
+
+class BaseContextMixin(AutoPageTitleMixin):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_page_title(context)

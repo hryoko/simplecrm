@@ -82,15 +82,24 @@ class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
         except AttributeError:
             return ''  # 存在しないキーなどを安全に無視
 
-    def get_context_data(self, **kwargs):
+    def inject_headers(self, context):
         """
-        context に headers と rows を追加。
+        context に headers を追加。
         """
-        context = super().get_context_data(**kwargs)
-        queryset = self.get_queryset()
-        headers = self.get_table_headers()
-        rows = self.get_table_rows(queryset, headers)
-        context['headers'] = headers
-        context['rows'] = rows
+        context['headers'] = self.get_table_headers()
+        return context
 
+    def inject_rows(self, context):
+        """
+        context に rows を追加。
+        """
+        queryset = self.get_queryset()
+        headers = context.get('headers') or self.get_table_headers()
+        context['rows'] = self.get_table_rows(queryset, headers)
+        return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = self.inject_headers(context)
+        context = self.inject_rows(context)
         return context

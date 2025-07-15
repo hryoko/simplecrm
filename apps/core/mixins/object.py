@@ -41,10 +41,13 @@ class ObjectTitleContextMixin:
                 return f"{value} の {self.get_page_title()}"
         return self.get_page_title()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def inject_title(self, context):
         context['title'] = self.get_context_title()
         return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_title(context)
 
 
 class ObjectMetaContextMixin(SafeObjectMixin):
@@ -58,9 +61,17 @@ class ObjectMetaContextMixin(SafeObjectMixin):
         """
         obj = self.get_object_safe()
         # 以下は削除検討中。テンプレートで問題なければ削除予定
-        context['created_at'] = getattr(obj, 'created_at', None)
-        context['updated_at'] = getattr(obj, 'updated_at', None)
+        context.update(
+            {
+                'created_at': getattr(obj, 'created_at', None),
+                'updated_at': getattr(obj, 'updated_at', None),
+            }
+        )
         return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_object_meta(context)
 
 
 class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
@@ -124,8 +135,7 @@ class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
                     pass
         return '/'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def inject_object_urls(self, context):
         context.update(
             {
                 'back_url': self.get_back_url(),
@@ -136,6 +146,10 @@ class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
         )
         return context
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_object_urls(context)
+
 
 class ObjectContextMixin(ObjectUrlMixin, BaseContextMixin):
     """
@@ -145,7 +159,7 @@ class ObjectContextMixin(ObjectUrlMixin, BaseContextMixin):
     pass
 
 
-class DetailFieldsMixin(ObjectContextMixin):
+class DetailFieldsMixin:
     """
     オブジェクトのフィールドを「ラベル + 値」の形で context['details'] に構築する Mixin。
 
@@ -191,12 +205,14 @@ class DetailFieldsMixin(ObjectContextMixin):
             for name in field_names
         ]
 
-    def get_context_data(self, **kwargs):
+    def inject_details(self, context):
         """
         context に 'details' キーを追加。
         テンプレートでは {{ details }} をループして表示に利用可能。
         """
-        context = super().get_context_data(**kwargs)
         context['details'] = self.get_detail_fields()
-
         return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_details(context)

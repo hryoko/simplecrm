@@ -1,0 +1,16 @@
+{% block extra_css %}{% endblock %}
+
+<div class="body">
+{% for item in details %}
+    <div class="row">
+      <span class="label">{{ item.label }}</span>
+      <span class="value detail-value">{{ item.value }}</span>
+    </div>
+    {% endfor %}
+    
+    <div class="actions">
+      {% if back_url %}<a class="btn" href="{{ back_url }}">戻る</a>{% endif %}
+      {% if update_url %}<a class="btn" href="{{ update_url }}">編集</a>{% endif %}
+      {% if delete_url %}<a class="btn-danger deletelink" href="{{ delete_url }}">削除</a>{% endif %}
+    </div>
+</div>

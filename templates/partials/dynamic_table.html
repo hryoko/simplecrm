@@ -2,23 +2,23 @@
 <table>
   <thead>
     <tr>
+      <th>編集</th>  {# 操作列はヘッダーとは別に追加 #}
       {% for header in headers %}
         <th>{{ header.label }}</th>
       {% endfor %}
-      <th>編集</th>  {# 操作列はヘッダーとは別に追加 #}
     </tr>
   </thead>
   <tbody>
     {% for row in rows %}
       <tr>
-        {% for header in headers %}
-          <td>{{ row|dict_get:header.key }}</td>
-        {% endfor %}
         <td>
           <a href="{{ row.detail_url }}">詳細</a> |
           <a href="{{ row.update_url }}">編集</a> |
-          <a href="{{ row.delete_url }}">削除</a>
+          <a href="{{ row.delete_url }}" style="pointer-events: none; color: gray;">削除</a>
         </td>
+        {% for header in headers %}
+          <td>{{ row|dict_get:header.key }}</td>
+        {% endfor %}
       </tr>
     {% endfor %}
   </tbody>

@@ -26,108 +26,36 @@ html[data-theme=light],
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-/* ------------------------------
-  Button
------------------------------- */
-:root {
-  /* === カラーパレット === */
-  --primary: #4682b4;
-  --secondary: #eaf4ff;
-  --accent: #5dade2;
-  --primary-fg: #fff;
-  /* === ボタン === */
-  --button-fg: #fff;
-  --button-bg: var(--secondary);
-  --button-accent-bg: #007bff;
-  --button-danger-bg: #dc3545;
-  --button-danger-dark-bg: #c82333;
-  --button-hover-bg: #0056b3;
-  --default-button-bg: #205067;
-  --default-button-hover-bg: var(--secondary);
-  --font-family-primary: "Segoe UI", system-ui, Roboto, "Helvetica Neue",
-      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
-      monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-      "Noto Color Emoji";
+.body {
+  width: 400px;
 }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
+/* 詳細行のレイアウト調整 */
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-button,
-input[type=submit],
-input[type=button] {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  line-height: inherit;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-a.btn-danger,
-button.btn-danger,
-input[type=submit].btn-danger,
-input[type=button].btn-danger, a.btn,
-button.btn,
-input[type=submit].btn,
-input[type=button].btn {
-  display: inline-block;
-  font: inherit;
+/* ラベルと値 */
+.label {
   font-weight: bold;
-  font-size: 0.95em;
-  text-decoration: none;
-  background-color: var(--button-accent-bg);
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  box-sizing: border-box;
+  color: #555;
+  min-width: 120px;
 }
 
-a.btn:hover,
-button.btn:hover,
-input[type=submit].btn:hover,
-input[type=button].btn:hover {
-  background-color: var(--button-hover-bg);
-  text-decoration: none;
+/* 値の右寄せ調整 */
+.value {
+  color: #222;
+  text-align: left;
+  flex: 1;
 }
-a.btn:disabled, a.btn[aria-disabled=true],
-button.btn:disabled,
-button.btn[aria-disabled=true],
-input[type=submit].btn:disabled,
-input[type=submit].btn[aria-disabled=true],
-input[type=button].btn:disabled,
-input[type=button].btn[aria-disabled=true] {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-a.btn-danger,
-button.btn-danger,
-input[type=submit].btn-danger,
-input[type=button].btn-danger {
-  background-color: var(--button-danger-bg, #dc3545);
-  color: #fff;
-}
-a.btn-danger:hover,
-button.btn-danger:hover,
-input[type=submit].btn-danger:hover,
-input[type=button].btn-danger:hover {
-  background-color: var(--button-danger-dark-bg, #c82333);
-  text-decoration: none;
+
+/* アクションボタン */
+.actions {
+  margin-top: 24px;
+  text-align: right;
 }
 
 /* ------------------------------
@@ -165,6 +93,14 @@ input[type=button].btn-danger:hover {
   --hairline-color: #e8e8e8;
   --border-color: #ccc;
   /* === ボタン === */
+  --button-fg: #fff;
+  --button-bg: var(--secondary);
+  --button-accent-bg: #007bff;
+  --button-danger-bg: #dc3545;
+  --button-danger-dark-bg: #c82333;
+  --button-hover-bg: #0056b3;
+  --default-button-bg: #205067;
+  --default-button-hover-bg: var(--secondary);
   /* === サイズ系 === */
   --header-height: 56px;
   --nav-sidebar-width: 240px;
@@ -232,30 +168,31 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
+  min-width: 600px;
 }
 
 h1 {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 1.75em;
-}
-
-h3 {
-  font-size: 1.5em;
-}
-
-h4 {
   font-size: 1.25em;
 }
 
+h2 {
+  font-size: 1.15em;
+}
+
+h3 {
+  font-size: 1.1em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
 h5 {
-  font-size: 1.125em;
+  font-size: 0.9em;
 }
 
 h6 {
-  font-size: 1em;
+  font-size: 0.85em;
 }
 
 /* ------------------------------
@@ -371,7 +308,7 @@ header .user-menu {
 ------------------------------ */
 .main-content {
   background: #fff;
-  padding: 2rem;
+  padding: 1rem;
   flex: 1;
   overflow-y: auto;
   min-height: calc(100vh - var(--header-height));
@@ -387,21 +324,31 @@ header .user-menu {
   Table
 ------------------------------ */
 table {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   width: 100%;
   border-collapse: collapse;
   background: #fff;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  /* 自動調整に任せる */
+  /* 内容に合わせた横幅にする */
 }
 table thead {
   background-color: var(--secondary);
 }
+table th {
+  font-size: 11px;
+  text-align: left;
+}
+table td {
+  font-size: 13px;
+}
 table th,
 table td {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid #eee;
+  /* 改行させず、横に広げる */
 }
 table tbody tr:hover {
   background-color: #f3f6ff;
@@ -432,7 +379,6 @@ table tbody tr:nth-child(even) {
   align-items: center;
   justify-content: flex-start;
   gap: 0.5em;
-  padding: 0.5em 0;
   border-bottom: 1px solid #eee;
 }
 .component-card .card-body .card-row .label {
@@ -495,6 +441,85 @@ table tbody tr:nth-child(even) {
 /* ------------------------------
   Responsive: モバイル対応
 ------------------------------ */
+/* ------------------------------
+  Button
+------------------------------ */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+input[type=submit],
+input[type=button] {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  line-height: inherit;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+a.btn-danger,
+button.btn-danger,
+input[type=submit].btn-danger,
+input[type=button].btn-danger, a.btn,
+button.btn,
+input[type=submit].btn,
+input[type=button].btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: bold;
+  font-size: 0.95em;
+  text-decoration: none;
+  background-color: var(--button-accent-bg);
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+a.btn:hover,
+button.btn:hover,
+input[type=submit].btn:hover,
+input[type=button].btn:hover {
+  background-color: var(--button-hover-bg);
+  text-decoration: none;
+}
+a.btn:disabled, a.btn[aria-disabled=true],
+button.btn:disabled,
+button.btn[aria-disabled=true],
+input[type=submit].btn:disabled,
+input[type=submit].btn[aria-disabled=true],
+input[type=button].btn:disabled,
+input[type=button].btn[aria-disabled=true] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+a.btn-danger,
+button.btn-danger,
+input[type=submit].btn-danger,
+input[type=button].btn-danger {
+  background-color: var(--button-danger-bg, #dc3545);
+  color: #fff;
+}
+a.btn-danger:hover,
+button.btn-danger:hover,
+input[type=submit].btn-danger:hover,
+input[type=button].btn-danger:hover {
+  background-color: var(--button-danger-dark-bg, #c82333);
+  text-decoration: none;
+}
+
 /* ------------------------------
   開発中のセクション色分け（見やすさ用）
 ------------------------------ */

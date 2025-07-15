@@ -13,6 +13,7 @@ from apps.core.mixins import (
     DeleteViewMixin,
     DetailViewMixin,
     ListViewMixin,
+    PageTitleFromObjectMixin,
     UpdateViewMixin,
 )
 
@@ -27,7 +28,6 @@ class CustomerListView(ListViewMixin, ListView):
     namespace = 'customers'
     # exclude_fields = ['memo', 'created_at', 'updated_at']
     wanted_field_keys = ['id', 'name', 'name_kana', 'age', 'phone', 'email']
-    wanted_field_keys = ['id', 'name', 'age', 'phone']
 
 
 class CustomerCreateView(CreateViewMixin, CreateView):
@@ -35,22 +35,21 @@ class CustomerCreateView(CreateViewMixin, CreateView):
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
     success_url = reverse_lazy('list')
-    object_title_field = 'name'
 
 
-class CustomerDetailView(DetailViewMixin, DetailView):
+class CustomerDetailView(PageTitleFromObjectMixin, DetailViewMixin, DetailView):
     model = Customer
     template_name = 'customers/customer_detail.html'
     context_object_name = 'customer'
     namespace = 'customers'
     # detail_exclude_fields = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
+    title_attr = 'name'
 
 
 class CustomerUpdateView(UpdateViewMixin, UpdateView):
     model = Customer
     form_class = CustomerForm
     template_name = 'customers/customer_form.html'
-    object_title_field = 'name'
 
     def get_success_url(self):
         return reverse('customers:detail', kwargs={'pk': self.object.pk})
@@ -61,4 +60,3 @@ class CustomerDeleteView(DeleteViewMixin, DeleteView):
     template_name = 'customers/customer_confirm_delete.html'
     success_url = reverse_lazy('customers:list')
     # back_view = 'detail'
-    object_title_field = 'name'

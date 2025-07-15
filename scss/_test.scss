@@ -43,11 +43,14 @@
     --border-color: #ccc;
 
     /* === ボタン === */
-    // --button-fg: #fff;
-    // --button-bg: var(--secondary);
-    // --button-hover-bg: #205067;
-    // --default-button-bg: #205067;
-    // --default-button-hover-bg: var(--secondary);
+    --button-fg: #fff;
+    --button-bg: var(--secondary);
+    --button-accent-bg: #007bff;
+    --button-danger-bg: #dc3545;
+    --button-danger-dark-bg: #c82333;
+    --button-hover-bg: #0056b3;
+    --default-button-bg: #205067;
+    --default-button-hover-bg: var(--secondary);
 
     /* === サイズ系 === */
     --header-height: 56px;
@@ -121,34 +124,15 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 1rem;
+    min-width: 600px;
 }
 
-
-h1 {
-    font-size: 2em;
-}
-
-h2 {
-    font-size: 1.75em;
-}
-
-h3 {
-    font-size: 1.5em;
-}
-
-h4 {
-    font-size: 1.25em;
-}
-
-h5 {
-    font-size: 1.125em;
-}
-
-h6 {
-    font-size: 1em;
-}
-
-
+h1 { font-size: 1.25em; }
+h2 { font-size: 1.15em; }
+h3 { font-size: 1.1em; }
+h4 { font-size: 1em; }
+h5 { font-size: 0.9em; }
+h6 { font-size: 0.85em; }
 
 /* ------------------------------
   Header
@@ -277,7 +261,7 @@ header {
 ------------------------------ */
 .main-content {
     background: #fff;
-    padding: 2rem;
+    padding: 1rem;
     flex: 1;
     overflow-y: auto;
     min-height: calc(100vh - var(--header-height));
@@ -293,22 +277,34 @@ header {
   Table
 ------------------------------ */
 table {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     width: 100%;
     border-collapse: collapse;
     background: #fff;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    // table-layout: auto;
+    /* 自動調整に任せる */
+    // width: max-content;
+    /* 内容に合わせた横幅にする */
 
     thead {
         background-color: var(--secondary);
     }
-
+    th {
+        font-size: 11px;
+        text-align: left;
+    }
+    td {
+        font-size: 13px;
+    }
     th,
     td {
-        padding: 0.75rem 1rem;
+        padding: 0.5rem;
         border-bottom: 1px solid #eee;
+        // white-space: nowrap;
+        /* 改行させず、横に広げる */
     }
 
     tbody tr:hover {
@@ -346,7 +342,7 @@ table {
             align-items: center;
             justify-content: flex-start; // 明示的に記入
             gap: 0.5em;
-            padding: 0.5em 0;
+            // padding: 0.5em 0;
             border-bottom: 1px solid #eee;
 
             .label {
@@ -461,3 +457,105 @@ table {
 // }
 
 
+/* ------------------------------
+  Button
+------------------------------ */
+
+
+
+// ----------------------
+// Reset
+// ----------------------
+button,
+input,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button,
+input[type="submit"],
+input[type="button"] {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    line-height: inherit;
+    appearance: none;
+}
+
+// ----------------------
+// 1. Button Base
+// ----------------------
+%button-base {
+    display: inline-block;
+    font: inherit;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-decoration: none;
+    background-color: var(--button-accent-bg);
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+
+a,
+button,
+input[type="submit"],
+input[type="button"] {
+
+    // ----------------------
+    // 2. Standard Buttons → 基本スタイル
+    // ----------------------
+    &.btn {
+        @extend %button-base;
+
+        &:hover {
+            background-color: var(--button-hover-bg);
+            text-decoration: none;
+        }
+
+        &:disabled,
+        &[aria-disabled="true"] {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    }
+
+    // ----------------------
+    // 3. Danger Button → 危険操作（削除など）
+    // ----------------------
+    &.btn-danger {
+        @extend %button-base;
+        background-color: var(--button-danger-bg, #dc3545);
+        color: #fff; // ← 明示的に
+
+        &:hover {
+            background-color: var(--button-danger-dark-bg, #c82333);
+            text-decoration: none;
+        }
+    }
+
+    // ----------------------
+    // 4. Outline Button → サブ操作（戻る、キャンセルなど）
+    // ----------------------
+    // &.btn-outline {
+    //     @extend %button-base;
+    //     background-color: transparent;
+    //     color: var(--button-accent-bg);
+    //     border: 2px solid var(--button-accent-bg);
+
+    //     &:hover {
+    //         background-color: var(--button-accent-bg);
+    //         text-decoration: none;
+    //         color: #fff;
+    //     }
+    // }
+}

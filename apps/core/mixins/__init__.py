@@ -1,4 +1,9 @@
-from .base import AutoPageTitleMixin, BaseContextMixin, PageTitleMixin
+from .base import (
+    AutoPageTitleMixin,
+    BaseContextMixin,
+    PageTitleFromObjectMixin,
+    PageTitleMixin,
+)
 from .list import ListViewMixin
 from .object import (
     DetailFieldsMixin,
@@ -8,14 +13,21 @@ from .object import (
     SafeObjectMixin,
 )
 from .urls import AutoNamespaceMixin
-from .view import CreateViewMixin, DeleteViewMixin, DetailViewMixin, UpdateViewMixin
+from .view import (
+    CreateViewMixin,
+    DeleteViewMixin,
+    DetailViewMixin,
+    FormContextMixin,
+    UpdateViewMixin,
+)
 
 # 必要なら ObjectViewMixin や NavigationMixin も
 __all__ = [
-    "ListViewMixin",
-    "CreateViewMixin",
-    "UpdateViewMixin",
-    "DeleteViewMixin",
-    "DetailViewMixin",
-    "BaseContextMixin",
+    'ListViewMixin',
+    'CreateViewMixin',
+    'UpdateViewMixin',
+    'DeleteViewMixin',
+    'DetailViewMixin',
+    'BaseContextMixin',
+    'PageTitleFromObjectMixin',
 ]

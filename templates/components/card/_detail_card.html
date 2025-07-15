@@ -1,4 +1,4 @@
-{% extends "components/_card_base.html" %}
+{% extends "components/card/_card_base.html" %}
 
 {% block card_body %}
 
@@ -8,7 +8,6 @@
   <span class="value detail-value">{{ item.value }}</span>
 </div>
 {% endfor %}
-
 
 <div class="actions">
   {% if back_url %}<a class="btn" href="{{ back_url }}">戻る</a>{% endif %}

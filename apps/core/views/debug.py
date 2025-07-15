@@ -3,7 +3,7 @@ import pprint
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
-from .base import BaseContextMixin
+from ..mixins.base import BaseContextMixin
 
 
 class DebugContextView(BaseContextMixin, TemplateView):
