@@ -13,8 +13,7 @@
       <tr>
         <td>
           <a href="{{ row.detail_url }}">詳細</a> |
-          <a href="{{ row.update_url }}">編集</a> |
-          <a href="{{ row.delete_url }}" style="pointer-events: none; color: gray;">削除</a>
+          <a href="{{ row.update_url }}">編集</a>
         </td>
         {% for header in headers %}
           <td>{{ row|dict_get:header.key }}</td>

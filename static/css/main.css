@@ -150,6 +150,85 @@ a:hover {
 }
 
 /* ------------------------------
+  Button
+------------------------------ */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+input[type=submit],
+input[type=button] {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: inherit;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+a.btn-danger,
+button.btn-danger,
+input[type=submit].btn-danger,
+input[type=button].btn-danger, a.btn,
+button.btn,
+input[type=submit].btn,
+input[type=button].btn {
+  display: inline-block;
+  font: inherit;
+  font-weight: bold;
+  font-size: 0.95em;
+  text-decoration: none;
+  background-color: var(--button-accent-bg);
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+a.btn:hover,
+button.btn:hover,
+input[type=submit].btn:hover,
+input[type=button].btn:hover {
+  background-color: var(--button-hover-bg);
+  text-decoration: none;
+}
+a.btn:disabled, a.btn[aria-disabled=true],
+button.btn:disabled,
+button.btn[aria-disabled=true],
+input[type=submit].btn:disabled,
+input[type=submit].btn[aria-disabled=true],
+input[type=button].btn:disabled,
+input[type=button].btn[aria-disabled=true] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+a.btn-danger,
+button.btn-danger,
+input[type=submit].btn-danger,
+input[type=button].btn-danger {
+  background-color: var(--button-danger-bg, #dc3545);
+  color: #fff;
+}
+a.btn-danger:hover,
+button.btn-danger:hover,
+input[type=submit].btn-danger:hover,
+input[type=button].btn-danger:hover {
+  background-color: var(--button-danger-dark-bg, #c82333);
+  text-decoration: none;
+}
+
+/* ------------------------------
   Layout Components
 ------------------------------ */
 .sticky {
@@ -208,9 +287,11 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 header .menu-button {
-  font-size: 1.25rem;
-  background: none;
   color: var(--primary);
+}
+header .menu-button svg {
+  width: 24px;
+  vertical-align: bottom;
 }
 header .site-logo {
   margin-left: 1rem;
@@ -236,6 +317,9 @@ header .search-box input {
 header .user-menu {
   margin-left: auto;
   font-size: 1.2rem;
+}
+header .user-menu svg {
+  width: 24px;
 }
 
 /* 全体レイアウト（サイドバー＋メイン） */
@@ -284,9 +368,8 @@ header .user-menu {
   background-color: var(--sidebar-hover);
   border-radius: 6px;
 }
-.sidebar nav a i,
-.sidebar nav .nav-button i {
-  font-size: 1rem;
+.sidebar nav a svg,
+.sidebar nav .nav-button svg {
   margin-right: 1.5rem;
   width: 24px;
   flex-shrink: 0;
@@ -441,85 +524,6 @@ table tbody tr:nth-child(even) {
 /* ------------------------------
   Responsive: モバイル対応
 ------------------------------ */
-/* ------------------------------
-  Button
------------------------------- */
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-}
-
-button,
-input[type=submit],
-input[type=button] {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  line-height: inherit;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-a.btn-danger,
-button.btn-danger,
-input[type=submit].btn-danger,
-input[type=button].btn-danger, a.btn,
-button.btn,
-input[type=submit].btn,
-input[type=button].btn {
-  display: inline-block;
-  font: inherit;
-  font-weight: bold;
-  font-size: 0.95em;
-  text-decoration: none;
-  background-color: var(--button-accent-bg);
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  box-sizing: border-box;
-}
-
-a.btn:hover,
-button.btn:hover,
-input[type=submit].btn:hover,
-input[type=button].btn:hover {
-  background-color: var(--button-hover-bg);
-  text-decoration: none;
-}
-a.btn:disabled, a.btn[aria-disabled=true],
-button.btn:disabled,
-button.btn[aria-disabled=true],
-input[type=submit].btn:disabled,
-input[type=submit].btn[aria-disabled=true],
-input[type=button].btn:disabled,
-input[type=button].btn[aria-disabled=true] {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-a.btn-danger,
-button.btn-danger,
-input[type=submit].btn-danger,
-input[type=button].btn-danger {
-  background-color: var(--button-danger-bg, #dc3545);
-  color: #fff;
-}
-a.btn-danger:hover,
-button.btn-danger:hover,
-input[type=submit].btn-danger:hover,
-input[type=button].btn-danger:hover {
-  background-color: var(--button-danger-dark-bg, #c82333);
-  text-decoration: none;
-}
-
 /* ------------------------------
   開発中のセクション色分け（見やすさ用）
 ------------------------------ */

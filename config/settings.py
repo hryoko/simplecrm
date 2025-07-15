@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'accounts',
     'apps.core',
     'apps.customers',
-    'apps.bottles',
-    'apps.reservations',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'

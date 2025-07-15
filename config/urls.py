@@ -42,12 +42,8 @@ urlpatterns = [
     ),
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls', namespace='core')),
-    # path('', include('apps.core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # 認証URLを一式を登録
     path('customers/', include('apps.customers.urls')),
-    path('bottles/', include('apps.bottles.urls')),
-    path('reservations/', include('apps.reservations.urls')),
-    # path('', include('core.urls')),  # コア機能のURLパターン
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
