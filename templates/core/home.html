@@ -3,28 +3,90 @@
 
 {% block content %}
 <style>
-  .home h2 {
-    color: #0d6efd;
-    font-weight: 700;
-    border-bottom: 2px solid #0d6efd;
-    padding: 0.2em;
+  .tab-box {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0;
   }
-  .home p { color:red; }
-  .home hr {margin-top: 1em;}
+
+  .tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .tab-buttons button {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: none;
+    border-right: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .tab-buttons button:last-child {
+    border-right: none;
+  }
+
+  .tab-buttons button.active {
+    color: white;
+    background-color: #777;
+    border-bottom: 1px solid white; /* 下だけ白にして "つながってる" 感を出す */
+  }
+
+  .tab-content {
+    display: none;
+    padding: 1rem;
+    background-color: white;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
 </style>
+
 <div class="home">
   <h2>ホーム</h2>
   <p>このページから管理画面機能にアクセスできます。</p>
-  <hr>
-</div>
-  <h1>h1テキスト</h1>
-  <h2>h2テキスト</h2>
-  <h3>h3テキスト</h3>
-  <h4>h4テキスト</h4>
-  <h5>h5テキスト</h5>
-  <h6>h6テキスト</h6>
-  <hr>
 
-{% include "core/_meta_table.html" %}
-{% include "core/_field_info.html" %}
+  <div class="tab-buttons">
+    <button class="tab-button active" data-target="test-tab">test</button>
+    <button class="tab-button" data-target="meta-tab">🧩 メタ情報</button>
+    <button class="tab-button" data-target="field-tab">🗂 フィールド情報</button>
+  </div>
+  
+  <div class="tab-box">
+    <div id="test-tab" class="tab-content active">
+      {% include "core/_test.html" %}
+    </div>
+
+    <div id="meta-tab" class="tab-content">
+      {% include "core/_meta_table.html" %}
+    </div>
+
+    <div id="field-tab" class="tab-content">
+      {% include "core/_field_info.html" %}
+    </div>
+  </div>
+</div>
+  
+<script>
+  const buttons = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // 全ボタン・全コンテンツを非アクティブに
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      // 選択されたボタン・コンテンツをアクティブに
+      button.classList.add('active');
+      const target = document.getElementById(button.dataset.target);
+      target.classList.add('active');
+    });
+  });
+</script>
 {% endblock %}

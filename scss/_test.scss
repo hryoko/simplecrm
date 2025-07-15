@@ -104,6 +104,15 @@ a {
     }
 }
 
+a,
+button {
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+    }
+}
+
 /* ------------------------------
   Button
 ------------------------------ */
@@ -223,7 +232,7 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 1rem;
-    min-width: 600px;
+    min-width: 400px;
 }
 
 h1 { font-size: 1.25em; }
@@ -242,21 +251,14 @@ header {
     height: var(--header-height);
     display: flex;
     align-items: center;
-    padding: 0 22px;
+    padding: 0 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 
     .menu-button {
-        color: var(--primary);
-        
-        svg {
-            width: 24px;
-            // display: block;
-            vertical-align: bottom; // or bottom or text-bottom
-        }
+        margin-right: 1.5rem;
     }
 
     .site-logo {
-        margin-left: 1rem;
         font-size: 1.2rem;
         font-weight: bold;
         color: var(--primary);
@@ -265,7 +267,6 @@ header {
             text-decoration: none;
             font-size: 1.2em;
             font-weight: bold;
-            color: var(--accent);
         }
     }
 
@@ -342,7 +343,6 @@ header {
 
             svg {
                 margin-right: 1.5rem;
-                width: 24px;
                 flex-shrink: 0;
             }
 

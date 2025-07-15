@@ -26,38 +26,6 @@ html[data-theme=light],
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.body {
-  width: 400px;
-}
-
-/* 詳細行のレイアウト調整 */
-.row {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-/* ラベルと値 */
-.label {
-  font-weight: bold;
-  color: #555;
-  min-width: 120px;
-}
-
-/* 値の右寄せ調整 */
-.value {
-  color: #222;
-  text-align: left;
-  flex: 1;
-}
-
-/* アクションボタン */
-.actions {
-  margin-top: 24px;
-  text-align: right;
-}
-
 /* ------------------------------
   CSS Variables（設計用トークン）
 ------------------------------ */
@@ -147,6 +115,13 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+
+a svg,
+button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
 }
 
 /* ------------------------------
@@ -247,7 +222,7 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  min-width: 600px;
+  min-width: 400px;
 }
 
 h1 {
@@ -283,18 +258,13 @@ header {
   height: var(--header-height);
   display: flex;
   align-items: center;
-  padding: 0 22px;
+  padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 header .menu-button {
-  color: var(--primary);
-}
-header .menu-button svg {
-  width: 24px;
-  vertical-align: bottom;
+  margin-right: 1.5rem;
 }
 header .site-logo {
-  margin-left: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--primary);
@@ -303,7 +273,6 @@ header .site-logo a {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
-  color: var(--accent);
 }
 header .search-box {
   margin: 0 auto;
@@ -371,7 +340,6 @@ header .user-menu svg {
 .sidebar nav a svg,
 .sidebar nav .nav-button svg {
   margin-right: 1.5rem;
-  width: 24px;
   flex-shrink: 0;
 }
 .sidebar nav a.active,
@@ -524,6 +492,38 @@ table tbody tr:nth-child(even) {
 /* ------------------------------
   Responsive: モバイル対応
 ------------------------------ */
+.body {
+  width: 400px;
+}
+
+/* 詳細行のレイアウト調整 */
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* ラベルと値 */
+.label {
+  font-weight: bold;
+  color: #555;
+  min-width: 120px;
+}
+
+/* 値の右寄せ調整 */
+.value {
+  color: #222;
+  text-align: left;
+  flex: 1;
+}
+
+/* アクションボタン */
+.actions {
+  margin-top: 24px;
+  text-align: right;
+}
+
 /* ------------------------------
   開発中のセクション色分け（見やすさ用）
 ------------------------------ */
