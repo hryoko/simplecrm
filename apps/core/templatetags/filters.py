@@ -1,6 +1,23 @@
 from django import template
 
+from ..utils.utility import format_phone_number, normalize_phone_number
+
 register = template.Library()
+
+
+@register.filter
+def normalize_phone(value):
+    return normalize_phone_number(value)
+
+
+@register.filter
+def format_phone(value):
+    return format_phone_number(value)
+
+
+# 使用例
+# {% load core_filters %}
+# 電話番号: {{person.phone_number | format_phone}}
 
 
 @register.simple_tag

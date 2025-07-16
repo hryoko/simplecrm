@@ -4,7 +4,7 @@
 {% block content %}
 <style>
   .tab-box {
-    border: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     border-radius: 6px;
     padding: 0;
   }
@@ -53,6 +53,7 @@
 
   <div class="tab-buttons">
     <button class="tab-button active" data-target="test-tab">test</button>
+    <button class="tab-button" data-target="flow-tab">面接フロー</button>
     <button class="tab-button" data-target="meta-tab">🧩 メタ情報</button>
     <button class="tab-button" data-target="field-tab">🗂 フィールド情報</button>
   </div>
@@ -62,6 +63,10 @@
       {% include "core/_test.html" %}
     </div>
 
+    <div id="flow-tab" class="tab-content">
+      {% include "core/_interview_flow.html" %}
+    </div>
+    
     <div id="meta-tab" class="tab-content">
       {% include "core/_meta_table.html" %}
     </div>

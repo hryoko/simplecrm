@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="margin: 16px 0;">
+  <a href="{% url 'persons:create' %}">新規顧客登録</a>
+</div>
+
+<div style="margin-bottom: 16px;">
+  <form method="get">
+    検索: <input type="text" name="name" value="{{ request.GET.name }}">
+    <button type="submit" style="font-size: 0.95em; background-color: orange; border-radius: 4px; padding: 0.2em 0.5em;">絞り込み</button>
+  </form>
+</div>
+
+{% include 'partials/dynamic_table.html' with headers=headers rows=rows %}
+
+{% endblock %}

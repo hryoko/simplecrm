@@ -1,0 +1,109 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>ステップ番号</th>
+      <th>ステップ内容</th>
+      <th>担当</th>
+      <th>発生しうる状態・イベント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>応募者から問い合わせ（メール、電話、LINE）</td>
+      <td>応募者</td>
+      <td>問い合わせあり</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>コールセンターで初期受付</td>
+      <td>受付担当（複数人）</td>
+      <td>応答、対応開始</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>個人情報（名前、電話番号など）の聴取</td>
+      <td>受付担当（複数人）</td>
+      <td>プロフィール登録</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>面接日時の聞き出し</td>
+      <td>受付担当（複数人）</td>
+      <td>面接日時未確定状態<br>キャンセル・辞退・連絡途絶も発生可能</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>面接日時の決定</td>
+      <td>受付担当（複数人）</td>
+      <td>面接日時確定<br>キャンセル・辞退・連絡途絶も発生可能</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>面接前日確認の連絡</td>
+      <td>受付担当（複数人）</td>
+      <td>前日確認済み記録<br>キャンセル・辞退・連絡途絶も発生可能</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>面接当日・面接後結果入力</td>
+      <td>面接担当（複数人）</td>
+      <td>面接結果入力<br>体験希望有無の決定<br>キャンセル・辞退・連絡途絶も発生可能</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>体験日</td>
+      <td>体験担当（複数人）</td>
+      <td>体験結果入力（実施したかどうか）<br>キャンセル・辞退・連絡途絶も発生可能</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>エンティティ名</th>
+      <th>主な属性例</th>
+      <th>関連（リレーション）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Applicant (応募者)</td>
+      <td>id, name, phone, email, LINE ID 等</td>
+      <td>1対多 Inquiry</td>
+    </tr>
+    <tr>
+      <td>Inquiry (問い合わせ)</td>
+      <td>id, applicant_id(FK), method(メール等), content, created_at</td>
+      <td>多対1 Applicant</td>
+    </tr>
+    <tr>
+      <td>Reception (受付記録)</td>
+      <td>id, inquiry_id(FK), staff_id, received_at, status (受付状況)</td>
+      <td>多対1 Inquiry</td>
+    </tr>
+    <tr>
+      <td>InterviewSchedule (面接日時)</td>
+      <td>id, applicant_id(FK), scheduled_date, status（確定、未確定、キャンセル等）</td>
+      <td>多対1 Applicant</td>
+    </tr>
+    <tr>
+      <td>InterviewConfirmation (前日確認)</td>
+      <td>id, interview_schedule_id(FK), confirmed_at, status（確認済み、連絡途絶等）</td>
+      <td>多対1 InterviewSchedule</td>
+    </tr>
+    <tr>
+      <td>InterviewResult (面接結果)</td>
+      <td>id, applicant_id(FK), interview_date, result（合格、不合格、辞退等）, notes</td>
+      <td>多対1 Applicant</td>
+    </tr>
+    <tr>
+      <td>TrialExperience (体験)</td>
+      <td>id, applicant_id(FK), trial_date, result（参加、キャンセル等）, notes</td>
+      <td>多対1 Applicant</td>
+    </tr>
+  </tbody>
+</table>
