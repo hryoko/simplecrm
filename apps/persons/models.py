@@ -2,12 +2,11 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 
-from apps.core.models import TimeStampedModel
 from apps.masters.models import Branch
 
 
 class Idcard(models.Model):
-    name = models.CharField('名称', max_length=20)
+    name = models.CharField('身分証', max_length=20)
 
     def __str__(self):
         return self.name
@@ -28,7 +27,7 @@ class Person(models.Model):
         ),
     )
     phone = models.CharField(
-        'TEL',
+        'PHONE',
         max_length=11,
         unique=True,
         blank=True,

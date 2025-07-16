@@ -52,19 +52,24 @@
   <p>このページから管理画面機能にアクセスできます。</p>
 
   <div class="tab-buttons">
-    <button class="tab-button active" data-target="test-tab">test</button>
+    <button class="tab-button active" data-target="plan-tab">制作フロー</button>
     <button class="tab-button" data-target="flow-tab">面接フロー</button>
+    <button class="tab-button" data-target="test-tab">test</button>
     <button class="tab-button" data-target="meta-tab">🧩 メタ情報</button>
     <button class="tab-button" data-target="field-tab">🗂 フィールド情報</button>
   </div>
   
   <div class="tab-box">
-    <div id="test-tab" class="tab-content active">
-      {% include "core/_test.html" %}
+      <div id="plan-tab" class="tab-content active">
+      {% include "core/_plan.html" %}
     </div>
 
     <div id="flow-tab" class="tab-content">
       {% include "core/_interview_flow.html" %}
+    </div>
+    
+    <div id="test-tab" class="tab-content">
+      {% include "core/_test.html" %}
     </div>
     
     <div id="meta-tab" class="tab-content">

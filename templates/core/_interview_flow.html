@@ -71,39 +71,44 @@
   </thead>
   <tbody>
     <tr>
-      <td>Applicant (応募者)</td>
-      <td>id, name, phone, email, LINE ID 等</td>
-      <td>1対多 Inquiry</td>
+      <td><strong>Person</strong>（応募者）</td>
+      <td>id, name, name_kana, phone, email, line_id, created_at, updated_at</td>
+      <td>1対多 Inquiry、InterviewSchedule、InterviewResult、TrialExperience</td>
     </tr>
     <tr>
-      <td>Inquiry (問い合わせ)</td>
-      <td>id, applicant_id(FK), method(メール等), content, created_at</td>
-      <td>多対1 Applicant</td>
+      <td><strong>Inquiry</strong>（問い合わせ）</td>
+      <td>id, applicant_id(FK), method, content, created_at</td>
+      <td>多対1 Applicant<br>1対1 Reception</td>
     </tr>
     <tr>
-      <td>Reception (受付記録)</td>
-      <td>id, inquiry_id(FK), staff_id, received_at, status (受付状況)</td>
-      <td>多対1 Inquiry</td>
+      <td><strong>Reception</strong>（受付）</td>
+      <td>id, inquiry_id(FK), staff_id, received_at, status, <strong>branch_id(FK)</strong></td>
+      <td>多対1 Inquiry<br>多対1 Branch</td>
     </tr>
     <tr>
-      <td>InterviewSchedule (面接日時)</td>
-      <td>id, applicant_id(FK), scheduled_date, status（確定、未確定、キャンセル等）</td>
-      <td>多対1 Applicant</td>
+      <td><strong>InterviewSchedule</strong>（面接予定）</td>
+      <td>id, applicant_id(FK), scheduled_date, status, <strong>branch_id(FK)</strong>, created_at</td>
+      <td>多対1 Applicant<br>多対1 Branch<br>1対1 InterviewConfirmation</td>
     </tr>
     <tr>
-      <td>InterviewConfirmation (前日確認)</td>
-      <td>id, interview_schedule_id(FK), confirmed_at, status（確認済み、連絡途絶等）</td>
+      <td><strong>InterviewConfirmation</strong>（前日確認）</td>
+      <td>id, interview_schedule_id(FK), confirmed_at, status</td>
       <td>多対1 InterviewSchedule</td>
     </tr>
     <tr>
-      <td>InterviewResult (面接結果)</td>
-      <td>id, applicant_id(FK), interview_date, result（合格、不合格、辞退等）, notes</td>
+      <td><strong>InterviewResult</strong>（面接結果）</td>
+      <td>id, applicant_id(FK), interview_date, result, notes</td>
       <td>多対1 Applicant</td>
     </tr>
     <tr>
-      <td>TrialExperience (体験)</td>
-      <td>id, applicant_id(FK), trial_date, result（参加、キャンセル等）, notes</td>
-      <td>多対1 Applicant</td>
+      <td><strong>TrialExperience</strong>（体験）</td>
+      <td>id, applicant_id(FK), trial_date, result, notes, <strong>branch_id(FK)</strong></td>
+      <td>多対1 Applicant<br>多対1 Branch</td>
+    </tr>
+    <tr>
+      <td><strong>Branch</strong>（店舗）</td>
+      <td>id, name, location, is_active</td>
+      <td>1対多 Reception、InterviewSchedule、TrialExperience</td>
     </tr>
   </tbody>
 </table>

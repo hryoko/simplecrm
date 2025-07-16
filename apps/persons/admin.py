@@ -11,14 +11,14 @@ class CustomerAdmin(admin.ModelAdmin):
         'full_name_kana',
         'age',
         'phone',
-        'email',
-        'line_name',
+        # 'email',
+        # 'line_name',
         'branch',
         'idcard',
         # 'created_at',
     )
-    search_fields = ('full_name', 'full_name_kana', 'phone', 'email', 'line')
-    list_filter = ('created_at',)
+    list_filter = ('branch', 'idcard', 'created_at')
+    search_fields = ('full_name', 'full_name_kana', 'phone', 'email', 'line_name')
 
     # fieldsets = (
     #     ('基本情報', {'fields': ('full_name', 'full_name_kana', 'age')}),
@@ -29,4 +29,5 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 @admin.register(Idcard)
-class IdcardAdmin(admin.ModelAdmin): ...
+class IdcardAdmin(admin.ModelAdmin):
+    list_display = ('name',)

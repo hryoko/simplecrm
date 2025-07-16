@@ -28,6 +28,7 @@ class PersonListView(ListViewMixin, ListView):
     namespace = 'persons'
     # exclude_fields = ['memo', 'created_at', 'updated_at']
     # wanted_field_keys = ['id', 'full_name', 'full_name_kana', 'age', 'phone', 'email']
+    paginate_by = 10
 
 
 class PersonCreateView(CreateViewMixin, CreateView):

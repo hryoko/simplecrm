@@ -1,0 +1,100 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>番号</th>
+      <th>ステップ</th>
+      <th>目的・内容</th>
+      <th>着手ファイル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>①</td>
+      <td>Person モデルと管理画面（Admin）</td>
+      <td>
+        全ての起点となるモデル<br>
+        氏名・連絡先・LINE・登録日時などの入力・表示<br>
+        仮データで全体フロー確認が容易に
+      </td>
+      <td>
+        persons/models/person.py<br>
+        persons/admin.py<br>
+        persons/forms/person_form.py
+      </td>
+    </tr>
+    <tr>
+      <td>②</td>
+      <td>Inquiry（問い合わせ）</td>
+      <td>
+        Personと紐づき、問い合わせ経路を記録<br>
+        複数問い合わせ対応を想定した設計
+      </td>
+      <td>
+        inquiries/models/inquiry.py<br>
+        inquiries/views/inquiry_create.py
+      </td>
+    </tr>
+    <tr>
+      <td>③</td>
+      <td>Reception（受付記録）</td>
+      <td>
+        コールセンターの対応記録（受付者、日時、店舗、状態）<br>
+        辞退・連絡途絶にも対応可
+      </td>
+      <td>
+        inquiries/models/reception.py<br>
+        reception_staff：ユーザー拡張対応
+      </td>
+    </tr>
+    <tr>
+      <td>④</td>
+      <td>InterviewSchedule / Confirmation</td>
+      <td>
+        面接日時の登録・前日確認など面接管理のコア<br>
+        状態遷移を丁寧に設計
+      </td>
+      <td>
+        interviews/models/schedule.py<br>
+        interviews/models/confirmation.py<br>
+        interviews/views/schedule_create.py
+      </td>
+    </tr>
+    <tr>
+      <td>⑤</td>
+      <td>InterviewResult / TrialExperience</td>
+      <td>
+        実施後の結果を記録（合否や体験結果）<br>
+        業務の成否を左右する重要ポイント
+      </td>
+      <td>
+        interviews/models/result.py<br>
+        trials/models/experience.py
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<h4>📦 推奨ディレクトリ構成</h4>
+<pre>
+persons/
+├── models/person.py
+├── admin.py
+├── forms/person_form.py
+
+inquiries/
+├── models/inquiry.py
+├── models/reception.py
+
+interviews/
+├── models/schedule.py
+├── models/confirmation.py
+├── models/result.py
+
+trials/
+├── models/experience.py
+
+branches/
+├── models/branch.py
+</pre>
