@@ -5,13 +5,10 @@ from django.utils import timezone
 
 from apps.persons.models import Person
 
+from .master import InquiryMethod
+
 
 class Inquiry(models.Model):
-    class Method(models.TextChoices):
-        PHONE = 'phone', '電話'
-        EMAIL = 'email', 'メール'
-        LINE = 'line', 'LINE'
-
     class Status(models.TextChoices):
         NEW = 'new', '未対応'
         HANDLING = 'handling', '対応中'
@@ -22,11 +19,10 @@ class Inquiry(models.Model):
     person = models.ForeignKey(
         Person, verbose_name='個人', on_delete=models.CASCADE, related_name='inquiries'
     )
-    method = models.CharField(
-        '連絡手段',
-        max_length=10,
-        choices=Method.choices,
-        default=Method.PHONE,
+    method = models.ForeignKey(
+        InquiryMethod,
+        on_delete=models.PROTECT,
+        verbose_name='応募方法',
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
     status = models.CharField(
@@ -39,7 +35,7 @@ class Inquiry(models.Model):
     updated_at = models.DateTimeField('更新日時', auto_now=True)
 
     def __str__(self):
-        return f'{self.person.full_name} ({self.get_method_display()} - {self.get_status_display()})'
+        return f'{self.person.full_name} ({self.method} - {self.get_status_display()})'
 
     class Meta:
         verbose_name = '問い合わせ'
