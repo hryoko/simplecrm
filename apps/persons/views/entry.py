@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, TemplateView
 
 from apps.core.mixins import CreateViewMixin
@@ -9,7 +9,7 @@ from ..forms import PersonInquiryReceptionForm
 
 
 class EntryCreateView(CreateViewMixin, TemplateView):
-    template_name = 'persons/create_entry.html'
+    template_name = 'persons/entries/entry_form.html'
 
     def get(self, request, *args, **kwargs):
         return self.render_to_response(self.get_context_data())
@@ -19,7 +19,7 @@ class EntryCreateView(CreateViewMixin, TemplateView):
         if form.is_valid():
             person, inquiry, reception = form.save(staff=request.user)
             messages.success(request, '登録が完了しました。')
-            return redirect('persons:list')
+            return redirect('entries:entry_list')
         # バリデーションエラー時はフォームを渡して再表示
         return self.render_to_response(self.get_context_data(form=form))
 
@@ -40,15 +40,68 @@ class EntryCreateView(CreateViewMixin, TemplateView):
         ]
         context['inquiry_fields'] = ["method", "content"]
         context['reception_fields'] = ["status", "remarks"]
+        context['title'] = "エントリー新規作成"
+        context['submit_label'] = "登録する"
         return context
 
 
 class EntryListView(ListView):
     model = Reception
-    template_name = "persons/entry_list.html"
+    template_name = "persons/entries/entry_list.html"
     context_object_name = "entries"
 
     def get_queryset(self):
         return Reception.objects.select_related(
             "inquiry__person", "staff", "inquiry__method"
         ).order_by("-received_at")
+
+
+class EntryUpdateView(TemplateView):
+    template_name = 'persons/entries/entry_form.html'
+
+    def get_object(self):
+        return get_object_or_404(
+            Reception.objects.select_related('inquiry__person'), pk=self.kwargs['pk']
+        )
+
+    def get(self, request, *args, **kwargs):
+        reception = self.get_object()
+        inquiry = reception.inquiry
+        person = inquiry.person
+        form = PersonInquiryReceptionForm(
+            person=person, inquiry=inquiry, reception=reception
+        )
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def post(self, request, *args, **kwargs):
+        reception = self.get_object()
+        inquiry = reception.inquiry
+        person = inquiry.person
+        form = PersonInquiryReceptionForm(
+            request.POST, person=person, inquiry=inquiry, reception=reception
+        )
+        if form.is_valid():
+            form.save(staff=request.user)
+            messages.success(request, '更新が完了しました。')
+            return redirect('entries:entry_list')
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = kwargs['form']
+        context['person_fields'] = [
+            "full_name",
+            "full_name_kana",
+            "phone",
+            "age",
+            "email",
+            "line_name",
+            "branch",
+            "idcard",
+            "description",
+        ]
+        context['inquiry_fields'] = ["method", "content"]
+        context['reception_fields'] = ["status", "remarks"]
+        context['title'] = "エントリー編集"
+        context['submit_label'] = "更新する"
+        return context

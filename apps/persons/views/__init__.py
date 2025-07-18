@@ -1,4 +1,4 @@
-from .entry import EntryCreateView, EntryListView
+from .entry import EntryCreateView, EntryListView, EntryUpdateView
 from .person import (
     PersonCreateView,
     PersonDeleteView,
@@ -15,4 +15,5 @@ __all__ = [
     'PersonDeleteView',
     'EntryCreateView',
     'EntryListView',
+    'EntryUpdateView',
 ]

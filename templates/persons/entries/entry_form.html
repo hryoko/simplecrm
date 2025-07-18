@@ -42,7 +42,7 @@ td {
 {% endblock extra_css %}
 
 {% block content %}
-
+  <h2>{{ title }}</h2>
   {% if messages %}
     <ul>
       {% for message in messages %}
@@ -107,5 +107,4 @@ td {
 
     <button class="btn" type="submit">{{ submit_label }}</button>
   </form>
-
 {% endblock %}

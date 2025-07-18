@@ -1,4 +1,4 @@
-from .combined import PersonInquiryReceptionForm
+from .entry import PersonInquiryReceptionForm
 from .person import PersonForm
 
 __all__ = [
