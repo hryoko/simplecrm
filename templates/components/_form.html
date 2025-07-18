@@ -1,0 +1,30 @@
+{% block extra_css %}{% endblock %}
+
+{% if messages %}
+  <ul>
+  {% for message in messages %}
+      <li>{{ message }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+<form method="post" {% if form_action %} action="{{ form_action }}"{% endif %}>
+  {% csrf_token %}
+  {% for field in form.visible_fields %}
+      <div class="row">
+          <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          <div class="value">
+          {{ field }}
+          {% if field.errors %}
+              <div class="error">{{ field.errors }}</div>
+          {% endif %}
+          </div>
+      </div>
+  {% endfor %}
+  
+  <div class="actions">
+    {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
+    <button class="btn" type="submit">{{ submit_label|default:"保存" }}</button>
+  </div>
+  <!-- {% include "components/_actions.html" with show_submit_button=True %} -->
+</form>

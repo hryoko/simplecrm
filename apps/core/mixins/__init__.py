@@ -5,13 +5,8 @@ from .base import (
     PageTitleMixin,
 )
 from .list import ListViewMixin
-from .object import (
-    DetailFieldsMixin,
-    ObjectContextMixin,
-    ObjectMetaContextMixin,
-    ObjectUrlMixin,
-    SafeObjectMixin,
-)
+from .object import DetailFieldsMixin  # ObjectMetaContextMixin,
+from .object import ObjectContextMixin, ObjectUrlMixin, SafeObjectMixin
 from .urls import AutoNamespaceMixin
 from .view import (
     CreateViewMixin,

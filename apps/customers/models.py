@@ -46,6 +46,9 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
+    def get_object_label(self):
+        return self.name
+
     class Meta:
         verbose_name = '顧客'
         verbose_name_plural = '顧客一覧'

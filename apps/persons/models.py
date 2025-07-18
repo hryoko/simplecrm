@@ -2,18 +2,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 
-from apps.masters.models import Branch
-
-
-class Idcard(models.Model):
-    name = models.CharField('身分証', max_length=20)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = '身分証'
-        verbose_name_plural = '身分証'
+from apps.masters.models import Branch, Idcard
 
 
 class Person(models.Model):
@@ -58,9 +47,12 @@ class Person(models.Model):
     def __str__(self):
         return f'{self.full_name}'
 
+    def get_object_label(self):
+        return self.full_name
+
     # def get_absolute_url(self):
     #     return reverse_lazy("person:detail", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = '個人'
-        verbose_name_plural = '個人'
+        verbose_name_plural = '個人一覧'

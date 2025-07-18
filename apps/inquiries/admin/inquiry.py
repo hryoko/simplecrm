@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from ..models.inquiry import Inquiry, InquiryMethod
 
 # from inquiries.models import InquiryType, InquiryResult
@@ -11,7 +12,6 @@ class InquiryAdmin(admin.ModelAdmin):
         'person',
         'method',
         'content',
-        'status',
         'created_at',
         'updated_at',
     )

@@ -8,7 +8,6 @@ from django.views.generic import (
 )
 
 from apps.core.mixins import (
-    BaseContextMixin,
     CreateViewMixin,
     DeleteViewMixin,
     DetailViewMixin,
@@ -17,8 +16,8 @@ from apps.core.mixins import (
     UpdateViewMixin,
 )
 
-from .forms import PersonForm
-from .models import Person
+from ..forms import PersonForm
+from ..models import Person
 
 
 class PersonListView(ListViewMixin, ListView):

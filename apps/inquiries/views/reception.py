@@ -1,6 +1,7 @@
 from django.views.generic import CreateView, ListView
-from inquiries.forms.reception import ReceptionForm
-from inquiries.models.reception import Reception
+
+from ..forms.reception import ReceptionForm
+from ..models.reception import Reception
 
 
 class ReceptionListView(ListView):

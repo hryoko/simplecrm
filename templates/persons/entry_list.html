@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}受付一覧{% endblock %}
+
+{% block content %}
+<h2>受付一覧</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>受付日時</th>
+      <th>氏名</th>
+      <th>電話番号</th>
+      <th>問い合わせ方法</th>
+      <th>内容</th>
+      <th>ステータス</th>
+      <th>担当</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for reception in entries %}
+    <tr>
+      <td>{{ reception.received_at|date:"Y-m-d H:i" }}</td>
+      <td>{{ reception.inquiry.person.full_name }}</td>
+      <td>{{ reception.inquiry.person.phone }}</td>
+      <td>{{ reception.inquiry.method.name }}</td>
+      <td>{{ reception.inquiry.content|truncatechars:20 }}</td>
+      <td>{{ reception.get_status_display }}</td>
+      <td>{{ reception.staff.get_full_name|default:reception.staff.username }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="7">データがありません</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

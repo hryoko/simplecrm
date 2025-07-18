@@ -17,6 +17,29 @@ class SafeObjectMixin:
             return None
 
 
+class ObjectLabelContextMixin(SafeObjectMixin):
+    """テンプレートに object の表示名（label）を context 変数として追加する Mixin。
+    モデル側に get_object_label() があればそれを使い、なければ str(obj) を使う。
+    """
+
+    def get_object_label(self):
+        obj = self.get_object_safe()
+        # モデルに get_object_label() があればそれを使う
+        if obj and hasattr(obj, 'get_object_label'):
+            return obj.get_object_label()
+
+        # それ以外は __str__() を使う（None の場合は空文字）
+        return str(obj) if obj else ''
+
+    def inject_object_label(self, context):
+        context['object_label'] = self.get_object_label()
+        return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return self.inject_object_label(context)
+
+
 class ObjectTitleContextMixin:
     """
     オブジェクトからタイトル（例:「〇〇 の 編集」）を生成して context['title'] に注入する Mixin。
@@ -50,28 +73,28 @@ class ObjectTitleContextMixin:
         return self.inject_title(context)
 
 
-class ObjectMetaContextMixin(SafeObjectMixin):
-    """
-    オブジェクトのメタ情報（作成日時・更新日時）を context に注入するための Mixin。
-    """
+# class ObjectMetaContextMixin(SafeObjectMixin):
+#     """
+#     オブジェクトのメタ情報（作成日時・更新日時）を context に注入するための Mixin。
+#     """
 
-    def inject_object_meta(self, context):
-        """
-        context に 'created_at', 'updated_at' を追加。
-        """
-        obj = self.get_object_safe()
-        # 以下は削除検討中。テンプレートで問題なければ削除予定
-        context.update(
-            {
-                'created_at': getattr(obj, 'created_at', None),
-                'updated_at': getattr(obj, 'updated_at', None),
-            }
-        )
-        return context
+#     def inject_object_meta(self, context):
+#         """
+#         context に 'created_at', 'updated_at' を追加。
+#         """
+#         obj = self.get_object_safe()
+#         # 以下は削除検討中。テンプレートで問題なければ削除予定
+#         context.update(
+#             {
+#                 'created_at': getattr(obj, 'created_at', None),
+#                 'updated_at': getattr(obj, 'updated_at', None),
+#             }
+#         )
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return self.inject_object_meta(context)
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return self.inject_object_meta(context)
 
 
 class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
@@ -151,7 +174,7 @@ class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
         return self.inject_object_urls(context)
 
 
-class ObjectContextMixin(ObjectUrlMixin, BaseContextMixin):
+class ObjectContextMixin(ObjectLabelContextMixin, ObjectUrlMixin, BaseContextMixin):
     """
     タイトル + 作成・更新日時を context にまとめて注入したいとき用の合成Mixin。
     """

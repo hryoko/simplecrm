@@ -1,0 +1,12 @@
+<div class="row">
+  <p>本当に <strong>{{ object_label }}</strong> を削除しますか？</p>
+</div>
+
+<form method="post">
+  <div class="actions">
+    {% csrf_token %}
+    <button class="btn-danger" type="submit">{{ submit_label }}</button>
+    {% if detail_url %}<a class="btn" href="{{ detail_url }}">戻る</a>{% endif %}
+  </div>
+    <!-- {% include "components/_actions.html" with show_submit_button=True submit_label="はい、削除します" %} -->
+</form>
