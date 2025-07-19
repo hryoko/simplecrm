@@ -7,6 +7,7 @@
 <table border="1">
   <thead>
     <tr>
+      <th>編集</th>
       <th>受付日時</th>
       <th>氏名</th>
       <th>電話番号</th>
@@ -19,6 +20,11 @@
   <tbody>
     {% for reception in entries %}
     <tr>
+      <td>obj: {{ reception.pk }} / {{ reception }}</td>
+      <td>
+        <a href="{% url 'entries:detail' pk=reception.pk %}">詳細</a> |
+        <a href="">編集</a>
+      </td>
       <td>{{ reception.received_at|date:"Y-m-d H:i" }}</td>
       <td>{{ reception.inquiry.person.full_name }}</td>
       <td>{{ reception.inquiry.person.phone }}</td>

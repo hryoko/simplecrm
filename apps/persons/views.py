@@ -16,8 +16,8 @@ from apps.core.mixins import (
     UpdateViewMixin,
 )
 
-from ..forms import PersonForm
-from ..models import Person
+from .forms import PersonForm
+from .models import Person
 
 
 class PersonListView(ListViewMixin, ListView):

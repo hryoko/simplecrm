@@ -3,7 +3,7 @@ import re
 from django import forms
 from django.core.validators import RegexValidator
 
-from ..models import Person  # モデルを使っている場合
+from .models import Person  # モデルを使っている場合
 
 
 class PersonForm(forms.ModelForm):

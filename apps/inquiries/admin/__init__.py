@@ -1,2 +1,1 @@
-from .inquiry import *
-from .reception import *
+from . import inquiry, reception

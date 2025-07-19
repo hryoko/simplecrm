@@ -1,15 +1,32 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import ListView, TemplateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    TemplateView,
+    UpdateView,
+)
 
-from apps.core.mixins import CreateViewMixin
-from apps.inquiries.models import Reception
+from apps.core.mixins import (
+    AutoNamespaceMixin,
+    CreateViewMixin,
+    DeleteViewMixin,
+    DetailViewMixin,
+    ListViewMixin,
+    PageTitleFromObjectMixin,
+    UpdateViewMixin,
+)
+from apps.inquiries.models import Inquiry, Reception
+from apps.persons.models import Person
 
-from ..forms import PersonInquiryReceptionForm
+from .forms import PersonInquiryReceptionForm
 
 
-class EntryCreateView(CreateViewMixin, TemplateView):
-    template_name = 'persons/entries/entry_form.html'
+class EntryCreateView(TemplateView):
+    template_name = 'entries/form.html'
+    namespace = 'inquiries'
 
     def get(self, request, *args, **kwargs):
         return self.render_to_response(self.get_context_data())
@@ -19,7 +36,7 @@ class EntryCreateView(CreateViewMixin, TemplateView):
         if form.is_valid():
             person, inquiry, reception = form.save(staff=request.user)
             messages.success(request, '登録が完了しました。')
-            return redirect('entries:entry_list')
+            return redirect('entries:list')
         # バリデーションエラー時はフォームを渡して再表示
         return self.render_to_response(self.get_context_data(form=form))
 
@@ -28,36 +45,49 @@ class EntryCreateView(CreateViewMixin, TemplateView):
         # フォームはkwargsで渡されたら使い、なければ新規生成
         context['form'] = kwargs.get('form') or PersonInquiryReceptionForm()
         context['person_fields'] = [
-            "full_name",
-            "full_name_kana",
-            "phone",
-            "age",
-            "email",
-            "line_name",
-            "branch",
-            "idcard",
-            "description",
+            'full_name',
+            'full_name_kana',
+            'phone',
+            'age',
+            'email',
+            'line_name',
+            'branch',
+            'idcard',
+            'description',
         ]
-        context['inquiry_fields'] = ["method", "content"]
-        context['reception_fields'] = ["status", "remarks"]
-        context['title'] = "エントリー新規作成"
-        context['submit_label'] = "登録する"
+        context['inquiry_fields'] = ['method', 'content']
+        context['reception_fields'] = ['status', 'remarks']
+        context['title'] = 'エントリー新規作成'
+        context['submit_label'] = '登録する'
         return context
 
 
 class EntryListView(ListView):
     model = Reception
-    template_name = "persons/entries/entry_list.html"
-    context_object_name = "entries"
+    template_name = 'entries/list.html'
+    context_object_name = 'entries'
 
     def get_queryset(self):
         return Reception.objects.select_related(
-            "inquiry__person", "staff", "inquiry__method"
-        ).order_by("-received_at")
+            'inquiry__person', 'staff', 'inquiry__method'
+        ).order_by('-received_at')
+
+
+class EntryDetailView(DetailView):
+    model = Reception
+    template_name = 'entries/detail.html'
+    context_object_name = 'reception'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        reception = self.object
+        context['inquiry'] = reception.inquiry
+        context['person'] = reception.inquiry.person
+        return context
 
 
 class EntryUpdateView(TemplateView):
-    template_name = 'persons/entries/entry_form.html'
+    template_name = 'entries/form.html'
 
     def get_object(self):
         return get_object_or_404(
@@ -90,18 +120,21 @@ class EntryUpdateView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['form'] = kwargs['form']
         context['person_fields'] = [
-            "full_name",
-            "full_name_kana",
-            "phone",
-            "age",
-            "email",
-            "line_name",
-            "branch",
-            "idcard",
-            "description",
+            'full_name',
+            'full_name_kana',
+            'phone',
+            'age',
+            'email',
+            'line_name',
+            'branch',
+            'idcard',
+            'description',
         ]
-        context['inquiry_fields'] = ["method", "content"]
-        context['reception_fields'] = ["status", "remarks"]
-        context['title'] = "エントリー編集"
-        context['submit_label'] = "更新する"
+        context['inquiry_fields'] = ['method', 'content']
+        context['reception_fields'] = ['status', 'remarks']
+        context['title'] = 'エントリー編集'
+        context['submit_label'] = '更新する'
         return context
+
+
+class EntryDeleteView(TemplateView): ...

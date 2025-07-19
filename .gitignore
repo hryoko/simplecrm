@@ -20,8 +20,9 @@ config/local_settings.py
 # *.log
 # *.bak
 
-templates/_*
-_test_scss/
+# テスト用コード
+tests/_*
+_test.ipynb
 
 # 自作の一時保存フォルダ
 _temp/

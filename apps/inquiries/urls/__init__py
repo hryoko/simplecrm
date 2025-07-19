@@ -1,6 +1,0 @@
-from django.urls import path, include
-
-urlpatterns = [
-    path('receptions/', include('inquiries.urls.reception')),
-    path('inquiries/', include('inquiries.urls.inquiry')),
-]

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Idcard, Person
+from .models import Person
 
 
 @admin.register(Person)
@@ -26,8 +26,3 @@ class CustomerAdmin(admin.ModelAdmin):
     #     ('その他', {'fields': ('memo',)}),
     # )
     readonly_fields = ('created_at',)
-
-
-@admin.register(Idcard)
-class IdcardAdmin(admin.ModelAdmin):
-    list_display = ('name',)

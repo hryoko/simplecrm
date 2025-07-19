@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>受付詳細</h2>
+
+<h3>◆ 応募者情報</h3>
+<table>
+  <tr><th>{{ person._meta.get_field('full_name').verbose_name }}</th><td>{{ person.full_name }}</td></tr>
+  <tr><th>電話番号</th><td>{{ person.phone }}</td></tr>
+  <tr><th>メール</th><td>{{ person.email }}</td></tr>
+  <tr><th>LINE</th><td>{{ person.line }}</td></tr>
+  <tr><th>説明</th><td>{{ person.description }}</td></tr>
+</table>
+
+<h3>◆ 問い合わせ情報</h3>
+<table>
+  <tr><th>問い合わせ方法</th><td>{{ inquiry.method.name }}</td></tr>
+  <tr><th>内容</th><td>{{ inquiry.content }}</td></tr>
+  <tr><th>問い合わせ日時</th><td>{{ inquiry.created_at|date:"Y-m-d H:i" }}</td></tr>
+</table>
+
+<h3>◆ 受付情報</h3>
+<table>
+  <tr><th>受付日時</th><td>{{ reception.received_at|date:"Y-m-d H:i" }}</td></tr>
+  <tr><th>受付ステータス</th><td>{{ reception.get_status_display }}</td></tr>
+  <tr><th>対応スタッフ</th>
+    <td>{{ reception.staff.get_full_name|default:reception.staff.username }}</td>
+  </tr>
+</table>
+
+<p><a href="{% url 'entries:list' %}">一覧に戻る</a></p>
+{% endblock %}

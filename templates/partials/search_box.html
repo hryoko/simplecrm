@@ -1,0 +1,22 @@
+<style>
+    .search-box {
+      margin-bottom: 16px;
+    }
+    .search-box form {
+      <!-- background-color: pink; -->
+    }
+    .search-box button {
+      background-color: orange;
+      font-size: 0.95em;
+      border-radius: 4px;
+      padding: 0.2em 0.5em;
+    }
+</style>
+
+<div class="search-box">
+  <form method="get">
+    検索:
+    <input type="text" name="name" value="{{ request.GET.name }}">
+    <button type="submit">絞り込み</button>
+  </form>
+</div>
