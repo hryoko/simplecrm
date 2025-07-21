@@ -13,6 +13,10 @@ class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
 
     exclude_fields = ['created_at', 'updated_at']
     wanted_field_keys = None  # 順序付きで指定したい場合
+    # back_view = 'list'
+    detail_view = 'detail'
+    update_view = 'update'
+    delete_view = 'delete'
 
     def get_table_headers(self):
         """
@@ -57,9 +61,9 @@ class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
 
             # URL付加（try-exceptで柔軟に）
             try:
-                row['detail_url'] = self.namespaced_url('detail', obj.pk)
-                row['update_url'] = self.namespaced_url('update', obj.pk)
-                row['delete_url'] = self.namespaced_url('delete', obj.pk)
+                row['detail_url'] = self.namespaced_url(self.detail_view, obj.pk)
+                row['update_url'] = self.namespaced_url(self.update_view, obj.pk)
+                row['delete_url'] = self.namespaced_url(self.delete_view, obj.pk)
             except AttributeError:
                 pass  # 該当URLが未定義でもスルー
 

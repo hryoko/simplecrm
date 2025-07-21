@@ -1,5 +1,5 @@
 # --- フォーム系（CRUD）ビュー関連 ---
-from .base import BaseContextMixin
+from .base import BaseContextMixin, PageTitleFromObjectMixin
 from .object import DetailFieldsMixin, ObjectContextMixin
 
 

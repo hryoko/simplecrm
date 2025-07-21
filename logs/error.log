@@ -18533,3 +18533,2718 @@ Traceback (most recent call last):
     raise NoReverseMatch("%s is not a registered namespace" % key)
 django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
 ERROR 2025-07-20 01:08:52,246 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 131339
+ERROR 2025-07-20 17:15:07,368 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'inquiry'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
+ERROR 2025-07-20 17:15:07,507 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 131202
+ERROR 2025-07-20 17:15:11,967 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/reception/list.html, inquiries/reception_list.html
+ERROR 2025-07-20 17:15:11,994 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 102339
+ERROR 2025-07-20 17:16:28,285 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'inquiry'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
+ERROR 2025-07-20 17:16:28,472 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 131202
+ERROR 2025-07-20 17:16:33,512 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/list.html, inquiries/reception_list.html
+ERROR 2025-07-20 17:16:33,543 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 102169
+ERROR 2025-07-20 17:19:43,681 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/list.html, inquiries/reception_list.html
+ERROR 2025-07-20 17:19:43,713 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 102306
+ERROR 2025-07-20 17:19:47,851 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/list.html, inquiries/reception_list.html
+ERROR 2025-07-20 17:19:47,896 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 102169
+ERROR 2025-07-20 17:19:52,954 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'inquiry'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
+ERROR 2025-07-20 17:19:53,047 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 131202
+ERROR 2025-07-20 17:22:35,020 log Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'inquiry'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
+ERROR 2025-07-20 17:22:35,116 basehttp "GET / HTTP/1.1" 500 325875
+ERROR 2025-07-20 17:22:59,594 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'inquiry'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
+ERROR 2025-07-20 17:22:59,679 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 131202
+ERROR 2025-07-20 17:27:16,389 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'inquiry'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'inquiry' is not a registered namespace
+ERROR 2025-07-20 17:27:16,613 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 131339
+ERROR 2025-07-20 17:32:30,216 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 17:32:30,400 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129744
+ERROR 2025-07-20 17:32:57,101 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 17:32:57,286 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129607
+ERROR 2025-07-20 18:06:15,447 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 18:06:15,563 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129748
+ERROR 2025-07-20 18:31:49,882 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 18:31:49,996 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129748
+ERROR 2025-07-20 18:39:00,304 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 18:39:00,409 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129611
+ERROR 2025-07-20 18:44:48,378 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 18:44:48,568 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129748
+ERROR 2025-07-20 18:52:49,097 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 18:52:49,328 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129748
+ERROR 2025-07-20 18:53:01,119 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 18:53:01,370 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129748
+ERROR 2025-07-20 19:28:04,677 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 19:28:04,995 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129550
+ERROR 2025-07-20 19:39:44,066 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 19:39:44,171 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-20 19:43:36,969 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 19:43:37,088 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-20 19:54:38,308 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 19:54:38,527 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-20 19:55:33,811 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 19:55:34,030 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-20 20:06:35,128 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-20 20:06:35,214 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-21 12:39:07,526 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 12:39:07,604 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129751
+ERROR 2025-07-21 12:39:29,606 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 12:39:29,674 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-21 12:40:29,839 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 12:40:30,064 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129751
+ERROR 2025-07-21 12:41:47,424 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 12:41:47,636 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-21 12:45:50,109 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 104, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 98, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 60, in get_table_rows
+    row['detail_url'] = self.namespaced_url('detail', obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 12:45:50,333 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129614
+ERROR 2025-07-21 12:50:33,801 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'dict_get'
+ERROR 2025-07-21 12:50:34,094 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 229632
+ERROR 2025-07-21 12:51:54,747 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 12:51:54,842 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136714
+ERROR 2025-07-21 13:32:57,808 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:32:57,841 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136850
+ERROR 2025-07-21 13:33:02,354 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:33:02,378 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 143974
+ERROR 2025-07-21 13:33:09,571 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:33:09,595 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136713
+ERROR 2025-07-21 13:34:44,628 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:34:44,657 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136713
+ERROR 2025-07-21 13:34:47,237 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:34:47,344 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 143975
+ERROR 2025-07-21 13:35:28,039 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:35:28,064 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136713
+ERROR 2025-07-21 13:47:33,434 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:47:33,481 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136851
+ERROR 2025-07-21 13:47:40,705 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 174, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 115, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 13:47:40,737 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136713
+ERROR 2025-07-21 13:58:24,230 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 145, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 13:58:24,270 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117305
+ERROR 2025-07-21 13:58:33,406 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+                               ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'list_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 13:58:33,446 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117348
+ERROR 2025-07-21 13:58:47,526 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 145, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 13:58:47,565 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117305
+ERROR 2025-07-21 14:02:43,157 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 145, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:02:43,195 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117305
+ERROR 2025-07-21 14:03:52,757 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 177, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 146, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:03:52,787 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117167
+ERROR 2025-07-21 14:10:46,716 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 108, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 102, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 65, in get_table_rows
+    row['update_url'] = self.namespaced_url(self.update_view, obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'inquiry-update1' not found. 'inquiry-update1' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:10:46,845 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 129947
+ERROR 2025-07-21 14:14:44,751 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 165, in inject_object_urls
+    'back_url': self.get_back_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 145, in get_back_url
+    if self.back_view:
+       ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:14:44,790 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117168
+ERROR 2025-07-21 14:15:33,643 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:15:33,684 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 132911
+ERROR 2025-07-21 14:15:57,518 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+                               ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'list_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:15:57,555 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117342
+ERROR 2025-07-21 14:20:40,618 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:20:40,662 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 132911
+ERROR 2025-07-21 14:21:19,168 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:21:19,212 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 132911
+ERROR 2025-07-21 14:21:20,298 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:21:20,325 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 132910
+ERROR 2025-07-21 14:21:36,496 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+                               ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'list_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:21:36,539 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117342
+ERROR 2025-07-21 14:22:17,561 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+                               ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'list_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:22:17,601 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117342
+ERROR 2025-07-21 14:22:28,827 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+                               ^^^^^^^^^^^^^^
+AttributeError: 'ReceptionDetailView' object has no attribute 'list_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 14:22:28,867 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 117342
+ERROR 2025-07-21 14:30:53,279 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:30:53,318 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136901
+ERROR 2025-07-21 14:30:55,471 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 14:30:55,494 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136900
+ERROR 2025-07-21 16:09:10,207 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:09:10,256 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136901
+ERROR 2025-07-21 16:09:31,563 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:09:31,598 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136900
+ERROR 2025-07-21 16:18:55,607 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:18:55,735 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136901
+ERROR 2025-07-21 16:19:00,744 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:19:00,800 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136764
+ERROR 2025-07-21 16:21:46,988 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\inquiry.py", line 37, in dispatch
+    print('  back_view   =', self.back_view)
+                             ^^^^^^^^^^^^^^
+AttributeError: 'InquiryListView' object has no attribute 'back_view'. Did you mean: 'as_view'?
+ERROR 2025-07-21 16:21:47,024 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 90939
+ERROR 2025-07-21 16:22:27,154 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:22:27,217 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136764
+ERROR 2025-07-21 16:22:37,479 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:22:37,537 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136900
+ERROR 2025-07-21 16:29:43,114 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:29:43,156 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 144025
+ERROR 2025-07-21 16:29:45,336 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:29:45,383 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136763
+ERROR 2025-07-21 16:38:52,034 log Internal Server Error: /inquiry/reception/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 167, in inject_object_urls
+    'detail_url': self.get_detail_url(),
+                  ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 131, in get_detail_url
+    return self.get_object_url(self.detail_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 127, in get_object_url
+    return self.namespaced_url(viewname, obj.pk)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:38:52,063 basehttp "GET /inquiry/reception/23/ HTTP/1.1" 500 136763
+ERROR 2025-07-21 16:44:26,595 log Internal Server Error: /inquiry/inquiry/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\inquiry.py", line 55, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:44:26,643 basehttp "GET /inquiry/inquiry/23/ HTTP/1.1" 500 136795
+ERROR 2025-07-21 16:45:31,045 log Internal Server Error: /inquiry/inquiry/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\inquiry.py", line 55, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:45:31,092 basehttp "GET /inquiry/inquiry/23/ HTTP/1.1" 500 136795
+ERROR 2025-07-21 16:47:37,633 log Internal Server Error: /inquiry/inquiry/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\inquiry.py", line 55, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\detail.py", line 113, in get
+    context = self.get_context_data(object=self.object)
+  File "E:\simplecrm\apps\core\mixins\base.py", line 55, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 16:47:37,668 basehttp "GET /inquiry/inquiry/23/ HTTP/1.1" 500 136794
+ERROR 2025-07-21 17:05:50,135 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\reception.py", line 41, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 158, in get
+    self.object_list = self.get_queryset()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 45, in get_queryset
+    queryset = queryset.order_by(*ordering)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: id, inquiry, inquiry_id, received_at, remarks, staff, staff_id, status
+ERROR 2025-07-21 17:05:50,226 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 122700
+ERROR 2025-07-21 17:06:15,358 log Internal Server Error: /inquiry/inquiry/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 17:06:15,422 basehttp "GET /inquiry/inquiry/23/edit/ HTTP/1.1" 500 139896
+ERROR 2025-07-21 17:07:01,655 log Internal Server Error: /inquiry/inquiry/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 17:07:01,702 basehttp "GET /inquiry/inquiry/23/edit/ HTTP/1.1" 500 140033
+ERROR 2025-07-21 17:08:17,698 log Internal Server Error: /inquiry/inquiry/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 17:08:17,730 basehttp "GET /inquiry/inquiry/23/edit/ HTTP/1.1" 500 140032
+ERROR 2025-07-21 17:10:43,704 log Internal Server Error: /inquiry/inquiry/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 202, in get
+    return super().get(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\edit.py", line 142, in get
+    return self.render_to_response(self.get_context_data())
+                                   ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\view.py", line 58, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\view.py", line 26, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 39, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "E:\simplecrm\apps\core\mixins\object.py", line 176, in get_context_data
+    return self.inject_object_urls(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 166, in inject_object_urls
+    'list_url': self.get_list_url(),
+                ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\apps\core\mixins\object.py", line 122, in get_list_url
+    return self.namespaced_url(self.list_view)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'list' not found. 'list' is not a valid view function or pattern name.
+ERROR 2025-07-21 17:10:43,799 basehttp "GET /inquiry/inquiry/23/edit/ HTTP/1.1" 500 139896
+ERROR 2025-07-21 17:13:59,585 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\inquiry.py", line 41, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 108, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 102, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 64, in get_table_rows
+    row['detail_url'] = self.namespaced_url(self.detail_view, obj.pk)
+                        ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\urls.py", line 21, in namespaced_url
+    return reverse(f'{ns}:{viewname}', args=args)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'detail' not found. 'detail' is not a valid view function or pattern name.
+ERROR 2025-07-21 17:13:59,796 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 134383
+ERROR 2025-07-21 17:16:50,791 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\reception.py", line 41, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 158, in get
+    self.object_list = self.get_queryset()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 45, in get_queryset
+    queryset = queryset.order_by(*ordering)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: id, inquiry, inquiry_id, received_at, remarks, staff, staff_id, status
+ERROR 2025-07-21 17:16:50,927 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 122702
+ERROR 2025-07-21 17:17:42,949 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 158, in get
+    self.object_list = self.get_queryset()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 45, in get_queryset
+    queryset = queryset.order_by(*ordering)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: id, inquiry, inquiry_id, received_at, remarks, staff, staff_id, status
+ERROR 2025-07-21 17:17:43,073 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 118218
+ERROR 2025-07-21 17:17:43,759 log Internal Server Error: /inquiry/reception/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 158, in get
+    self.object_list = self.get_queryset()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 45, in get_queryset
+    queryset = queryset.order_by(*ordering)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: id, inquiry, inquiry_id, received_at, remarks, staff, staff_id, status
+ERROR 2025-07-21 17:17:43,833 basehttp "GET /inquiry/reception/ HTTP/1.1" 500 118218
+ERROR 2025-07-21 17:19:22,916 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:19:23,076 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100634
+ERROR 2025-07-21 17:19:31,624 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:19:31,768 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100634
+ERROR 2025-07-21 17:20:10,412 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:20:10,460 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100771
+ERROR 2025-07-21 17:20:15,107 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:20:15,137 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100633
+ERROR 2025-07-21 17:21:47,867 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:21:47,915 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100771
+ERROR 2025-07-21 17:23:33,900 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:23:33,944 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100771
+ERROR 2025-07-21 17:35:40,913 log Internal Server Error: /inquiry/reception/23/edit/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
+ERROR 2025-07-21 17:35:40,948 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100770

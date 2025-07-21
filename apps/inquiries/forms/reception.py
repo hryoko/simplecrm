@@ -6,7 +6,7 @@ from ..models.reception import Reception
 class ReceptionForm(forms.ModelForm):
     class Meta:
         model = Reception
-        fields = ['status', 'remarks']
+        fields = ['inquiry', 'remarks', 'staff', 'status']
 
     def __init__(self, *args, **kwargs):
         self.instance: Reception = kwargs.get('instance')

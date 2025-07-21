@@ -30,13 +30,6 @@ class PersonListView(ListViewMixin, ListView):
     paginate_by = 10
 
 
-class PersonCreateView(CreateViewMixin, CreateView):
-    model = Person
-    form_class = PersonForm
-    template_name = 'persons/form.html'
-    success_url = reverse_lazy('list')
-
-
 class PersonDetailView(PageTitleFromObjectMixin, DetailViewMixin, DetailView):
     model = Person
     template_name = 'persons/detail.html'
@@ -44,6 +37,13 @@ class PersonDetailView(PageTitleFromObjectMixin, DetailViewMixin, DetailView):
     namespace = 'persons'
     # detail_exclude_fields = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
     title_attr = 'full_name'
+
+
+class PersonCreateView(CreateViewMixin, CreateView):
+    model = Person
+    form_class = PersonForm
+    template_name = 'persons/form.html'
+    success_url = reverse_lazy('list')
 
 
 class PersonUpdateView(UpdateViewMixin, UpdateView):

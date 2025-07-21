@@ -30,13 +30,6 @@ class CustomerListView(ListViewMixin, ListView):
     wanted_field_keys = ['id', 'name', 'name_kana', 'age', 'phone', 'email']
 
 
-class CustomerCreateView(CreateViewMixin, CreateView):
-    model = Customer
-    form_class = CustomerForm
-    template_name = 'customers/form.html'
-    success_url = reverse_lazy('list')
-
-
 class CustomerDetailView(PageTitleFromObjectMixin, DetailViewMixin, DetailView):
     model = Customer
     template_name = 'customers/detail.html'
@@ -44,6 +37,13 @@ class CustomerDetailView(PageTitleFromObjectMixin, DetailViewMixin, DetailView):
     namespace = 'customers'
     # detail_exclude_fields = ['id', 'name', 'age', 'memo', 'created_at', 'updated_at']
     title_attr = 'name'
+
+
+class CustomerCreateView(CreateViewMixin, CreateView):
+    model = Customer
+    form_class = CustomerForm
+    template_name = 'customers/form.html'
+    success_url = reverse_lazy('list')
 
 
 class CustomerUpdateView(UpdateViewMixin, UpdateView):

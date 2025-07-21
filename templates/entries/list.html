@@ -20,7 +20,6 @@
   <tbody>
     {% for reception in entries %}
     <tr>
-      <td>obj: {{ reception.pk }} / {{ reception }}</td>
       <td>
         <a href="{% url 'entries:detail' pk=reception.pk %}">詳細</a> |
         <a href="">編集</a>

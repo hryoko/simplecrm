@@ -2,7 +2,7 @@
 from django.http import Http404
 from django.urls import NoReverseMatch, reverse
 
-from .base import BaseContextMixin
+from .base import BaseContextMixin, PageTitleFromObjectMixin
 from .urls import AutoNamespaceMixin
 
 
@@ -78,6 +78,14 @@ class ObjectTitleContextMixin:
 #     オブジェクトのメタ情報（作成日時・更新日時）を context に注入するための Mixin。
 #     """
 
+#     def get_created_at(self):
+#         obj = self.get_object_safe()
+#         return getattr(obj, 'created_at', None) if obj else None
+
+#     def get_updated_at(self):
+#         obj = self.get_object_safe()
+#         return getattr(obj, 'updated_at', None) if obj else None
+
 #     def inject_object_meta(self, context):
 #         """
 #         context に 'created_at', 'updated_at' を追加。
@@ -86,8 +94,8 @@ class ObjectTitleContextMixin:
 #         # 以下は削除検討中。テンプレートで問題なければ削除予定
 #         context.update(
 #             {
-#                 'created_at': getattr(obj, 'created_at', None),
-#                 'updated_at': getattr(obj, 'updated_at', None),
+#                 'created_at': self.get_created_at(),
+#                 'updated_at': self.get_updated_at(),
 #             }
 #         )
 #         return context
@@ -103,20 +111,21 @@ class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
     """
 
     back_view = 'list'
+    list_view = 'list'
     detail_view = 'detail'
     update_view = 'update'
     delete_view = 'delete'
     fallback_redirect = 'home'  # デフォルトのリダイレクト先
 
     # ---- 各種URL取得 ----
+    def get_list_url(self):
+        return self.namespaced_url(self.list_view)
+
     def get_object_url(self, viewname):
         obj = self.get_object_safe()
         if obj and getattr(obj, 'pk', None):
             return self.namespaced_url(viewname, obj.pk)
         return None
-
-    def get_list_url(self):
-        return self.namespaced_url(self.list_view)
 
     def get_detail_url(self):
         return self.get_object_url(self.detail_view)
@@ -126,14 +135,6 @@ class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
 
     def get_delete_url(self):
         return self.get_object_url(self.delete_view)
-
-    def get_created_at(self):
-        obj = self.get_object_safe()
-        return getattr(obj, 'created_at', None) if obj else None
-
-    def get_updated_at(self):
-        obj = self.get_object_safe()
-        return getattr(obj, 'updated_at', None) if obj else None
 
     def get_back_url(self):
         """
@@ -162,6 +163,7 @@ class ObjectUrlMixin(SafeObjectMixin, AutoNamespaceMixin):
         context.update(
             {
                 'back_url': self.get_back_url(),
+                'list_url': self.get_list_url(),
                 'detail_url': self.get_detail_url(),
                 'update_url': self.get_update_url(),
                 'delete_url': self.get_delete_url(),
