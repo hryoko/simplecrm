@@ -2,44 +2,54 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 
-from apps.masters.models import Branch, Idcard
+from apps.masters.models import Branch
 
 
 class Person(models.Model):
+    class IdCardType(models.TextChoices):
+        UNKNOWN = 'unknown', '不明'  # 未回答・不明
+        NONE = 'none', '有効な身分証なし'
+        LICENSE = 'license', '運転免許証'
+        PASSPORT = 'passport', 'パスポート'
+        MY_NUMBER = 'my_number', 'マイナカード'
+        PERMANENT_RESIDENCE = 'permanent_card', '永住カード'
+        RESIDENT_CERTIFICATE = 'resident_card', '住民票'
+        RESIDENCE_CARD = 'residence_card', '在留カード'  # 旧「外国人登録証明書」
+        STUDENT_ID = 'student_id', '学生証'
+        EMPLOYEE_ID = 'employee_id', '社員証'
+        OTHER = 'other', 'その他'
+
     full_name = models.CharField('氏名', max_length=20, blank=False, null=False)
     full_name_kana = models.CharField('氏名カナ', max_length=20, blank=True, null=True)
     age = models.IntegerField('年齢', blank=True, null=True)
     phone_regex = RegexValidator(
         regex=r'^[0-9]+$',
-        message=(
-            "Tel Number must be entered in the format: '09012345678'. Up to 11 digits allowed."
-        ),
+        message=('電話番号は『09012345678』の形式で、最大11桁まで入力してください。'),
     )
     phone = models.CharField(
         'PHONE',
         max_length=11,
         unique=True,
         blank=True,
-        null=True,
         validators=[phone_regex],
     )
     email = models.EmailField(
         'Email',
         max_length=255,
         blank=True,
-        null=True,
     )
     line_name = models.CharField('LINE', max_length=20, blank=True, null=True)
     description = models.TextField('説明', blank=True, null=True)
     branch = models.ForeignKey(
         Branch, verbose_name='登録店舗', on_delete=models.PROTECT, blank=True, null=True
     )
-    idcard = models.ForeignKey(
-        Idcard,
-        verbose_name='身分証',
+    idcard = models.CharField(
+        '身分証',
+        max_length=20,
+        choices=IdCardType.choices,
+        default=IdCardType.UNKNOWN,
         blank=True,
-        null=True,
-        on_delete=models.PROTECT,
+        help_text='「その他」を選んだ場合は備考欄に詳細を入力してください。',
     )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)

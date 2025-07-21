@@ -73,18 +73,30 @@ class ListViewMixin(BaseContextMixin, AutoNamespaceMixin):
 
     def _get_cell_value(self, obj, key):
         """
-        各セルの表示値を取得。外部キーは __str__() にフォールバック。
-        上書きしてカスタム可能。
+        各セルの表示値を取得するメソッド。
+
+        1. まず obj に get_<key>_display() メソッドがあれば呼び出し、
+        choicesフィールドの表示ラベル（日本語）を返す。
+        2. なければ、通常の属性値を取得。
+        3. もし属性値が None なら空文字を返す。
+        4. さらに属性値が Djangoモデルの関連オブジェクト（_meta属性あり）なら、
+        文字列化して返す。
+        5. 存在しない属性の場合は空文字を返す。
         """
+        display_method_name = f'get_{key}_display'
+        if hasattr(obj, display_method_name):
+            method = getattr(obj, display_method_name)
+            return method()
+
         try:
             val = getattr(obj, key)
             if val is None:
                 return ''
-            if hasattr(val, '_meta'):  # 外部キーや related object
+            if hasattr(val, '_meta'):  # 外部キーや related object の場合
                 return str(val)
             return val
         except AttributeError:
-            return ''  # 存在しないキーなどを安全に無視
+            return ''
 
     def inject_headers(self, context):
         """

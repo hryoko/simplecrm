@@ -2,7 +2,7 @@
 from django import forms
 
 from apps.inquiries.models import Inquiry, InquiryMethod, Reception
-from apps.masters.models import Branch, Idcard
+from apps.masters.models import Branch
 from apps.persons.models import Person
 
 
@@ -17,8 +17,8 @@ class PersonInquiryReceptionForm(forms.Form):
     branch = forms.ModelChoiceField(
         label='登録店舗', queryset=Branch.objects.all(), required=False
     )
-    idcard = forms.ModelChoiceField(
-        label='身分証', queryset=Idcard.objects.all(), required=False
+    idcard = forms.ChoiceField(
+        label='身分証', choices=Person.IdCardType.choices, required=False
     )
     description = forms.CharField(label='説明', widget=forms.Textarea, required=False)
 

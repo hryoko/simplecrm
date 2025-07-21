@@ -16,7 +16,7 @@
           <a href="{{ row.update_url }}">編集</a>
         </td>
         {% for header in headers %}
-          <td>{{ row|dict_get:header.key }}</td>
+          <td>{{ row|dict_display_or_value:header.key }}</td>
         {% endfor %}
       </tr>
     {% endfor %}

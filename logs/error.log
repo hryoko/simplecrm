@@ -21279,3 +21279,161 @@ Traceback (most recent call last):
     )
 django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: brand, brand_id, content, id, method, method_id, person, person_id, received_at, receptions, updated_at
 ERROR 2025-07-22 01:40:18,522 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 121847
+ERROR 2025-07-22 01:53:05,089 log Internal Server Error: /entry/23/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 823, in __init__
+    self.literal = float(var)
+                   ~~~~~^^^^^
+ValueError: could not convert string to float: 'person._meta.get_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 839, in __init__
+    self.literal = mark_safe(unescape_string_literal(var))
+                             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\utils\functional.py", line 231, in wrapper
+    return func(*args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\utils\text.py", line 447, in unescape_string_literal
+    raise ValueError("Not a string literal: %r" % s)
+ValueError: Not a string literal: 'person._meta.get_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 697, in __init__
+    var_obj = Variable(var)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\template\base.py", line 844, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Variables and attributes may not begin with underscores: 'person._meta.get_field'
+ERROR 2025-07-22 01:53:05,209 basehttp "GET /entry/23/ HTTP/1.1" 500 230956
+ERROR 2025-07-22 05:19:40,687 log Internal Server Error: /persons/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: persons_person.idcard
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 178, in get
+    context = self.get_context_data()
+  File "E:\simplecrm\apps\core\mixins\list.py", line 120, in get_context_data
+    context = self.inject_rows(context)
+  File "E:\simplecrm\apps\core\mixins\list.py", line 114, in inject_rows
+    context['rows'] = self.get_table_rows(queryset, headers)
+                      ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\core\mixins\list.py", line 59, in get_table_rows
+    for obj in queryset:
+               ^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 384, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 235, in execute
+    return self._record(super().execute, sql, params)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 160, in _record
+    return method(sql, params)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: persons_person.idcard
+ERROR 2025-07-22 05:19:40,854 basehttp "GET /persons/ HTTP/1.1" 500 189824
