@@ -308,6 +308,7 @@ header {
     color: var(--sidebar-text);
     width: var(--nav-sidebar-width);
     overflow: hidden;
+    font-size: 14px;
 
     nav {
         display: flex;
@@ -383,7 +384,7 @@ header {
   Table
 ------------------------------ */
 table {
-    font-size: 0.85rem;
+    font-size: 13px;
     width: 100%;
     border-collapse: collapse;
     background: #fff;

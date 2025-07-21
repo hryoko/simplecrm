@@ -3,6 +3,7 @@
 from django.db import models
 from django.utils import timezone
 
+from apps.masters.models import Brand
 from apps.persons.models import Person
 
 from .master import InquiryMethod
@@ -11,7 +12,16 @@ from .master import InquiryMethod
 class Inquiry(models.Model):
 
     person = models.ForeignKey(
-        Person, verbose_name='個人', on_delete=models.CASCADE, related_name='inquiries'
+        Person,
+        verbose_name='個人',
+        on_delete=models.PROTECT,
+        related_name='person_inquiries',
+    )
+    brand = models.ForeignKey(
+        Brand,
+        verbose_name='屋号',
+        on_delete=models.PROTECT,
+        related_name='brand_inquiries',
     )
     method = models.ForeignKey(
         InquiryMethod,
@@ -19,7 +29,7 @@ class Inquiry(models.Model):
         verbose_name='応募方法',
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
-    created_at = models.DateTimeField('受付日時', default=timezone.now)
+    received_at = models.DateTimeField('受付日時', default=timezone.now)
     updated_at = models.DateTimeField('更新日時', auto_now=True)
 
     def __str__(self):

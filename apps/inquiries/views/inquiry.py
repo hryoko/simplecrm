@@ -46,7 +46,7 @@ class InquiryListView(ViewSettingsMixin, ListViewMixin, ListView):
     template_name = 'inquiries/inquiry/list.html'
     context_object_name = 'inquiries'
     paginate_by = 10
-    ordering = ['-created_at']
+    ordering = ['-received_at']
 
 
 class InquiryDetailView(

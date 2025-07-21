@@ -308,6 +308,7 @@ header .user-menu svg {
   color: var(--sidebar-text);
   width: var(--nav-sidebar-width);
   overflow: hidden;
+  font-size: 14px;
 }
 .sidebar nav {
   display: flex;
@@ -375,7 +376,7 @@ header .user-menu svg {
   Table
 ------------------------------ */
 table {
-  font-size: 0.85rem;
+  font-size: 13px;
   width: 100%;
   border-collapse: collapse;
   background: #fff;

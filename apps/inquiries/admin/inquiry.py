@@ -7,14 +7,19 @@ from ..models.inquiry import Inquiry, InquiryMethod
 
 @admin.register(Inquiry)
 class InquiryAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'person',
-        'method',
-        'content',
-        'created_at',
-        'updated_at',
-    )
+    def __init__(self, model, admin_site):
+        super().__init__(model, admin_site)
+        self.list_display = [field.name for field in model._meta.fields]
+
+    # list_display = (
+    #     'id',
+    #     'person',
+    #     'method',
+    #     'brand',
+    #     'content',
+    #     'created_at',
+    #     'updated_at',
+    # )
 
 
 admin.site.register(InquiryMethod)

@@ -21248,3 +21248,34 @@ Traceback (most recent call last):
     raise TemplateDoesNotExist(", ".join(template_name_list), chain=chain)
 django.template.exceptions.TemplateDoesNotExist: inquiries/receptions/form.html
 ERROR 2025-07-21 17:35:40,948 basehttp "GET /inquiry/reception/23/edit/ HTTP/1.1" 500 100770
+ERROR 2025-07-22 01:40:18,390 log Internal Server Error: /inquiry/inquiry/
+Traceback (most recent call last):
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\apps\inquiries\views\inquiry.py", line 41, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\base.py", line 144, in dispatch
+    return handler(request, *args, **kwargs)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 158, in get
+    self.object_list = self.get_queryset()
+                       ~~~~~~~~~~~~~~~~~^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\views\generic\list.py", line 45, in get_queryset
+    queryset = queryset.order_by(*ordering)
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\query.py", line 1722, in order_by
+    obj.query.add_ordering(*field_names)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 2291, in add_ordering
+    self.names_to_path(item.split(LOOKUP_SEP), self.model._meta)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\simplecrm\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1805, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'created_at' into field. Choices are: brand, brand_id, content, id, method, method_id, person, person_id, received_at, receptions, updated_at
+ERROR 2025-07-22 01:40:18,522 basehttp "GET /inquiry/inquiry/ HTTP/1.1" 500 121847

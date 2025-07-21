@@ -40,13 +40,20 @@ class Reception(models.Model):
     }
 
     inquiry = models.ForeignKey(
-        Inquiry, on_delete=models.CASCADE, related_name='receptions'
+        Inquiry,
+        verbose_name='問い合わせ',
+        on_delete=models.CASCADE,
+        related_name='receptions',
     )
-    remarks = models.TextField(blank=True)
+    remarks = models.TextField(verbose_name='受付メモ', blank=True)
     staff = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True
+        settings.AUTH_USER_MODEL,
+        verbose_name='スタッフ',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
-    received_at = models.DateTimeField(auto_now_add=True)
+    received_at = models.DateTimeField(verbose_name='受付日時', auto_now_add=True)
     status = models.CharField(
         '対応状況',
         max_length=20,

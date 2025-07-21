@@ -5,18 +5,22 @@ from .models import Person
 
 @admin.register(Person)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'full_name',
-        'full_name_kana',
-        'age',
-        'phone',
-        # 'email',
-        # 'line_name',
-        'branch',
-        'idcard',
-        # 'created_at',
-    )
+    def __init__(self, model, admin_site):
+        super().__init__(model, admin_site)
+        self.list_display = [field.name for field in model._meta.fields]
+
+    # list_display = (
+    #     'id',
+    #     'full_name',
+    #     'full_name_kana',
+    #     'age',
+    #     'phone',
+    #     # 'email',
+    #     # 'line_name',
+    #     'branch',
+    #     'idcard',
+    #     # 'created_at',
+    # )
     list_filter = ('branch', 'idcard', 'created_at')
     search_fields = ('full_name', 'full_name_kana', 'phone', 'email', 'line_name')
 
