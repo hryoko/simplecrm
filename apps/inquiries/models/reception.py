@@ -84,10 +84,10 @@ class Reception(models.Model):
         '対応状況', max_length=20, choices=Status.choices, default=Status.NEW
     )
 
-    class Meta:
-        verbose_name = '受付'
-        verbose_name_plural = '受付一覧'
-        ordering = ['-received_at']
+    # class Meta:
+    # verbose_name = '受付'
+    # verbose_name_plural = '受付一覧'
+    # ordering = ['-received_at']
 
     def __str__(self):
         return f"{self.inquiry} - {self.get_status_display()}"

@@ -48,6 +48,6 @@ class Inquiry(models.Model):
     def __str__(self):
         return f'{self.person.full_name} ({self.method})'
 
-    class Meta:
-        verbose_name = '問い合わせ'
-        verbose_name_plural = '問い合わせ一覧'
+    # class Meta:
+    # verbose_name = '問い合わせ'
+    # verbose_name_plural = '問い合わせ一覧'

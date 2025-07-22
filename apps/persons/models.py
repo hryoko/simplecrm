@@ -64,6 +64,6 @@ class Person(models.Model):
     # def get_absolute_url(self):
     #     return reverse_lazy("person:detail", kwargs={"pk": self.pk})
 
-    class Meta:
-        verbose_name = '個人'
-        verbose_name_plural = '個人一覧'
+    # class Meta:
+    # verbose_name = '個人'
+    # verbose_name_plural = '個人一覧'
