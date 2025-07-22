@@ -36,24 +36,12 @@ class Person(models.Model):
         message=('電話番号は『09012345678』の形式で、最大11桁まで入力してください。'),
     )
     phone = models.CharField(
-        'PHONE',
-        max_length=11,
-        unique=True,
-        blank=True,
-        validators=[phone_regex],
+        'PHONE', max_length=11, unique=True, blank=True, validators=[phone_regex]
     )
-    email = models.EmailField(
-        'Email',
-        max_length=255,
-        blank=True,
-    )
-    line_name = models.CharField('LINE', max_length=20, blank=True, null=True)
-    description = models.TextField('説明', blank=True, null=True)
+    email = models.EmailField('Email', max_length=255, blank=True)
+    line_name = models.CharField('LINE', max_length=20, blank=True)
     branch = models.CharField(
-        '登録店舗',
-        max_length=20,
-        choices=Branch.choices,
-        blank=True,
+        '登録店舗', max_length=20, choices=Branch.choices, blank=True
     )
     idcard = models.CharField(
         '身分証',
@@ -63,6 +51,7 @@ class Person(models.Model):
         blank=True,
         help_text='「その他」を選んだ場合は備考欄に詳細を入力してください。',
     )
+    description = models.TextField('説明', blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
