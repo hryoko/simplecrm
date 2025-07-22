@@ -309,12 +309,21 @@ header {
     width: var(--nav-sidebar-width);
     overflow: hidden;
     font-size: 14px;
-
-    nav {
+    width: 240px;
+    border-right: 1px solid #ddd;
+    
+    .sidebar-inner {
         display: flex;
         flex-direction: column;
+        height: calc(100vh - var(--header-height)); // 画面高に揃える
         padding: 12px;
 
+        nav#nav-sidebar {
+            flex-grow: 1; // メインのナビが伸びる
+            display: flex;
+            flex-direction: column;
+        }
+        
         .nav-button {
             all: unset;
             cursor: pointer;
@@ -360,6 +369,12 @@ header {
         .label {
             display: none;
         }
+    }
+
+    .nav-footer {
+        border-top: 1px solid #eee;
+        font-size: 0.875rem;
+        color: #666;
     }
 }
 

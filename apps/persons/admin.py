@@ -21,7 +21,7 @@ class CustomerAdmin(admin.ModelAdmin):
     #     'idcard',
     #     # 'created_at',
     # )
-    list_filter = ('branch', 'idcard', 'created_at')
+    list_filter = ('branch', 'created_at')
     search_fields = ('full_name', 'full_name_kana', 'phone', 'email', 'line_name')
 
     # fieldsets = (

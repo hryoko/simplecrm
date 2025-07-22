@@ -26,6 +26,53 @@ html[data-theme=light],
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+body.login-body {
+  font-family: sans-serif;
+  background: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body.login-body .login-container {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+}
+body.login-body .login-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+body.login-body .login-container form label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+}
+body.login-body .login-container form input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+body.login-body .login-container form button {
+  width: 100%;
+  padding: 0.7rem;
+  background: #0d6efd;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+body.login-body .login-container form button:hover {
+  background: #0b5ed7;
+}
+
 /* ------------------------------
   CSS Variables（設計用トークン）
 ------------------------------ */
@@ -309,20 +356,28 @@ header .user-menu svg {
   width: var(--nav-sidebar-width);
   overflow: hidden;
   font-size: 14px;
+  width: 240px;
+  border-right: 1px solid #ddd;
 }
-.sidebar nav {
+.sidebar .sidebar-inner {
   display: flex;
   flex-direction: column;
+  height: calc(100vh - var(--header-height));
   padding: 12px;
 }
-.sidebar nav .nav-button {
+.sidebar .sidebar-inner nav#nav-sidebar {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .sidebar-inner .nav-button {
   all: unset;
   cursor: pointer;
   color: inherit;
   font: inherit;
 }
-.sidebar nav a,
-.sidebar nav .nav-button {
+.sidebar .sidebar-inner a,
+.sidebar .sidebar-inner .nav-button {
   display: flex;
   align-items: center;
   padding: 0 8px;
@@ -333,18 +388,18 @@ header .user-menu svg {
   height: 40px;
   box-sizing: border-box;
 }
-.sidebar nav a:hover,
-.sidebar nav .nav-button:hover {
+.sidebar .sidebar-inner a:hover,
+.sidebar .sidebar-inner .nav-button:hover {
   background-color: var(--sidebar-hover);
   border-radius: 6px;
 }
-.sidebar nav a svg,
-.sidebar nav .nav-button svg {
+.sidebar .sidebar-inner a svg,
+.sidebar .sidebar-inner .nav-button svg {
   margin-right: 1.5rem;
   flex-shrink: 0;
 }
-.sidebar nav a.active,
-.sidebar nav .nav-button.active {
+.sidebar .sidebar-inner a.active,
+.sidebar .sidebar-inner .nav-button.active {
   background-color: var(--sidebar-hover);
   border-radius: 6px;
 }
@@ -353,6 +408,11 @@ header .user-menu svg {
 }
 .sidebar.collapsed .label {
   display: none;
+}
+.sidebar .nav-footer {
+  border-top: 1px solid #eee;
+  font-size: 0.875rem;
+  color: #666;
 }
 
 /* ------------------------------

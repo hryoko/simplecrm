@@ -48,10 +48,10 @@ INSTALLED_APPS = [
     'accounts',
     'apps.core',
     'apps.customers',
-    'apps.masters',
+    # 'apps.masters',
     'apps.persons',
     'apps.inquiries',
-    'apps.entries',
+    # 'apps.entries',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
