@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from ..models.inquiry import Inquiry, InquiryMethod
-
-# from inquiries.models import InquiryType, InquiryResult
+from ..models.inquiry import Inquiry
 
 
 @admin.register(Inquiry)
@@ -20,8 +18,3 @@ class InquiryAdmin(admin.ModelAdmin):
     #     'created_at',
     #     'updated_at',
     # )
-
-
-admin.site.register(InquiryMethod)
-# admin.site.register(InquiryType)
-# admin.site.register(InquiryResult)

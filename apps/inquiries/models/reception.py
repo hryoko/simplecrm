@@ -76,16 +76,12 @@ class Reception(models.Model):
     staff = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name='スタッフ',
-        on_delete=models.SET_NULL,
-        null=True,
+        on_delete=models.PROTECT,
         blank=True,
     )
     received_at = models.DateTimeField(verbose_name='受付日時', auto_now_add=True)
     status = models.CharField(
-        '対応状況',
-        max_length=20,
-        choices=Status.choices,
-        default=Status.NEW,
+        '対応状況', max_length=20, choices=Status.choices, default=Status.NEW
     )
 
     class Meta:

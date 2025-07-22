@@ -65,21 +65,23 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    # 'global_login_required.GlobalLoginRequiredMiddleware',  # サイト全体をログイン必須にする（django-glrm）
+    'apps.core.middleware.LoginRequiredMiddleware',
 ]
 
 # ログインを必須にしないURLを指定
-# PUBLIC_PATHS = [
-#     '/login/',
-#     '/signup/',
-#     '/password_reset/',
-#     '/accounts/login/',
-#     '/accounts/logout/',
-#     '/accounts/password_reset/',
-#     '/accounts/reset/',
-#     '/admin/logout/',
-#     # 他、公開ページ
-# ]
+PUBLIC_PATHS = [
+    '/login/',
+    '/signup/',
+    '/password_reset/',
+    '/accounts/login/',
+    '/accounts/logout/',
+    '/accounts/password_reset/',
+    '/accounts/reset/',
+    '/admin/login/',
+    '/admin/logout/',
+    '/static/',  # 静的ファイルも忘れずに
+    # 必要に応じて追加
+]
 
 ROOT_URLCONF = 'config.urls'
 

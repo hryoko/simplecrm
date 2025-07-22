@@ -2,8 +2,6 @@
 {% block title %}受付一覧{% endblock %}
 
 {% block content %}
-<h2>受付一覧</h2>
-
 <table border="1">
   <thead>
     <tr>
@@ -15,6 +13,11 @@
       <th>内容</th>
       <th>ステータス</th>
       <th>担当</th>
+
+      <!-- 面接情報の追加列 -->
+      <th>面接日時</th>
+      <th>面接ステータス</th>
+      <th>面接結果</th>
     </tr>
   </thead>
   <tbody>
@@ -31,12 +34,19 @@
       <td>{{ reception.inquiry.content|truncatechars:20 }}</td>
       <td>{{ reception.get_status_display }}</td>
       <td>{{ reception.staff.get_full_name|default:reception.staff.username }}</td>
+
+      {% with first_interview=reception.inquiry.interviews.first %}
+      <td>{% if first_interview %}{{ first_interview.scheduled_date|date:"Y-m-d H:i" }}{% else %}--{% endif %}</td>
+      <td>{% if first_interview %}{{ first_interview.get_status_display }}{% else %}--{% endif %}</td>
+      <td>{% if first_interview %}{{ first_interview.get_result_status_display }}{% else %}--{% endif %}</td>
+      {% endwith %}
     </tr>
     {% empty %}
     <tr>
-      <td colspan="7">データがありません</td>
+      <td colspan="11">データがありません</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
 {% endblock %}

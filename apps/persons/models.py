@@ -2,13 +2,22 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.utils import timezone
 
-from apps.masters.models import Branch
+# from apps.masters.models import Branch
 
 
 class Person(models.Model):
+    class Branch(models.IntegerChoices):
+        YAKUIN = 1, '福岡薬院'
+        HIROSE = 2, '仙台広瀬'
+        KOKURA = 3, '北九州小倉'
+        CHUO = 4, '鹿児島中央'
+        HIGASHI = 5, '仙台東口'
+        TENMONKAN = 6, '鹿児島天文館'
+        SHINJUKU = 7, '東京新宿'
+
     class IdCardType(models.TextChoices):
         UNKNOWN = 'unknown', '不明'  # 未回答・不明
-        NONE = 'none', '有効な身分証なし'
+        NONE = 'none', '公的証なし'
         LICENSE = 'license', '運転免許証'
         PASSPORT = 'passport', 'パスポート'
         MY_NUMBER = 'my_number', 'マイナカード'
@@ -40,8 +49,11 @@ class Person(models.Model):
     )
     line_name = models.CharField('LINE', max_length=20, blank=True, null=True)
     description = models.TextField('説明', blank=True, null=True)
-    branch = models.ForeignKey(
-        Branch, verbose_name='登録店舗', on_delete=models.PROTECT, blank=True, null=True
+    branch = models.CharField(
+        '登録店舗',
+        max_length=20,
+        choices=Branch.choices,
+        blank=True,
     )
     idcard = models.CharField(
         '身分証',

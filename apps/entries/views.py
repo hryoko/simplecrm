@@ -18,7 +18,7 @@ from apps.core.mixins import (
     PageTitleFromObjectMixin,
     UpdateViewMixin,
 )
-from apps.inquiries.models import Inquiry, Reception
+from apps.inquiries.models import Inquiry, Interview, Reception
 from apps.persons.models import Person
 
 from .forms import PersonInquiryReceptionForm
@@ -71,6 +71,13 @@ class EntryListView(ListView):
         return Reception.objects.select_related(
             'inquiry__person', 'staff', 'inquiry__method'
         ).order_by('-received_at')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['interviews'] = Interview.objects.select_related(
+            'inquiry__person'
+        ).order_by('-scheduled_date')
+        return context
 
 
 class EntryDetailView(DetailView):

@@ -1,8 +1,7 @@
 # inquiries/forms/combined.py
 from django import forms
 
-from apps.inquiries.models import Inquiry, InquiryMethod, Reception
-from apps.masters.models import Branch
+from apps.inquiries.models import Inquiry, Reception
 from apps.persons.models import Person
 
 
@@ -14,8 +13,8 @@ class PersonInquiryReceptionForm(forms.Form):
     phone = forms.CharField(label='電話番号', required=False)
     email = forms.EmailField(label='メールアドレス', required=False)
     line_name = forms.CharField(label='LINE名', required=False)
-    branch = forms.ModelChoiceField(
-        label='登録店舗', queryset=Branch.objects.all(), required=False
+    branch = forms.ChoiceField(
+        label='登録店舗', choices=Person.Branch.choices, required=False
     )
     idcard = forms.ChoiceField(
         label='身分証', choices=Person.IdCardType.choices, required=False
@@ -23,8 +22,8 @@ class PersonInquiryReceptionForm(forms.Form):
     description = forms.CharField(label='説明', widget=forms.Textarea, required=False)
 
     # Inquiry
-    method = forms.ModelChoiceField(
-        label='問い合わせ方法', queryset=InquiryMethod.objects.all()
+    method = forms.ChoiceField(
+        label='問い合わせ方法', choices=Inquiry.Method.choices, required=True
     )
     content = forms.CharField(
         label='問い合わせ内容', widget=forms.Textarea, required=True

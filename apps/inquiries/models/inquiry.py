@@ -1,15 +1,27 @@
-# inquiries/models/inquiry.py
-
 from django.db import models
 from django.utils import timezone
 
-from apps.masters.models import Brand
 from apps.persons.models import Person
-
-from .master import InquiryMethod
 
 
 class Inquiry(models.Model):
+
+    class Brand(models.TextChoices):
+        ALICE = 'alice', 'アリス'
+        ROSE = 'rose', 'ローズ'
+        ADELE = 'adele', 'アデル'
+        LABO = 'labo', 'ラボ'
+        MYCHANNEL = 'mychannel', 'Myチャネ'
+        UNKNOWN = 'unknown', '不明'
+        OUTREACH = 'outreach', '掘起'
+
+    class Method(models.TextChoices):
+        LINE = 'line', 'LINE'
+        PHONE = 'phone', '電話'
+        EMAIL = 'email', 'メール'
+        FRIEND = 'friend', '友人紹介'
+        OTHER = 'other', '他社紹介'
+        REAPPLY = 'reapply', '再応募'
 
     person = models.ForeignKey(
         Person,
@@ -17,16 +29,17 @@ class Inquiry(models.Model):
         on_delete=models.PROTECT,
         related_name='person_inquiries',
     )
-    brand = models.ForeignKey(
-        Brand,
+    brand = models.CharField(
+        max_length=20,
+        choices=Brand.choices,
         verbose_name='屋号',
-        on_delete=models.PROTECT,
-        related_name='brand_inquiries',
+        blank=True,
     )
-    method = models.ForeignKey(
-        InquiryMethod,
-        on_delete=models.PROTECT,
+    method = models.CharField(
+        max_length=20,
+        choices=Method.choices,
         verbose_name='応募方法',
+        blank=True,
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
     received_at = models.DateTimeField('受付日時', default=timezone.now)

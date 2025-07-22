@@ -26,7 +26,7 @@ class PersonListView(ListViewMixin, ListView):
     context_object_name = 'persons'
     namespace = 'persons'
     # exclude_fields = ['memo', 'created_at', 'updated_at']
-    # wanted_field_keys = ['id', 'full_name', 'full_name_kana', 'age', 'phone', 'email']
+    wanted_field_keys = ['id', 'full_name', 'full_name_kana', 'age', 'phone', 'email']
     paginate_by = 10
 
 
