@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'accounts',
     'apps.core',
-    'apps.customers',
     # 'apps.masters',
     'apps.persons',
     'apps.inquiries',

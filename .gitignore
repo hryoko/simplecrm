@@ -24,5 +24,9 @@ config/local_settings.py
 tests/_*
 _test.ipynb
 
-# 自作の一時保存フォルダ
+# 自作の一時保存フォルダやファイル
 _temp/
+run_custom_server.py
+
+# tree /F /A > structure.txt 
+structure.txt

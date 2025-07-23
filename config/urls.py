@@ -43,7 +43,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls', namespace='core')),
     path('accounts/', include('django.contrib.auth.urls')),  # 認証URLを一式を登録
-    path('customers/', include('apps.customers.urls')),
     path('persons/', include('apps.persons.urls')),
     # path('inquiry/', include('apps.inquiries.urls')),
     # path('entry/', include('apps.entries.urls')),

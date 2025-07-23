@@ -5,16 +5,8 @@ from ..models.inquiry import Inquiry
 
 @admin.register(Inquiry)
 class InquiryAdmin(admin.ModelAdmin):
-    def __init__(self, model, admin_site):
-        super().__init__(model, admin_site)
-        self.list_display = [field.name for field in model._meta.fields]
 
-    # list_display = (
-    #     'id',
-    #     'person',
-    #     'method',
-    #     'brand',
-    #     'content',
-    #     'created_at',
-    #     'updated_at',
-    # )
+    list_display = ('person', 'method', 'brand', 'received_at')
+    list_filter = ('brand', 'method', 'received_at')
+    search_fields = ('person__full_name', 'person__phone')
+    ordering = ('-received_at',)

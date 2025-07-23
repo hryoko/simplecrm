@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 
-from ..customers.models import Customer
+from ..persons.models import Person
 
 # @login_required
 # class HomeView(TemplateView):
@@ -84,7 +84,7 @@ class ModelFieldsInfoMixin:
 
 
 class HomeView(ListView, ModelMetaInfoMixin, ModelFieldsInfoMixin):
-    model = Customer
+    model = Person
     template_name = 'core/home.html'
 
     def get_context_data(self, **kwargs):

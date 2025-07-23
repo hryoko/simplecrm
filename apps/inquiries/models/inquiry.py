@@ -29,25 +29,25 @@ class Inquiry(models.Model):
         on_delete=models.PROTECT,
         related_name='person_inquiries',
     )
-    brand = models.CharField(
-        max_length=20,
-        choices=Brand.choices,
-        verbose_name='屋号',
-        blank=True,
-    )
     method = models.CharField(
         max_length=20,
         choices=Method.choices,
         verbose_name='応募方法',
-        blank=True,
+        blank=False,
+    )
+    brand = models.CharField(
+        max_length=20,
+        choices=Brand.choices,
+        verbose_name='屋号',
+        blank=False,
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
     received_at = models.DateTimeField('受付日時', default=timezone.now)
     updated_at = models.DateTimeField('更新日時', auto_now=True)
 
     def __str__(self):
-        return f'{self.person.full_name} ({self.method})'
+        return f'{self.person.full_name}（{self.get_method_display()} / {self.get_brand_display()}）'
 
-    # class Meta:
-    # verbose_name = '問い合わせ'
-    # verbose_name_plural = '問い合わせ一覧'
+    class Meta:
+        verbose_name = '問い合わせ'
+        verbose_name_plural = '問い合わせ一覧'

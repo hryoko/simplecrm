@@ -34,23 +34,27 @@ class PersonForm(forms.ModelForm):
         ]
 
     def clean_phone_number(self):
-        number = self.cleaned_data['phone_number']
-        # 数字以外（ハイフン、スペース、カッコなど）を全部除去
-        cleaned = re.sub(r'\D', '', number)
+        phone = self.cleaned_data.get('phone', '')
 
-        # 形式チェック（任意） → 携帯番号なら11桁など
-        if len(cleaned) != 11:
+        # 全角→半角変換
+        phone = phone.translate(str.maketrans('０１２３４５６７８９', '0123456789'))
+
+        # 数字以外（ハイフン・空白など）を除去
+        phone = re.sub(r'[^\d]', '', phone)
+
+        # バリデーション：10桁または11桁の数字のみ
+        if not re.match(r'^\d{10,11}$', phone):
             raise forms.ValidationError(
-                '電話番号は11桁で入力してください（例: 08012345678）'
+                '電話番号は10〜11桁の半角数字で入力してください。'
             )
 
-        return cleaned
+        return phone
 
     def clean_age(self):
         age = self.cleaned_data.get('age')
         if age is not None:
             if age < 18:
-                raise forms.ValidationError("年齢は20歳以上で入力してください。")
+                raise forms.ValidationError("年齢は18歳以上で入力してください。")
         return age
 
     def clean_email(self):

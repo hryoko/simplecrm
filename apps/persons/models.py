@@ -28,8 +28,8 @@ class Person(models.Model):
         EMPLOYEE_ID = 'employee_id', '社員証'
         OTHER = 'other', 'その他'
 
-    full_name = models.CharField('氏名', max_length=20, blank=False, null=False)
-    full_name_kana = models.CharField('氏名カナ', max_length=20, blank=True, null=True)
+    full_name = models.CharField('氏名', max_length=20, blank=False)
+    full_name_kana = models.CharField('氏名カナ', max_length=20, blank=True)
     age = models.IntegerField('年齢', blank=True, null=True)
     phone_regex = RegexValidator(
         regex=r'^[0-9]+$',
@@ -40,8 +40,8 @@ class Person(models.Model):
     )
     email = models.EmailField('Email', max_length=255, blank=True)
     line_name = models.CharField('LINE', max_length=20, blank=True)
-    branch = models.CharField(
-        '登録店舗', max_length=20, choices=Branch.choices, blank=True
+    branch = models.IntegerField(
+        '登録店舗', max_length=20, choices=Branch.choices, blank=False
     )
     idcard = models.CharField(
         '身分証',
@@ -64,6 +64,6 @@ class Person(models.Model):
     # def get_absolute_url(self):
     #     return reverse_lazy("person:detail", kwargs={"pk": self.pk})
 
-    # class Meta:
-    # verbose_name = '個人'
-    # verbose_name_plural = '個人一覧'
+    class Meta:
+        verbose_name = '個人'
+        verbose_name_plural = '個人一覧'
