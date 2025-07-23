@@ -33,7 +33,7 @@ class PersonForm(forms.ModelForm):
             'idcard',
         ]
 
-    def clean_phone_number(self):
+    def clean_phone(self):
         phone = self.cleaned_data.get('phone', '')
 
         # 全角→半角変換

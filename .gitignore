@@ -26,7 +26,6 @@ _test.ipynb
 
 # 自作の一時保存フォルダやファイル
 _temp/
-run_custom_server.py
 
 # tree /F /A > structure.txt 
 structure.txt

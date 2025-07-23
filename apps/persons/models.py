@@ -40,9 +40,7 @@ class Person(models.Model):
     )
     email = models.EmailField('Email', max_length=255, blank=True)
     line_name = models.CharField('LINE', max_length=20, blank=True)
-    branch = models.IntegerField(
-        '登録店舗', max_length=20, choices=Branch.choices, blank=False
-    )
+    branch = models.IntegerField('登録店舗', choices=Branch.choices, blank=False)
     idcard = models.CharField(
         '身分証',
         max_length=20,
