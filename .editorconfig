@@ -1,17 +1,17 @@
-root = true
+; root = true
 
-[*.html]
-indent_style = space
-indent_size = 4
+; [*.html]
+; indent_style = space
+; indent_size = 4
 
-[*.scss]
-indent_style = space
-indent_size = 4
+; [*.scss]
+; indent_style = space
+; indent_size = 4
 
-[*.py]
-indent_style = space
-indent_size = 4
+; [*.py]
+; indent_style = space
+; indent_size = 4
 
-[*.js]
-indent_style = space
-indent_size = 4
+; [*.js]
+; indent_style = space
+; indent_size = 4

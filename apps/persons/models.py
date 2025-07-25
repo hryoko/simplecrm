@@ -31,15 +31,9 @@ class Person(models.Model):
     full_name = models.CharField('氏名', max_length=20, blank=False)
     full_name_kana = models.CharField('氏名カナ', max_length=20, blank=True)
     age = models.IntegerField('年齢', blank=True, null=True)
-    phone_regex = RegexValidator(
-        regex=r'^[0-9]+$',
-        message=('電話番号は『09012345678』の形式で、最大11桁まで入力してください。'),
-    )
-    phone = models.CharField(
-        'PHONE', max_length=11, unique=True, blank=True, validators=[phone_regex]
-    )
+    phone = models.CharField('電話番号', max_length=11, unique=True, blank=True)
     email = models.EmailField('Email', max_length=255, blank=True)
-    line_name = models.CharField('LINE', max_length=20, blank=True)
+    line_name = models.CharField('LINE名', max_length=20, blank=True)
     branch = models.IntegerField('登録店舗', choices=Branch.choices, blank=False)
     idcard = models.CharField(
         '身分証',
@@ -47,7 +41,7 @@ class Person(models.Model):
         choices=IdCardType.choices,
         default=IdCardType.UNKNOWN,
         blank=True,
-        help_text='「その他」を選んだ場合は備考欄に詳細を入力してください。',
+        help_text='「その他」を選ばれた場合は、備考欄に身分証の「種類」または「名称」をご入力ください。',
     )
     description = models.TextField('説明', blank=True)
     created_at = models.DateTimeField(default=timezone.now)

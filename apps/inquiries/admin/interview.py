@@ -1,11 +1,14 @@
-# from django.contrib import admin
+from django.contrib import admin
 
-# from ..models.interview import Interview
+from ..forms.interview import InterviewForm
+from ..models.interview import Interview
 
 
-# @admin.register(Interview)
-# class InterviewAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'inquiry', 'scheduled_date', 'status', 'result_status')
-#     list_filter = ('status', 'result_status')
-#     search_fields = ('inquiry__id', 'inquiry__person__full_name')
-#     # ordering = ('-scheduled_date',)
+@admin.register(Interview)
+class InterviewAdmin(admin.ModelAdmin):
+    form = InterviewForm
+
+    list_display = ('id', 'inquiry', 'scheduled_date', 'status', 'result_status')
+    list_filter = ('status', 'result_status')
+    search_fields = ('inquiry__id', 'inquiry__person__full_name')
+    # ordering = ('-scheduled_date',)

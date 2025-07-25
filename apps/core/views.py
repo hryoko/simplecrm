@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 
+from ..inquiries.models import Inquiry
 from ..persons.models import Person
 
 # @login_required
@@ -84,7 +85,7 @@ class ModelFieldsInfoMixin:
 
 
 class HomeView(ListView, ModelMetaInfoMixin, ModelFieldsInfoMixin):
-    model = Person
+    model = Inquiry
     template_name = 'core/home.html'
 
     def get_context_data(self, **kwargs):

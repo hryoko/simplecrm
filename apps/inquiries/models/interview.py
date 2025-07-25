@@ -29,6 +29,6 @@ class Interview(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # class Meta:
-    # verbose_name = '面接'
-    # verbose_name_plural = '面接一覧'
+    class Meta:
+        verbose_name = '面接'
+        verbose_name_plural = '面接一覧'

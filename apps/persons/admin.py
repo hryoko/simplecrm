@@ -20,10 +20,18 @@ class PersonAdmin(admin.ModelAdmin):
     )
     list_filter = ('branch', 'created_at')
     search_fields = ('full_name', 'full_name_kana', 'phone', 'email', 'line_name')
+    # fieldsets = (
+    #     ('基本情報', {'fields': ('full_name', 'full_name_kana', 'age')}),
+    #     ('連絡先', {'fields': ('phone', 'email', 'line_name')}),
+    #     ('登録情報', {'fields': ('branch', 'idcard')}),
+    #     ('備考', {'fields': ('description',)}),
+    #     ('システム情報', {'fields': ('created_at', 'updated_at')}),
+    # )
     fieldsets = (
-        ('基本情報', {'fields': ('full_name', 'full_name_kana', 'age')}),
-        ('連絡先', {'fields': ('phone', 'email', 'line_name')}),
-        ('その他', {'fields': ('description',)}),
-        ('登録情報', {'fields': ('created_at', 'updated_at')}),
+        ('基本情報', {'fields': (('full_name', 'full_name_kana', 'age'),)}),
+        ('連絡先', {'fields': (('phone', 'email', 'line_name'),)}),
+        ('登録情報', {'fields': (('branch', 'idcard'),)}),
+        ('備考', {'fields': ('description',)}),
+        ('システム情報', {'fields': (('created_at', 'updated_at'),)}),
     )
     readonly_fields = ('created_at', 'updated_at')
