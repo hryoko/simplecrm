@@ -46,7 +46,7 @@ class Inquiry(models.Model):
     updated_at = models.DateTimeField('更新日時', auto_now=True)
 
     def __str__(self):
-        return f'{self.person.full_name}（{self.get_method_display()} / {self.get_brand_display()}）'
+        return f'{self.person.name_kanji}（{self.get_method_display()} / {self.get_brand_display()}）'
 
     class Meta:
         verbose_name = '問い合わせ'

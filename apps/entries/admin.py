@@ -5,7 +5,7 @@ from .models import Entry
 
 @admin.register(Entry)
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ('get_person_name', 'get_phone', 'get_status')
+    list_display = ['get_person_name', 'get_phone', 'get_status']
 
     def get_person_name(self, obj):
         return obj.person.full_name

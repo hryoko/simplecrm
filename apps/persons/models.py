@@ -1,4 +1,4 @@
-from django.core.validators import RegexValidator
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
@@ -28,8 +28,18 @@ class Person(models.Model):
         EMPLOYEE_ID = 'employee_id', '社員証'
         OTHER = 'other', 'その他'
 
-    full_name = models.CharField('氏名', max_length=20, blank=False)
-    full_name_kana = models.CharField('氏名カナ', max_length=20, blank=True)
+    name_kanji = models.CharField(
+        '氏名',
+        max_length=20,
+        blank=False,
+        help_text='姓と名を続けて入力してください（例：山田太郎）',
+    )
+    name_kana = models.CharField(
+        'フリガナ',
+        max_length=20,
+        blank=True,
+        help_text='全角カタカナで入力してください（例：ヤマダタロウ）',
+    )
     age = models.IntegerField('年齢', blank=True, null=True)
     phone = models.CharField('電話番号', max_length=11, unique=True, blank=True)
     email = models.EmailField('Email', max_length=255, blank=True)
@@ -44,14 +54,21 @@ class Person(models.Model):
         help_text='「その他」を選ばれた場合は、備考欄に身分証の「種類」または「名称」をご入力ください。',
     )
     description = models.TextField('説明', blank=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name='入力者',
+        on_delete=models.PROTECT,
+        # default=request.user.username,
+        blank=True,
+    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.full_name}'
+        return f'{self.name_kanji}'
 
     def get_object_label(self):
-        return self.full_name
+        return self.name_kanji
 
     # def get_absolute_url(self):
     #     return reverse_lazy("person:detail", kwargs={"pk": self.pk})

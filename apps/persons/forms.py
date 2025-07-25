@@ -12,8 +12,8 @@ class PersonForm(forms.ModelForm):
     class Meta:
         model = Person
         fields = [
-            'full_name',
-            'full_name_kana',
+            'name_kanji',
+            'name_kana',
             'age',
             'phone',
             'email',
@@ -28,6 +28,29 @@ class PersonForm(forms.ModelForm):
         empty = [('', '選択してください')]
         self.fields['branch'].choices = empty + list(self.fields['branch'].choices)
         self.fields['idcard'].choices = empty + list(self.fields['idcard'].choices)
+
+    def clean_name_kanji(self):
+        name_kanji = self.cleaned_data.get('name_kanji', '')
+
+        # 全角スペースを半角スペースに変換
+        name_kanji = name_kanji.replace('　', ' ')
+
+        # ここで必要に応じてバリデーションも可能（例：ひらがな・漢字のみ など）
+        return name_kanji
+
+    def clean_name_kana(self):
+        name_kana = self.cleaned_data.get('name_kana', '')
+
+        # 全角スペースを半角スペースに変換
+        name_kana = name_kana.replace('　', ' ')
+
+        # バリデーション：全角カタカナと半角スペースのみ許可
+        if not re.fullmatch(r'[ァ-ヶー ]+', name_kana):
+            raise ValidationError(
+                'フリガナは全角カタカナと半角スペースのみで入力してください。'
+            )
+
+        return name_kana
 
     def clean_phone(self):
         phone = self.cleaned_data.get('phone', '')

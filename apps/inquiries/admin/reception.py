@@ -14,4 +14,11 @@ class ReceptionAdmin(admin.ModelAdmin):
 
     # list_display = ['id', 'inquiry', 'staff', 'received_at', 'status']
     list_filter = ['status', 'received_at']
-    search_fields = ['inquiry__applicant__name', 'staff__username']
+    search_fields = [
+        'inquiry__person__name_kanji',
+        'inquiry__person__name_kana',
+        'inquiry__person__phone',
+        'inquiry__person__email',
+        'inquiry__person__line_name',
+    ]
+    autocomplete_fields = ['inquiry']  # 外部キー名そのまま指定
