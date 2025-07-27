@@ -42,6 +42,9 @@ class Inquiry(models.Model):
         blank=False,
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
+    previous_inquiry = models.ForeignKey(
+        'self', null=True, blank=True, on_delete=models.SET_NULL
+    )
     received_at = models.DateTimeField('受付日時', default=timezone.now)
     updated_at = models.DateTimeField('更新日時', auto_now=True)
 

@@ -32,3 +32,6 @@ class Interview(models.Model):
     class Meta:
         verbose_name = '面接'
         verbose_name_plural = '面接一覧'
+
+    def __str__(self):
+        return f"{self.inquiry} ({self.scheduled_date})"
