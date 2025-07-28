@@ -7,7 +7,7 @@ class InquiryForm(forms.ModelForm):
 
     class Meta:
         model = Inquiry
-        fields = ['person', 'method', 'brand', 'content', 'previous_inquiry']
+        fields = ['person', 'method', 'brand', 'content']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

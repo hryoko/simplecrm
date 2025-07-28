@@ -4,6 +4,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.db import transaction
 
+from accounts.models import CustomUser
+
 from .models import Person
 
 
@@ -23,8 +25,18 @@ class PersonForm(forms.ModelForm):
             'description',
         ]
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, user: CustomUser = None, **kwargs):
+        """
+        `user` はログイン中のユーザー（CustomUser インスタンス）を想定。
+        通常の User ではなく settings.AUTH_USER_MODEL に従う。
+
+        Parameters:
+            user (CustomUser): ログイン中のユーザー。CustomUserモデルのインスタンス。
+        """
         super().__init__(*args, **kwargs)
+        self.user = user
+        if user and 'created_by' in self.fields:
+            self.fields['created_by'].initial = user
         empty = [('', '選択してください')]
         self.fields['branch'].choices = empty + list(self.fields['branch'].choices)
         self.fields['idcard'].choices = empty + list(self.fields['idcard'].choices)
@@ -40,6 +52,9 @@ class PersonForm(forms.ModelForm):
 
     def clean_name_kana(self):
         name_kana = self.cleaned_data.get('name_kana', '')
+
+        if not name_kana:
+            return name_kana  # 入力されていなければスキップ
 
         # 全角スペースを半角スペースに変換
         name_kana = name_kana.replace('　', ' ')
@@ -71,6 +86,9 @@ class PersonForm(forms.ModelForm):
         existing = Person.objects.filter(phone=phone).first()
         if existing and not self.instance.pk:
             self.existing_person = existing  # 保存時に使う
+
+        if Person.objects.filter(phone=phone).exclude(pk=self.instance.pk).exists():
+            raise ValidationError("この電話番号は既に登録されています。")
         return phone
 
     def clean_age(self):
@@ -90,21 +108,35 @@ class PersonForm(forms.ModelForm):
             raise ValidationError('このメールアドレスは既に登録されています。')
         return email
 
-    @transaction.atomic
-    def save(self, commit=True):
-        person = getattr(self, 'existing_person', None)
+    # @transaction.atomic
+    # def save(self, commit=True):
+    #     """
+    #     self.user（CustomUser）を使って created_by フィールドに割り当てる。
+    #     """
+    #     person = getattr(self, 'existing_person', None)
 
-        if person:
-            # 既存データの更新
-            for field in self.Meta.fields:
-                setattr(person, field, self.cleaned_data[field])
-            if commit:
-                person.save()
-                print("save: instance =", self.instance)
-                print("model =", self._meta.model)
-            return person
-        else:
-            # 通常の保存（新規）
-            print("save: instance =", self.instance)
-            print("model =", self._meta.model)
-            return super().save(commit=commit)
+    #     if person:
+    #         # 既存データの更新
+    #         for field in self.Meta.fields:
+    #             setattr(person, field, self.cleaned_data[field])
+    #         if commit:
+    #             person.save()
+    #             print('save: instance =', self.instance)
+    #             print('model =', self._meta.model)
+    #         return person
+    #     else:
+    #         # 通常の保存（新規）
+    #         print('save: instance =', self.instance)
+    #         print('model =', self._meta.model)
+    #         return super().save(commit=commit)
+
+    # @transaction.atomic
+    # def save(self, commit=True):
+    #     person = getattr(self, 'existing_person', None) or self.instance
+
+    #     if self.user and hasattr(person, 'created_by'):
+    #         person.created_by = self.user
+
+    #     if commit:
+    #         person.save()
+    #     return person

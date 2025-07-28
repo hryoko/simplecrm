@@ -4,13 +4,13 @@ from django.contrib.auth.admin import UserAdmin
 
 
 class CustomUserAdmin(UserAdmin):
-    def __init__(self, model, admin_site):
-        """
-        モデルの全フィールド名を自動的に list_display に設定する。
-        これにより、明示的に list_display を定義しなくても、管理画面で全フィールドが一覧表示される。
-        """
-        super().__init__(model, admin_site)
-        self.list_display = [field.name for field in model._meta.fields]
+    # def __init__(self, model, admin_site):
+    #     """
+    #     モデルの全フィールド名を自動的に list_display に設定する。
+    #     これにより、明示的に list_display を定義しなくても、管理画面で全フィールドが一覧表示される。
+    #     """
+    #     super().__init__(model, admin_site)
+    #     self.list_display = [field.name for field in model._meta.fields]
 
     list_display = list(UserAdmin.list_display) + []
 

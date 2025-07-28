@@ -31,7 +31,6 @@ class Person(models.Model):
     name_kanji = models.CharField(
         '氏名',
         max_length=20,
-        blank=False,
         help_text='姓と名を続けて入力してください（例：山田太郎）',
     )
     name_kana = models.CharField(
@@ -44,7 +43,7 @@ class Person(models.Model):
     phone = models.CharField('電話番号', max_length=11, unique=True, blank=True)
     email = models.EmailField('Email', max_length=255, blank=True)
     line_name = models.CharField('LINE名', max_length=20, blank=True)
-    branch = models.IntegerField('登録店舗', choices=Branch.choices, blank=False)
+    branch = models.IntegerField('登録店舗', choices=Branch.choices)
     idcard = models.CharField(
         '身分証',
         max_length=20,
@@ -58,11 +57,11 @@ class Person(models.Model):
         settings.AUTH_USER_MODEL,
         verbose_name='入力者',
         on_delete=models.PROTECT,
-        # default=request.user.username,
         blank=True,
+        null=True,
     )
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField('登録日時', default=timezone.now)
+    updated_at = models.DateTimeField('更新日時', auto_now=True)
 
     def __str__(self):
         return f'{self.name_kanji}'

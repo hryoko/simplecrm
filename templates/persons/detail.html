@@ -11,4 +11,33 @@
 
 {% include 'components/_detail.html' %}
 
+<h2>{{ person.name_kanji }} さんの問い合わせ履歴</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>受付日</th>
+      <th>方法</th>
+      <th>内容</th>
+      <th>担当</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for inquiry in inquiries %}
+      <tr>
+        <td>
+          <a href="{#% url 'inquiries:detail' pk=inquiry.pk %#}">
+            {{ inquiry.received_at|date:"Y-m-d H:i" }}
+          </a>
+        </td>
+        <td>{{ inquiry.get_reception_method_display }}</td>
+        <td>{{ inquiry.description|truncatechars:40 }}</td>
+        <td>{{ inquiry.created_by }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4">履歴はありません</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}

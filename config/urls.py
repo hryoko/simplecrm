@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
+from django.views.i18n import JavaScriptCatalog
 
 admin.site.site_title = 'Django 管理サイト-title'
 admin.site.site_header = 'サイト管理者-header'
@@ -40,6 +41,8 @@ urlpatterns = [
         auth_views.LogoutView.as_view(next_page='/'),
         name='logout',
     ),
+    # path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
+    # path('nested_admin/', include('nested_admin.urls')),
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls', namespace='core')),
     path('accounts/', include('django.contrib.auth.urls')),  # 認証URLを一式を登録

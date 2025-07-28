@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'nested_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

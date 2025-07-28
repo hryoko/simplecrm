@@ -35,7 +35,23 @@ class InquiryAdmin(admin.ModelAdmin):
         'person__email',
         'person__line_name',
     ]
+    # fieldsets = (
+    #     (
+    #         None,
+    #         {
+    #             'fields': (
+    #                 'person',
+    #                 'method',
+    #                 'brand',
+    #                 'received_at',
+    #                 'previous_inquiry_display',
+    #             )
+    #         },
+    #     ),
+    # )
     autocomplete_fields = ['person']
+    exclude = ['previous_inquiry']  # フォームから除外
+    readonly_fields = ['previous_inquiry_display', 'received_at', 'updated_at']
 
     def previous_inquiry_link(self, obj):
         """同一人物＆ブランドの過去問い合わせがあればリンク付きで表示"""
@@ -55,18 +71,17 @@ class InquiryAdmin(admin.ModelAdmin):
 
     previous_inquiry_link.short_description = "過去応募履歴"
 
-    readonly_fields = ['previous_inquiry_display']
-
     def previous_inquiry_display(self, obj):
         if not obj.previous_inquiry:
             return '-'
         url = reverse('admin:inquiries_inquiry_change', args=[obj.previous_inquiry.id])
         return format_html(
-            '<a href="{}">#{} - {} - {}</a>',
+            '<a href="{}">#{} | {} | {} ({})</a>',
             url,
             obj.previous_inquiry.id,
-            obj.previous_inquiry.received_at.strftime('%Y-%m-%d'),
-            obj.previous_inquiry.method,
+            obj.previous_inquiry.received_at.strftime('%Y-%m-%d %H:%M'),
+            obj.previous_inquiry.get_method_display(),
+            obj.previous_inquiry.get_brand_display(),
         )
 
     previous_inquiry_display.short_description = 'Previous Inquiry'

@@ -43,10 +43,25 @@ class Inquiry(models.Model):
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
     previous_inquiry = models.ForeignKey(
-        'self', null=True, blank=True, on_delete=models.SET_NULL
+        'self', null=True, blank=True, on_delete=models.SET_NULL, editable=False
     )
     received_at = models.DateTimeField('受付日時', default=timezone.now)
     updated_at = models.DateTimeField('更新日時', auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.previous_inquiry and self.person and self.brand:
+            previous = (
+                Inquiry.objects.filter(
+                    person=self.person,
+                    brand=self.brand,
+                    received_at__lt=self.received_at,
+                )
+                .exclude(id=self.id)
+                .order_by('-received_at')
+                .first()
+            )
+            self.previous_inquiry = previous
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.person.name_kanji}（{self.get_method_display()} / {self.get_brand_display()}）'
