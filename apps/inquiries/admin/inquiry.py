@@ -22,36 +22,44 @@ class InquiryAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'person',
-        'method',
         'brand',
+        'method',
+        'status',
+        'staff',
         'received_at',
         'previous_inquiry_link',
     ]
-    list_filter = ['brand', 'method', 'received_at']
+    list_filter = ['brand', 'method', 'status', 'staff', 'received_at']
     search_fields = [
         'person__name_kanji',
         'person__name_kana',
         'person__phone',
         'person__email',
         'person__line_name',
+        'remarks',
+        'content',
     ]
-    # fieldsets = (
-    #     (
-    #         None,
-    #         {
-    #             'fields': (
-    #                 'person',
-    #                 'method',
-    #                 'brand',
-    #                 'received_at',
-    #                 'previous_inquiry_display',
-    #             )
-    #         },
-    #     ),
-    # )
+    ordering = ['-received_at']
+
+    readonly_fields = ['previous_inquiry', 'updated_at']
     autocomplete_fields = ['person']
     exclude = ['previous_inquiry']  # フォームから除外
-    readonly_fields = ['previous_inquiry_display', 'received_at', 'updated_at']
+    fieldsets = (
+        ('基本情報', {'fields': ('person', 'brand', 'method', 'content')}),
+        ('対応情報', {'fields': ('status', 'staff', 'remarks', 'previous_inquiry')}),
+        ('日付情報', {'fields': ('received_at', 'updated_at')}),
+    )
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if not obj:
+            form.base_fields['staff'].initial = request.user
+        return form
+
+    def save_model(self, request, obj, form, change):
+        if not obj.staff:
+            obj.staff = request.user
+        super().save_model(request, obj, form, change)
 
     def previous_inquiry_link(self, obj):
         """同一人物＆ブランドの過去問い合わせがあればリンク付きで表示"""

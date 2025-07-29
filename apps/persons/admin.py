@@ -16,17 +16,17 @@ from .models import Person
 #     readonly_fields = ['received_at', 'previous_inquiry_display']
 
 
-class ReceptionInline(NestedTabularInline):
-    model = Reception
-    extra = 0
-    fields = ['status', 'staff', 'remarks', 'received_at']
-    readonly_fields = ['received_at']
+# class ReceptionInline(NestedTabularInline):
+#     model = Reception
+#     extra = 0
+#     fields = ['status', 'staff', 'remarks', 'received_at']
+#     readonly_fields = ['received_at']
 
 
 class InquiryInline(NestedTabularInline):
     model = Inquiry
     extra = 0
-    inlines = [ReceptionInline]
+    # inlines = [ReceptionInline]
     fields = ['method', 'brand', 'received_at', 'previous_inquiry_display']
     readonly_fields = ['received_at', 'previous_inquiry_display']
     # can_delete = False
