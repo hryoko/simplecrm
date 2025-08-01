@@ -28,7 +28,6 @@ environ.Env.read_env(BASE_DIR / '.env')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-print('DEBUG: DJANGO_SECRET_KEY =', env('DJANGO_SECRET_KEY', default=None))
 if not SECRET_KEY:
     raise ValueError('DJANGO_SECRET_KEY 環境変数が設定されていません')
 
