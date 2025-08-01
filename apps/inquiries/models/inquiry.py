@@ -111,7 +111,8 @@ class Inquiry(models.Model):
         settings.AUTH_USER_MODEL,
         verbose_name='スタッフ',
         on_delete=models.PROTECT,
-        blank=False,
+        blank=True,
+        null=True,
     )
     status = models.CharField(
         '対応状況', max_length=20, choices=Status.choices, default=Status.NEW

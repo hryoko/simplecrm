@@ -36,8 +36,8 @@ class InquiryAdmin(admin.ModelAdmin):
         'person__phone',
         'person__email',
         'person__line_name',
-        'remarks',
         'content',
+        'remarks',
     ]
     ordering = ['-received_at']
 
