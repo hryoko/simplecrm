@@ -14,11 +14,13 @@ from pathlib import Path
 
 import environ
 
-env = environ.Env()
-environ.Env.read_env()  # 環境変数のみ使う場合は不要。.env使用時は必要。
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR を先に定義してから .env を読み込む
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env()
+# 環境変数のみ使う場合は不要。.env使用時は必要
+environ.Env.read_env(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -26,14 +28,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
+print('DEBUG: DJANGO_SECRET_KEY =', env('DJANGO_SECRET_KEY', default=None))
 if not SECRET_KEY:
-    raise ValueError("DJANGO_SECRET_KEY 環境変数が設定されていません")
+    raise ValueError('DJANGO_SECRET_KEY 環境変数が設定されていません')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
-
 
 # Application definition
 
