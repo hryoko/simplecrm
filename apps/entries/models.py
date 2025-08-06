@@ -1,14 +1,13 @@
 from django.conf import settings
 from django.db import models
 
-from ..inquiries.models import Inquiry, Interview, Reception
+from ..inquiries.models import Inquiry, Interview
 from ..persons.models import Person
 
 
 class Entry(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     inquiry = models.OneToOneField(Inquiry, on_delete=models.CASCADE)
-    reception = models.OneToOneField(Reception, on_delete=models.CASCADE)
     interview = models.OneToOneField(
         Interview, on_delete=models.SET_NULL, null=True, blank=True
     )

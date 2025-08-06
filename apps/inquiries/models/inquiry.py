@@ -40,9 +40,18 @@ class Inquiry(models.Model):
 
         @classmethod
         def can_transition(cls, current_status, next_status):
-            return next_status in Reception.ALLOWED_RECEPTION_STATUS_TRANSITIONS.get(
+            return next_status in Inquiry.ALLOWED_RECEPTION_STATUS_TRANSITIONS.get(
                 current_status, set()
             )
+
+    class InquiryType(models.TextChoices):
+        INTERVIEW_ONLY = 'interview_only', '面接のみ'
+        TRIAL_WISH = 'trial_wish', '体験希望'
+        DISCUSS = 'discuss', '話し次第'
+        INQUIRY = 'inquiry', '問い合わせ'
+        SUGGESTION = 'suggestion', '打診'
+        INTERVIEW_SUGGESTION = 'interview_suggestion', '面接打診'
+        PHONE_INTERVIEW = 'phone_interview', '電話面接'
 
     # クラス外でもアクセスできるようにここで定義
     # 対応状況ステータスの許可された状態遷移ルールを定義する辞書
@@ -103,6 +112,13 @@ class Inquiry(models.Model):
         choices=Brand.choices,
         verbose_name='屋号',
         blank=False,
+    )
+    inquiry_type = models.CharField(
+        max_length=20,
+        choices=InquiryType.choices,
+        verbose_name='問合区分',
+        blank=True,
+        null=True,
     )
     content = models.TextField('問い合わせ内容', blank=True, null=True)
 

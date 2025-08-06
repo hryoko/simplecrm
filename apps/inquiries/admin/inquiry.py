@@ -3,33 +3,25 @@ from django.urls import reverse
 from django.utils.html import format_html
 
 from apps.inquiries.forms.inquiry import InquiryForm
-from apps.inquiries.models import Inquiry, Reception
-
-
-class ReceptionInline(admin.TabularInline):  # または admin.StackedInline
-    model = Reception
-    extra = 0
-    fields = ['status', 'staff', 'remarks', 'received_at']
-    readonly_fields = ['received_at']
-    ordering = ['-received_at']
+from apps.inquiries.models import Inquiry
 
 
 @admin.register(Inquiry)
 class InquiryAdmin(admin.ModelAdmin):
     form = InquiryForm
-    inlines = [ReceptionInline]
 
     list_display = [
         'id',
         'person',
         'brand',
         'method',
+        'inquiry_type',
         'status',
         'staff',
         'received_at',
         'previous_inquiry_link',
     ]
-    list_filter = ['brand', 'method', 'status', 'staff', 'received_at']
+    list_filter = ['brand', 'method', 'inquiry_type', 'status', 'staff', 'received_at']
     search_fields = [
         'person__name_kanji',
         'person__name_kana',
@@ -44,8 +36,30 @@ class InquiryAdmin(admin.ModelAdmin):
     readonly_fields = ['previous_inquiry', 'updated_at']
     autocomplete_fields = ['person']
     exclude = ['previous_inquiry']  # フォームから除外
+    # fieldsets = (
+    #     (
+    #         '問い合わせ情報',
+    #         {
+    #             'fields': (
+    #                 'person',
+    #                 'brand',
+    #                 'method',
+    #                 'inquiry_type',
+    #                 'content',
+    #                 'status',
+    #                 'staff',
+    #                 'remarks',
+    #                 'received_at',
+    #                 'updated_at',
+    #             ),
+    #         },
+    #     ),
+    # )
     fieldsets = (
-        ('基本情報', {'fields': ('person', 'brand', 'method', 'content')}),
+        (
+            '基本情報',
+            {'fields': ('person', 'brand', 'method', 'inquiry_type', 'content')},
+        ),
         ('対応情報', {'fields': ('status', 'staff', 'remarks', 'previous_inquiry')}),
         ('日付情報', {'fields': ('received_at', 'updated_at')}),
     )
